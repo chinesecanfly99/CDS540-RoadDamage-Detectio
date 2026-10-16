@@ -2,8 +2,9 @@
 # Evaluates zero-shot transfer performance on unseen United States highway dashcams
 
 path: data/yolo
-train: images/domain_test
-val: images/domain_test
+# Source-domain train/val remain separate; country holdout is test only.
+train: images/train
+val: images/val
 test: images/domain_test
 
 names:

@@ -24,6 +24,8 @@ Key Functions:
 """
 
 import os
+import math
+import filecmp
 import shutil
 import xml.etree.ElementTree as ET
 import pandas as pd
@@ -49,7 +51,9 @@ def link_or_copy_file(src, dst):
     Falls back to copy if hardlinking fails.
     """
     if os.path.exists(dst):
-        return
+        if os.path.samefile(src, dst) or filecmp.cmp(src, dst, shallow=False):
+            return
+        raise FileExistsError(f"Existing image differs from source: {dst}")
     try:
         os.link(src, dst)
     except Exception:
@@ -92,46 +96,32 @@ def convert_voc_to_yolo():
             if os.path.exists(img_rel_path):
                 link_or_copy_file(img_rel_path, dst_img_path)
             else:
-                print(f"[!] Warning: Image file not found: {img_rel_path}")
-                continue
+                raise FileNotFoundError(f"Image file not found: {img_rel_path}")
 
             stats[split]["images"] += 1
 
-            # 2. Check if negative background sample
-            if not bool(row["has_object"]):
-                # Write empty 0-byte label file
-                with open(dst_lbl_path, "w", encoding="utf-8") as f:
-                    pass
-                stats[split]["negative"] += 1
-                continue
-
-            # 3. Parse XML
-            if not os.path.exists(xml_rel_path):
-                with open(dst_lbl_path, "w", encoding="utf-8") as f:
-                    pass
-                stats[split]["negative"] += 1
-                continue
-
+            # Always parse XML, including legacy background rows. Missing/broken
+            # annotations are errors, not evidence of a negative image.
+            if not os.path.isfile(xml_rel_path):
+                raise FileNotFoundError(f"XML annotation not found: {xml_rel_path}")
             try:
                 tree = ET.parse(xml_rel_path)
                 root = tree.getroot()
-            except Exception as e:
-                print(f"[!] Error parsing XML: {xml_rel_path} - {e}")
-                with open(dst_lbl_path, "w", encoding="utf-8") as f:
-                    pass
-                stats[split]["negative"] += 1
-                continue
+            except ET.ParseError as exc:
+                raise ValueError(f"Invalid XML annotation: {xml_rel_path}") from exc
 
             w_node = root.find("size/width")
             h_node = root.find("size/height")
             img_w = float(w_node.text) if w_node is not None else float(row["image_width"])
             img_h = float(h_node.text) if h_node is not None else float(row["image_height"])
+            if not all(math.isfinite(v) and v > 0 for v in (img_w, img_h)):
+                raise ValueError(f"Invalid image size in annotation: {xml_rel_path}")
 
             yolo_lines = []
             for obj in root.findall("object"):
                 name_node = obj.find("name")
-                if name_node is None:
-                    continue
+                if name_node is None or not name_node.text:
+                    raise ValueError(f"Object is missing a class name: {xml_rel_path}")
                 raw_cls = name_node.text.strip()
                 norm_cls = TYPO_MAP.get(raw_cls, raw_cls)
 
@@ -143,18 +133,15 @@ def convert_voc_to_yolo():
 
                 bndbox = obj.find("bndbox")
                 if bndbox is None:
-                    continue
+                    raise ValueError(f"Target object is missing a box: {xml_rel_path}")
 
                 xmin = float(bndbox.find("xmin").text)
                 ymin = float(bndbox.find("ymin").text)
                 xmax = float(bndbox.find("xmax").text)
                 ymax = float(bndbox.find("ymax").text)
 
-                # Validation & clamp
-                xmin = max(0.0, min(xmin, img_w))
-                xmax = max(0.0, min(xmax, img_w))
-                ymin = max(0.0, min(ymin, img_h))
-                ymax = max(0.0, min(ymax, img_h))
+                if not all(math.isfinite(v) for v in (xmin, ymin, xmax, ymax)) or not (0 <= xmin < xmax <= img_w and 0 <= ymin < ymax <= img_h):
+                    raise ValueError(f"Invalid target box in annotation: {xml_rel_path}")
 
                 box_w = xmax - xmin
                 box_h = ymax - ymin
@@ -225,11 +212,13 @@ names:
         f.write(data_yaml_content)
     print(f"[+] Created main dataset config: {yaml_path}")
 
-    # Cross-Domain Zero-Shot Holdout Configuration (United States)
+    # Cross-country evaluation configuration (United States)
     domain_yaml_content = """# Ultralytics YOLO Domain Shift Test Configuration (Step 10)
-# Evaluates zero-shot transfer performance on unseen United States highway dashcams
+# United States held-out country set; prior results have already been observed
 
 path: data/yolo
+train: images/train
+val: images/val
 test: images/domain_test
 
 names:

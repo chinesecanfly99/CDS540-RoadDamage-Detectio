@@ -28,7 +28,7 @@ def read_image(path):
     return image
 
 
-def run_video_demo(model_path, input_source, output_video_path, max_frames=120, fps=None, device='cpu'):
+def run_video_demo(model_path, input_source, output_video_path, max_frames=120, fps=None, device='cpu', conf=0.25, nms_iou=0.7):
     model_path = Path(model_path).expanduser().resolve()
     source = Path(input_source).expanduser().resolve()
     output = Path(output_video_path).expanduser().resolve()
@@ -39,8 +39,8 @@ def run_video_demo(model_path, input_source, output_video_path, max_frames=120, 
         raise FileNotFoundError(f'Input not found: {source}. Pass --source with a local image directory or video.')
     if output.exists() or summary_path.exists():
         raise FileExistsError(f'Choose a new output filename: {output}')
-    if max_frames < 1 or (fps is not None and (not np.isfinite(fps) or fps <= 0)):
-        raise ValueError('max_frames and fps must be positive')
+    if max_frames < 1 or not 0 <= conf <= 1 or not 0 < nms_iou <= 1 or (fps is not None and (not np.isfinite(fps) or fps <= 0)):
+        raise ValueError('Invalid frame count, FPS, confidence or NMS IoU')
 
     cap, writer = None, None
     predictions, priorities = [], []
@@ -70,7 +70,7 @@ def run_video_demo(model_path, input_source, output_video_path, max_frames=120, 
 
         height, width = first.shape[:2]
         model = YOLO(str(model_path))
-        prioritizer = RoadDamagePrioritizer(conf_threshold=0.25)
+        prioritizer = RoadDamagePrioritizer(conf_threshold=conf)
         output.parent.mkdir(parents=True, exist_ok=True)
         writer = cv2.VideoWriter(str(output), cv2.VideoWriter_fourcc(*'mp4v'), output_fps, (width, height))
         if not writer.isOpened():
@@ -94,7 +94,7 @@ def run_video_demo(model_path, input_source, output_video_path, max_frames=120, 
                 resized += 1
 
             tick = time.perf_counter()
-            result = model.predict(frame, conf=0.25, imgsz=640, device=device, verbose=False)[0]
+            result = model.predict(frame, conf=conf, iou=nms_iou, imgsz=640, device=device, verbose=False)[0]
             predict_ms = (time.perf_counter() - tick) * 1000
             predictions.append(predict_ms)
             boxes = result.boxes
@@ -108,7 +108,7 @@ def run_video_demo(model_path, input_source, output_video_path, max_frames=120, 
             cv2.putText(annotated, badge, (8, height - 8), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 255, 255), 1)
             writer.write(annotated)
             priorities.append({'frame': count, 'detections': triage['total_distress_count'],
-                               'review_priority': triage['priority_level']})
+                               'review_priority': triage['priority_level'], 'detection_status': triage['detection_status']})
             count += 1
         elapsed = time.perf_counter() - started
         writer.release()
@@ -116,7 +116,7 @@ def run_video_demo(model_path, input_source, output_video_path, max_frames=120, 
         if count == 0:
             raise RuntimeError('No frames processed')
         summary = {'input': str(source), 'input_kind': input_kind, 'model': str(model_path),
-                   'device': backend, 'frames_written': count, 'max_frames': max_frames,
+                   'device': backend, 'candidate_conf': conf, 'nms_iou': nms_iou, 'rule_version': 'human-review-v1', 'frames_written': count, 'max_frames': max_frames,
                    'source_fps': source_fps, 'output_fps': output_fps,
                    'output_duration_s': count / output_fps, 'frames_resized_to_first_frame': resized,
                    'processing_seconds': round(elapsed, 3), 'processing_frames_per_second': round(count / elapsed, 2),
@@ -140,11 +140,13 @@ def main():
     parser.add_argument('--model', type=Path, default=ROOT / 'models/compare_yolo11s_best.pt')
     parser.add_argument('--output', type=Path, default=ROOT / 'demo/output.mp4')
     parser.add_argument('--device', default='cpu')
+    parser.add_argument('--conf', type=float, default=0.25)
+    parser.add_argument('--iou', type=float, default=0.7, help='NMS IoU')
     parser.add_argument('--max-frames', type=int, default=120)
     parser.add_argument('--fps', type=float, default=None, help='Output FPS; defaults to source video FPS or 15 for images')
     args = parser.parse_args()
     try:
-        run_video_demo(args.model, args.source, args.output, args.max_frames, args.fps, args.device)
+        run_video_demo(args.model, args.source, args.output, args.max_frames, args.fps, args.device, args.conf, args.iou)
     except (ValueError, FileNotFoundError, FileExistsError) as exc:
         parser.error(str(exc))
 

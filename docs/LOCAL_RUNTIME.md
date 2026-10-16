@@ -39,3 +39,10 @@ Python 3.11.1；PyTorch 2.14.0+cpu；torchvision 0.29.0+cpu；Ultralytics 8.4.17
 本机 `.local/runtime/` 保存 original_demo.log、sample_manifest.json、smoke_n/s、positive_n/s、demo_slideshow.mp4/json、demo_video.mp4/json、verification.json 和运行命令记录。
 
 这些视频是受控功能测试材料，包含图片合成的视频输入，不能写成真实巡检视频测试或部署实时性结论。几张样例的计时也不能替代正式性能评估。
+
+
+## 后续规划对照复核（2026-10-16）
+
+上述内容是第一次本机运行的记录。随后已修正规则的无检出含义和非法输入、添加显式 NMS 参数、新增评估/原标注诊断/数据审计/计时入口。新规则 human-review-v1 的图片序列演示与 13 个自动测试通过。详细证据与限制见 planning/10_规划对照核查与改进.md；完整本机输出在 .local/plan-review/。
+
+原印度样例的 n/s 输出框数 3/5 不能当作正确检出数；同类一对一 IoU≥0.5 的匹配均只有 1 个 TP。本轮没有做完整精度复算或训练。

@@ -22,10 +22,11 @@ def main():
     parser.add_argument('--output', type=Path, required=True, help='New output directory')
     parser.add_argument('--device', default='cpu', help='cpu, mps, or a CUDA index such as 0')
     parser.add_argument('--conf', type=float, default=0.25)
+    parser.add_argument('--iou', type=float, default=0.7, help='NMS IoU, distinct from GT matching IoU')
     parser.add_argument('--imgsz', type=int, default=640)
     args = parser.parse_args()
-    if not 0 <= args.conf <= 1 or args.imgsz <= 0:
-        parser.error('conf must be in [0, 1] and imgsz must be positive')
+    if not 0 <= args.conf <= 1 or not 0 < args.iou <= 1 or args.imgsz <= 0:
+        parser.error('conf must be in [0, 1], iou in (0, 1], and imgsz positive')
     model_path, source, output = [p.expanduser().resolve() for p in (args.model, args.source, args.output)]
     for path in (model_path, source):
         if not path.is_file():
@@ -41,7 +42,7 @@ def main():
     if model.names != expected:
         raise ValueError(f'Unexpected road-damage class mapping: {model.names}')
     started = time.perf_counter()
-    result = model.predict(image, device=args.device, conf=args.conf, imgsz=args.imgsz, verbose=False)[0]
+    result = model.predict(image, device=args.device, conf=args.conf, iou=args.iou, imgsz=args.imgsz, verbose=False)[0]
     elapsed = (time.perf_counter() - started) * 1000
     detections = []
     for box in result.boxes:
@@ -55,7 +56,8 @@ def main():
     encoded.tofile(output / 'prediction.jpg')
     report = {'source': str(source), 'model': str(model_path),
               'model_sha256': hashlib.sha256(model_path.read_bytes()).hexdigest(),
-              'device': str(result.boxes.data.device), 'imgsz': args.imgsz, 'conf': args.conf,
+              'device': str(result.boxes.data.device), 'imgsz': args.imgsz, 'conf': args.conf, 'nms_iou': args.iou,
+              'class_mapping': model.names,
               'image_size': {'width': image.shape[1], 'height': image.shape[0]},
               'predict_call_ms_including_first_call': round(elapsed, 2),
               'detections': detections,

@@ -1,21 +1,14 @@
-# Technical Milestone Reports & Experimental Findings
+# 报告与证据状态
 
-**Course**: Lingnan University CDS540 Computer Vision  
-**Project**: Automated Road Damage Detection for Smart City Infrastructure  
+更新：2026-10-16。本目录保留旧报告用于追溯；不是对当前修改分支的重新验收。当前状态以 [项目进度](../planning/STATUS.md) 和 [规划对照核查](../planning/10_规划对照核查与改进.md) 为准。
 
-This directory contains intermediate engineering reports and technical analyses produced across Steps 1 through 13 of the project pipeline. For the final consolidated Moodle submission, please refer to the `submission/` directory.
+| 材料 | 当前解释 |
+| --- | --- |
+| [baseline_evaluation_report.md](baseline_evaluation_report.md) | 历史基线结果，全量指标尚未重新计算 |
+| [model_comparison_report.md](model_comparison_report.md) | 历史模型比较；实际训练协议仍需核对 |
+| [domain_shift_and_robustness.md](domain_shift_and_robustness.md) | 历史跨域和扰动实验；不同样本子集的指标不宜直接对比 |
+| [priority_rules.md](priority_rules.md) | 历史启发式说明；现代码已移除无依据的维修期限，不能当作真实严重性验证 |
+| [runtime_deployment_report.md](runtime_deployment_report.md) | 历史硬件速度；不能代表本机或其他成员电脑性能 |
+| [CDS540_Final_Project_Report.md](CDS540_Final_Project_Report.md) | 旧主报告，需用正式重评和最终实现更新 |
 
----
-
-## 📑 Milestone Reports Index
-
-| Step | Report File | Technical Scope | Key Finding / Deliverable |
-|:---:|---|---|---|
-| **Step 1** | [data_status.md](file:///c:/Users/liyangshang/OneDrive/Desktop/岭南课程/计算机视觉/小组作业/reports/data_status.md) | Raw data inventory & verification | Verified 19,208 raw images across Czech, India, and US |
-| **Step 4** | [eda_findings.md](file:///c:/Users/liyangshang/OneDrive/Desktop/岭南课程/计算机视觉/小组作业/reports/eda_findings.md) | Exploratory Data Analysis | 15,340 VOC XMLs parsed, class imbalance & aspect ratio findings |
-| **Step 5** | [split_policy.md](file:///c:/Users/liyangshang/OneDrive/Desktop/岭南课程/计算机视觉/小组作业/reports/split_policy.md) | Dataset partitioning policy | Image-level splitting with fixed seed=42; 100% US held out |
-| **Step 8** | [baseline_evaluation_report.md](file:///c:/Users/liyangshang/OneDrive/Desktop/岭南课程/计算机视觉/小组作业/reports/baseline_evaluation_report.md) | Baseline model performance | YOLO11n evaluated on 1,579 test images (mAP50=0.2169, D40 Recall=33.3%) |
-| **Step 9** | [model_comparison_report.md](file:///c:/Users/liyangshang/OneDrive/Desktop/岭南课程/计算机视觉/小组作业/reports/model_comparison_report.md) | Model scale comparison | YOLO11s delivers +31.2% mAP50 (0.2846) & +19.2% D40 Recall (39.7%) |
-| **Step 10** | [domain_shift_and_robustness.md](file:///c:/Users/liyangshang/OneDrive/Desktop/岭南课程/计算机视觉/小组作业/reports/domain_shift_and_robustness.md) | Cross-domain & robustness | Longitudinal cracks decay by only -4.98%; motion blur preserves potholes |
-| **Step 11** | [priority_rules.md](file:///c:/Users/liyangshang/OneDrive/Desktop/岭南课程/计算机视觉/小组作业/reports/priority_rules.md) | Municipal priority heuristics | Multi-factor risk formula (D40 10x weight, area penalty, clustering) |
-| **Step 13** | [runtime_deployment_report.md](file:///c:/Users/liyangshang/OneDrive/Desktop/岭南课程/计算机视觉/小组作业/reports/runtime_deployment_report.md) | Latency & edge deployment | Precision RTX 5070 timing (P95 29.6ms, 38.6 FPS); Jetson Orin Nano selection |
+本轮只完成原始数据审计、运行/评估入口修正及小规模流程测试，没有得到新的全量精度或真实部署结论。其他中间报告中的完成声明，也应与当前 STATUS 交叉核实后再用于提交。
