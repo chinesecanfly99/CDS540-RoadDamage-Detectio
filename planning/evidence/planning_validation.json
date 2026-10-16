@@ -1,10 +1,13 @@
 {
   "date": "2026-10-16",
-  "scope": "See plan_review_2026-10-16.json and STATUS.md for current evidence",
-  "original_audit_date": "2026-10-15",
-  "markdown_files": 21,
+  "markdown_files": 22,
   "stage_files": 8,
-  "full_training_or_ap_validation": "NOT_PERFORMED",
   "internal_links": "PASS",
-  "python_syntax": "PASS"
+  "python_syntax": "PASS",
+  "automated_tests": 22,
+  "all_data_conversion": "PASS",
+  "full_existing_model_evaluations": 6,
+  "historical_padding_checks": 2,
+  "cross_computer": "DEFERRED_BY_USER",
+  "new_training": "NOT_PERFORMED"
 }

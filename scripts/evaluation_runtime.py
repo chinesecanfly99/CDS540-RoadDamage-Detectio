@@ -59,7 +59,7 @@ def resolve_dataset(data_file, split):
 
 
 def evaluate_checkpoint(model_path, data_file, output, split='test', device='cpu', batch=1,
-                        imgsz=640, candidate_conf=0.001, nms_iou=0.7, purpose='evaluation'):
+                        imgsz=640, candidate_conf=0.001, nms_iou=0.7, purpose='evaluation', save_predictions=False, rect=False):
     if split not in ('val', 'test'):
         raise ValueError('Use val or test for this evaluation entry')
     if purpose not in ('smoke', 'evaluation'):
@@ -72,6 +72,21 @@ def evaluate_checkpoint(model_path, data_file, output, split='test', device='cpu
     if output.exists():
         raise FileExistsError(f'Choose a new evaluation output directory: {output}')
     data_file, resolved = resolve_dataset(data_file, split)
+    # Saved TXT files use image stems: reject collisions before caching predictions.
+    selected = resolved[split] if isinstance(resolved[split], list) else [resolved[split]]
+    image_files = []
+    for selected_path in selected:
+        directory = Path(selected_path)
+        if directory.is_dir():
+            image_files.extend(sorted(p for p in directory.rglob('*') if p.suffix.lower() in ('.jpg','.jpeg','.png','.bmp','.tif','.tiff','.webp')))
+        elif save_predictions:
+            raise ValueError('Prediction caching currently requires image directories, not list files')
+    if save_predictions and (not image_files or len({p.stem for p in image_files}) != len(image_files)):
+        raise ValueError('Prediction cache requires nonempty input with globally unique image stems')
+    preparation_path = Path(resolved['path']) / 'preparation.json'
+    preparation = json.loads(preparation_path.read_text(encoding='utf-8')) if preparation_path.is_file() else None
+    if preparation is not None and preparation.get('state') != 'COMPLETE':
+        raise ValueError('Dataset preparation did not complete')
     local_config = ROOT / '.local/ultralytics'
     local_config.mkdir(parents=True, exist_ok=True)
     os.environ.setdefault('YOLO_CONFIG_DIR', str(local_config))
@@ -84,8 +99,9 @@ def evaluate_checkpoint(model_path, data_file, output, split='test', device='cpu
     resolved_path = output / 'resolved_data.yaml'
     resolved_path.write_text(yaml.safe_dump(resolved, sort_keys=False, allow_unicode=True), encoding='utf-8')
     metrics = model.val(data=str(resolved_path), split=split, device=device, batch=batch, imgsz=imgsz,
-                        workers=0, conf=candidate_conf, iou=nms_iou, rect=False,
-                        project=str(output), name='validation', exist_ok=False, plots=False, verbose=False)
+                        workers=0, conf=candidate_conf, iou=nms_iou, rect=rect,
+                        project=str(output), name='validation', exist_ok=False, plots=False, verbose=False,
+                        save_txt=save_predictions, save_conf=save_predictions, max_det=300, augment=False, half=False, agnostic_nms=False)
     rows = validation_class_rows(metrics)
     overall = {'precision': _number(metrics.box.mp), 'recall': _number(metrics.box.mr),
                'map50': _number(metrics.box.map50), 'map50_95': _number(metrics.box.map),
@@ -94,13 +110,20 @@ def evaluate_checkpoint(model_path, data_file, output, split='test', device='cpu
               'data_yaml': str(data_file), 'data_yaml_sha256': file_hash(data_file),
               'resolved_data_yaml_sha256': file_hash(resolved_path),
               'split': split, 'parameters': {'device': str(device), 'batch': batch, 'imgsz': imgsz,
-                                           'candidate_conf': candidate_conf, 'nms_iou': nms_iou, 'rect': False},
+                                           'candidate_conf': candidate_conf, 'nms_iou': nms_iou, 'rect': bool(rect), 'max_det': 300,
+                                           'augment': False, 'half': False, 'agnostic_nms': False},
               'python': sys.version, 'platform': platform.platform(),
               'versions': {p: metadata.version(p) for p in ('torch', 'torchvision', 'ultralytics')},
               'overall': overall, 'per_class': rows,
               'pr_definition': 'Ultralytics max-F1 summary; not fixed deployment-threshold TP/FP/FN',
               'independence': 'Not established by this command; verify split membership and model provenance',
-              'artifact_directory': str(output / 'validation')}
+              'artifact_directory': str(output / 'validation'),
+              'images_expected': len(image_files) if image_files else None,
+              'dataset_fingerprint': preparation.get('dataset_fingerprint') if preparation else None,
+              'prediction_cache': {'enabled': save_predictions, 'directory': str(output/'validation/labels') if save_predictions else None,
+                                   'format': 'Ultralytics TXT: class xc yc width height confidence; normalized original coordinates',
+                                   'candidate_conf': candidate_conf,
+                                   'missing_txt_means': 'zero post-NMS predictions only after this metrics.json confirms evaluation completion'}}
     (output / 'metrics.json').write_text(json.dumps(record, ensure_ascii=False, indent=2, allow_nan=False), encoding='utf-8')
     with (output / 'per_class.csv').open('w', newline='', encoding='utf-8-sig') as handle:
         writer = csv.DictWriter(handle, fieldnames=['class_id', 'class_name', 'support', 'precision', 'recall', 'ap50', 'ap50_95'])

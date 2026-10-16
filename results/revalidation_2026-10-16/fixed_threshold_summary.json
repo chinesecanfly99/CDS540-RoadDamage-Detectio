@@ -1,0 +1,1533 @@
+{
+  "frozen_selection": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\frozen-thresholds\\threshold_selection.json",
+  "selection_sha256": "b2f81012ec1cd1cbdb281018daa8c5343584e247bb2790eb2f84fb0a4c7f2225",
+  "matching": "confidence-ordered, same-class, one-to-one IoU >= 0.5; differs from max-F1 AP summary",
+  "records": [
+    {
+      "model": "baseline_best.pt",
+      "model_sha256": "b11873df6fe5d69e62612e6261d65598f3e5140a91f8c6a874941eca21e0c1ba",
+      "metrics_path": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\n_source_test\\metrics.json",
+      "metrics_sha256": "32c6d11ecc7b116f7ef2d3150a8ae9c5cc67bd8ad6ac1507a3eada0ca5492b35",
+      "dataset_fingerprint": "652c6640e8f301879590185e30138a87405bdba0c14c807d1aa6031ce683f193",
+      "ap_result": {
+        "precision": 0.2880921660787368,
+        "recall": 0.27083771424590053,
+        "map50": 0.20872710842583128,
+        "map50_95": 0.07911952333915062,
+        "support": 1309
+      },
+      "at_default_025": {
+        "threshold": 0.25,
+        "match_iou": 0.5,
+        "images": 1579,
+        "TP": 209,
+        "FP": 210,
+        "FN": 1100,
+        "support": 1309,
+        "precision": 0.4988066825775656,
+        "recall": 0.15966386554621848,
+        "f1": 0.24189814814814814,
+        "macro_f1": 0.1849448058717204,
+        "per_class": [
+          {
+            "class_name": "D00",
+            "TP": 21,
+            "FP": 12,
+            "FN": 356,
+            "support": 377,
+            "precision": 0.6363636363636364,
+            "recall": 0.05570291777188329,
+            "f1": 0.1024390243902439
+          },
+          {
+            "class_name": "D10",
+            "TP": 0,
+            "FP": 0,
+            "FN": 68,
+            "support": 68,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "class_name": "D20",
+            "TP": 114,
+            "FP": 95,
+            "FN": 204,
+            "support": 318,
+            "precision": 0.5454545454545454,
+            "recall": 0.3584905660377358,
+            "f1": 0.43263757115749524
+          },
+          {
+            "class_name": "D40",
+            "TP": 74,
+            "FP": 103,
+            "FN": 472,
+            "support": 546,
+            "precision": 0.4180790960451977,
+            "recall": 0.13553113553113552,
+            "f1": 0.20470262793914246
+          }
+        ],
+        "background_images": 924,
+        "background_images_with_predictions": 32,
+        "background_false_alarm_image_rate": 0.03463203463203463,
+        "failure_images": [
+          {
+            "image_id": "India_002793.jpg",
+            "TP": 1,
+            "FP": 3,
+            "FN": 12
+          },
+          {
+            "image_id": "India_000994.jpg",
+            "TP": 1,
+            "FP": 1,
+            "FN": 8
+          },
+          {
+            "image_id": "India_002318.jpg",
+            "TP": 0,
+            "FP": 6,
+            "FN": 3
+          },
+          {
+            "image_id": "India_009436.jpg",
+            "TP": 0,
+            "FP": 2,
+            "FN": 7
+          },
+          {
+            "image_id": "India_000209.jpg",
+            "TP": 1,
+            "FP": 2,
+            "FN": 6
+          },
+          {
+            "image_id": "India_003102.jpg",
+            "TP": 1,
+            "FP": 0,
+            "FN": 8
+          },
+          {
+            "image_id": "India_006862.jpg",
+            "TP": 1,
+            "FP": 0,
+            "FN": 8
+          },
+          {
+            "image_id": "India_008233.jpg",
+            "TP": 0,
+            "FP": 0,
+            "FN": 8
+          },
+          {
+            "image_id": "India_008597.jpg",
+            "TP": 1,
+            "FP": 1,
+            "FN": 7
+          },
+          {
+            "image_id": "India_009009.jpg",
+            "TP": 1,
+            "FP": 2,
+            "FN": 6
+          }
+        ],
+        "total_failure_images": 618,
+        "failure_examples_are_partial": true
+      },
+      "at_val_selected_threshold": {
+        "threshold": 0.1,
+        "match_iou": 0.5,
+        "images": 1579,
+        "TP": 484,
+        "FP": 1420,
+        "FN": 825,
+        "support": 1309,
+        "precision": 0.2542016806722689,
+        "recall": 0.3697478991596639,
+        "f1": 0.30127606598194834,
+        "macro_f1": 0.2369225664996226,
+        "per_class": [
+          {
+            "class_name": "D00",
+            "TP": 108,
+            "FP": 248,
+            "FN": 269,
+            "support": 377,
+            "precision": 0.30337078651685395,
+            "recall": 0.2864721485411141,
+            "f1": 0.2946793997271487
+          },
+          {
+            "class_name": "D10",
+            "TP": 1,
+            "FP": 9,
+            "FN": 67,
+            "support": 68,
+            "precision": 0.1,
+            "recall": 0.014705882352941176,
+            "f1": 0.02564102564102564
+          },
+          {
+            "class_name": "D20",
+            "TP": 179,
+            "FP": 591,
+            "FN": 139,
+            "support": 318,
+            "precision": 0.23246753246753246,
+            "recall": 0.5628930817610063,
+            "f1": 0.3290441176470588
+          },
+          {
+            "class_name": "D40",
+            "TP": 196,
+            "FP": 572,
+            "FN": 350,
+            "support": 546,
+            "precision": 0.2552083333333333,
+            "recall": 0.358974358974359,
+            "f1": 0.2983257229832572
+          }
+        ],
+        "background_images": 924,
+        "background_images_with_predictions": 173,
+        "background_false_alarm_image_rate": 0.18722943722943722,
+        "failure_images": [
+          {
+            "image_id": "India_002793.jpg",
+            "TP": 2,
+            "FP": 10,
+            "FN": 11
+          },
+          {
+            "image_id": "India_003102.jpg",
+            "TP": 3,
+            "FP": 11,
+            "FN": 6
+          },
+          {
+            "image_id": "India_009436.jpg",
+            "TP": 2,
+            "FP": 10,
+            "FN": 5
+          },
+          {
+            "image_id": "India_000994.jpg",
+            "TP": 1,
+            "FP": 6,
+            "FN": 8
+          },
+          {
+            "image_id": "India_002318.jpg",
+            "TP": 1,
+            "FP": 12,
+            "FN": 2
+          },
+          {
+            "image_id": "India_006862.jpg",
+            "TP": 4,
+            "FP": 9,
+            "FN": 5
+          },
+          {
+            "image_id": "India_008257.jpg",
+            "TP": 0,
+            "FP": 8,
+            "FN": 5
+          },
+          {
+            "image_id": "India_008597.jpg",
+            "TP": 3,
+            "FP": 8,
+            "FN": 5
+          },
+          {
+            "image_id": "India_009009.jpg",
+            "TP": 3,
+            "FP": 9,
+            "FN": 4
+          },
+          {
+            "image_id": "India_000209.jpg",
+            "TP": 4,
+            "FP": 9,
+            "FN": 3
+          }
+        ],
+        "total_failure_images": 780,
+        "failure_examples_are_partial": true
+      },
+      "audited_near_duplicate_exclusions": [
+        "Czech_001050.jpg"
+      ],
+      "near_duplicate_sensitivity_fixed_threshold": {
+        "threshold": 0.1,
+        "match_iou": 0.5,
+        "images": 1578,
+        "TP": 484,
+        "FP": 1418,
+        "FN": 825,
+        "support": 1309,
+        "precision": 0.2544689800210305,
+        "recall": 0.3697478991596639,
+        "f1": 0.30146371846776704,
+        "macro_f1": 0.2371241255965632,
+        "per_class": [
+          {
+            "class_name": "D00",
+            "TP": 108,
+            "FP": 246,
+            "FN": 269,
+            "support": 377,
+            "precision": 0.3050847457627119,
+            "recall": 0.2864721485411141,
+            "f1": 0.2954856361149111
+          },
+          {
+            "class_name": "D10",
+            "TP": 1,
+            "FP": 9,
+            "FN": 67,
+            "support": 68,
+            "precision": 0.1,
+            "recall": 0.014705882352941176,
+            "f1": 0.02564102564102564
+          },
+          {
+            "class_name": "D20",
+            "TP": 179,
+            "FP": 591,
+            "FN": 139,
+            "support": 318,
+            "precision": 0.23246753246753246,
+            "recall": 0.5628930817610063,
+            "f1": 0.3290441176470588
+          },
+          {
+            "class_name": "D40",
+            "TP": 196,
+            "FP": 572,
+            "FN": 350,
+            "support": 546,
+            "precision": 0.2552083333333333,
+            "recall": 0.358974358974359,
+            "f1": 0.2983257229832572
+          }
+        ],
+        "background_images": 923,
+        "background_images_with_predictions": 172,
+        "background_false_alarm_image_rate": 0.18634886240520043,
+        "failure_images": [
+          {
+            "image_id": "India_002793.jpg",
+            "TP": 2,
+            "FP": 10,
+            "FN": 11
+          },
+          {
+            "image_id": "India_003102.jpg",
+            "TP": 3,
+            "FP": 11,
+            "FN": 6
+          },
+          {
+            "image_id": "India_009436.jpg",
+            "TP": 2,
+            "FP": 10,
+            "FN": 5
+          },
+          {
+            "image_id": "India_000994.jpg",
+            "TP": 1,
+            "FP": 6,
+            "FN": 8
+          },
+          {
+            "image_id": "India_002318.jpg",
+            "TP": 1,
+            "FP": 12,
+            "FN": 2
+          },
+          {
+            "image_id": "India_006862.jpg",
+            "TP": 4,
+            "FP": 9,
+            "FN": 5
+          },
+          {
+            "image_id": "India_008257.jpg",
+            "TP": 0,
+            "FP": 8,
+            "FN": 5
+          },
+          {
+            "image_id": "India_008597.jpg",
+            "TP": 3,
+            "FP": 8,
+            "FN": 5
+          },
+          {
+            "image_id": "India_009009.jpg",
+            "TP": 3,
+            "FP": 9,
+            "FN": 4
+          },
+          {
+            "image_id": "India_000209.jpg",
+            "TP": 4,
+            "FP": 9,
+            "FN": 3
+          }
+        ],
+        "total_failure_images": 779,
+        "failure_examples_are_partial": true
+      }
+    },
+    {
+      "model": "compare_yolo11s_best.pt",
+      "model_sha256": "cd6954c0d0e8f37fdc9f9dce91a1ec247632112ff8745bd5194f6ba9987c89a5",
+      "metrics_path": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\s_source_test\\metrics.json",
+      "metrics_sha256": "9ec3bc0e4179b0a94c18bd9ee645da35b64177bffe7d049f7e2d2957477c9a62",
+      "dataset_fingerprint": "652c6640e8f301879590185e30138a87405bdba0c14c807d1aa6031ce683f193",
+      "ap_result": {
+        "precision": 0.43244334496245274,
+        "recall": 0.33514452557776997,
+        "map50": 0.2855235256534844,
+        "map50_95": 0.11166037388625352,
+        "support": 1309
+      },
+      "at_default_025": {
+        "threshold": 0.25,
+        "match_iou": 0.5,
+        "images": 1579,
+        "TP": 296,
+        "FP": 250,
+        "FN": 1013,
+        "support": 1309,
+        "precision": 0.5421245421245421,
+        "recall": 0.2261268143621085,
+        "f1": 0.31913746630727763,
+        "macro_f1": 0.2449715195688124,
+        "per_class": [
+          {
+            "class_name": "D00",
+            "TP": 44,
+            "FP": 43,
+            "FN": 333,
+            "support": 377,
+            "precision": 0.5057471264367817,
+            "recall": 0.11671087533156499,
+            "f1": 0.1896551724137931
+          },
+          {
+            "class_name": "D10",
+            "TP": 0,
+            "FP": 0,
+            "FN": 68,
+            "support": 68,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "class_name": "D20",
+            "TP": 138,
+            "FP": 107,
+            "FN": 180,
+            "support": 318,
+            "precision": 0.563265306122449,
+            "recall": 0.4339622641509434,
+            "f1": 0.49023090586145646
+          },
+          {
+            "class_name": "D40",
+            "TP": 114,
+            "FP": 100,
+            "FN": 432,
+            "support": 546,
+            "precision": 0.5327102803738317,
+            "recall": 0.2087912087912088,
+            "f1": 0.3
+          }
+        ],
+        "background_images": 924,
+        "background_images_with_predictions": 37,
+        "background_false_alarm_image_rate": 0.04004329004329004,
+        "failure_images": [
+          {
+            "image_id": "India_002793.jpg",
+            "TP": 2,
+            "FP": 1,
+            "FN": 11
+          },
+          {
+            "image_id": "India_000209.jpg",
+            "TP": 1,
+            "FP": 4,
+            "FN": 6
+          },
+          {
+            "image_id": "India_000994.jpg",
+            "TP": 1,
+            "FP": 0,
+            "FN": 8
+          },
+          {
+            "image_id": "India_003941.jpg",
+            "TP": 1,
+            "FP": 3,
+            "FN": 5
+          },
+          {
+            "image_id": "India_004434.jpg",
+            "TP": 1,
+            "FP": 2,
+            "FN": 6
+          },
+          {
+            "image_id": "India_006640.jpg",
+            "TP": 1,
+            "FP": 4,
+            "FN": 4
+          },
+          {
+            "image_id": "India_009009.jpg",
+            "TP": 1,
+            "FP": 2,
+            "FN": 6
+          },
+          {
+            "image_id": "India_009436.jpg",
+            "TP": 2,
+            "FP": 3,
+            "FN": 5
+          },
+          {
+            "image_id": "India_001566.jpg",
+            "TP": 0,
+            "FP": 1,
+            "FN": 6
+          },
+          {
+            "image_id": "India_003102.jpg",
+            "TP": 3,
+            "FP": 1,
+            "FN": 6
+          }
+        ],
+        "total_failure_images": 607,
+        "failure_examples_are_partial": true
+      },
+      "at_val_selected_threshold": {
+        "threshold": 0.1,
+        "match_iou": 0.5,
+        "images": 1579,
+        "TP": 585,
+        "FP": 1389,
+        "FN": 724,
+        "support": 1309,
+        "precision": 0.29635258358662614,
+        "recall": 0.44690603514132926,
+        "f1": 0.3563813585135547,
+        "macro_f1": 0.29309356085233346,
+        "per_class": [
+          {
+            "class_name": "D00",
+            "TP": 137,
+            "FP": 298,
+            "FN": 240,
+            "support": 377,
+            "precision": 0.31494252873563217,
+            "recall": 0.363395225464191,
+            "f1": 0.3374384236453202
+          },
+          {
+            "class_name": "D10",
+            "TP": 3,
+            "FP": 4,
+            "FN": 65,
+            "support": 68,
+            "precision": 0.42857142857142855,
+            "recall": 0.04411764705882353,
+            "f1": 0.08
+          },
+          {
+            "class_name": "D20",
+            "TP": 202,
+            "FP": 463,
+            "FN": 116,
+            "support": 318,
+            "precision": 0.3037593984962406,
+            "recall": 0.6352201257861635,
+            "f1": 0.41098677517802645
+          },
+          {
+            "class_name": "D40",
+            "TP": 243,
+            "FP": 624,
+            "FN": 303,
+            "support": 546,
+            "precision": 0.28027681660899656,
+            "recall": 0.44505494505494503,
+            "f1": 0.34394904458598724
+          }
+        ],
+        "background_images": 924,
+        "background_images_with_predictions": 124,
+        "background_false_alarm_image_rate": 0.1341991341991342,
+        "failure_images": [
+          {
+            "image_id": "India_003102.jpg",
+            "TP": 5,
+            "FP": 19,
+            "FN": 4
+          },
+          {
+            "image_id": "India_002793.jpg",
+            "TP": 3,
+            "FP": 8,
+            "FN": 10
+          },
+          {
+            "image_id": "India_003051.jpg",
+            "TP": 1,
+            "FP": 14,
+            "FN": 1
+          },
+          {
+            "image_id": "India_008233.jpg",
+            "TP": 2,
+            "FP": 9,
+            "FN": 6
+          },
+          {
+            "image_id": "India_008597.jpg",
+            "TP": 3,
+            "FP": 10,
+            "FN": 5
+          },
+          {
+            "image_id": "India_000209.jpg",
+            "TP": 5,
+            "FP": 12,
+            "FN": 2
+          },
+          {
+            "image_id": "India_002069.jpg",
+            "TP": 2,
+            "FP": 12,
+            "FN": 1
+          },
+          {
+            "image_id": "India_002318.jpg",
+            "TP": 1,
+            "FP": 11,
+            "FN": 2
+          },
+          {
+            "image_id": "India_006713.jpg",
+            "TP": 3,
+            "FP": 11,
+            "FN": 2
+          },
+          {
+            "image_id": "India_002007.jpg",
+            "TP": 1,
+            "FP": 10,
+            "FN": 2
+          }
+        ],
+        "total_failure_images": 726,
+        "failure_examples_are_partial": true
+      },
+      "audited_near_duplicate_exclusions": [
+        "Czech_001050.jpg"
+      ],
+      "near_duplicate_sensitivity_fixed_threshold": {
+        "threshold": 0.1,
+        "match_iou": 0.5,
+        "images": 1578,
+        "TP": 585,
+        "FP": 1388,
+        "FN": 724,
+        "support": 1309,
+        "precision": 0.2965027876330461,
+        "recall": 0.44690603514132926,
+        "f1": 0.35648994515539306,
+        "macro_f1": 0.29319758009513414,
+        "per_class": [
+          {
+            "class_name": "D00",
+            "TP": 137,
+            "FP": 297,
+            "FN": 240,
+            "support": 377,
+            "precision": 0.315668202764977,
+            "recall": 0.363395225464191,
+            "f1": 0.33785450061652283
+          },
+          {
+            "class_name": "D10",
+            "TP": 3,
+            "FP": 4,
+            "FN": 65,
+            "support": 68,
+            "precision": 0.42857142857142855,
+            "recall": 0.04411764705882353,
+            "f1": 0.08
+          },
+          {
+            "class_name": "D20",
+            "TP": 202,
+            "FP": 463,
+            "FN": 116,
+            "support": 318,
+            "precision": 0.3037593984962406,
+            "recall": 0.6352201257861635,
+            "f1": 0.41098677517802645
+          },
+          {
+            "class_name": "D40",
+            "TP": 243,
+            "FP": 624,
+            "FN": 303,
+            "support": 546,
+            "precision": 0.28027681660899656,
+            "recall": 0.44505494505494503,
+            "f1": 0.34394904458598724
+          }
+        ],
+        "background_images": 923,
+        "background_images_with_predictions": 123,
+        "background_false_alarm_image_rate": 0.13326110509209102,
+        "failure_images": [
+          {
+            "image_id": "India_003102.jpg",
+            "TP": 5,
+            "FP": 19,
+            "FN": 4
+          },
+          {
+            "image_id": "India_002793.jpg",
+            "TP": 3,
+            "FP": 8,
+            "FN": 10
+          },
+          {
+            "image_id": "India_003051.jpg",
+            "TP": 1,
+            "FP": 14,
+            "FN": 1
+          },
+          {
+            "image_id": "India_008233.jpg",
+            "TP": 2,
+            "FP": 9,
+            "FN": 6
+          },
+          {
+            "image_id": "India_008597.jpg",
+            "TP": 3,
+            "FP": 10,
+            "FN": 5
+          },
+          {
+            "image_id": "India_000209.jpg",
+            "TP": 5,
+            "FP": 12,
+            "FN": 2
+          },
+          {
+            "image_id": "India_002069.jpg",
+            "TP": 2,
+            "FP": 12,
+            "FN": 1
+          },
+          {
+            "image_id": "India_002318.jpg",
+            "TP": 1,
+            "FP": 11,
+            "FN": 2
+          },
+          {
+            "image_id": "India_006713.jpg",
+            "TP": 3,
+            "FP": 11,
+            "FN": 2
+          },
+          {
+            "image_id": "India_002007.jpg",
+            "TP": 1,
+            "FP": 10,
+            "FN": 2
+          }
+        ],
+        "total_failure_images": 725,
+        "failure_examples_are_partial": true
+      }
+    },
+    {
+      "model": "baseline_best.pt",
+      "model_sha256": "b11873df6fe5d69e62612e6261d65598f3e5140a91f8c6a874941eca21e0c1ba",
+      "metrics_path": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\n_country_test\\metrics.json",
+      "metrics_sha256": "1f705ac6858006ce48b84a2193056f1cafdc1d8063b07dcd67b1b2058cc5ed3b",
+      "dataset_fingerprint": "652c6640e8f301879590185e30138a87405bdba0c14c807d1aa6031ce683f193",
+      "ap_result": {
+        "precision": 0.1529444083640214,
+        "recall": 0.15030129098542108,
+        "map50": 0.08113252343312218,
+        "map50_95": 0.029814446719674426,
+        "support": 11014
+      },
+      "at_default_025": {
+        "threshold": 0.25,
+        "match_iou": 0.5,
+        "images": 4805,
+        "TP": 291,
+        "FP": 377,
+        "FN": 10723,
+        "support": 11014,
+        "precision": 0.4356287425149701,
+        "recall": 0.026420918830579263,
+        "f1": 0.049820236260914225,
+        "macro_f1": 0.04927378227932335,
+        "per_class": [
+          {
+            "class_name": "D00",
+            "TP": 256,
+            "FP": 157,
+            "FN": 6494,
+            "support": 6750,
+            "precision": 0.6198547215496368,
+            "recall": 0.037925925925925925,
+            "f1": 0.0714784308250733
+          },
+          {
+            "class_name": "D10",
+            "TP": 0,
+            "FP": 0,
+            "FN": 3295,
+            "support": 3295,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "class_name": "D20",
+            "TP": 29,
+            "FP": 191,
+            "FN": 805,
+            "support": 834,
+            "precision": 0.1318181818181818,
+            "recall": 0.03477218225419664,
+            "f1": 0.05502846299810247
+          },
+          {
+            "class_name": "D40",
+            "TP": 6,
+            "FP": 29,
+            "FN": 129,
+            "support": 135,
+            "precision": 0.17142857142857143,
+            "recall": 0.044444444444444446,
+            "f1": 0.07058823529411765
+          }
+        ],
+        "background_images": 0,
+        "background_images_with_predictions": 0,
+        "background_false_alarm_image_rate": null,
+        "failure_images": [
+          {
+            "image_id": "United_States_001508.jpg",
+            "TP": 0,
+            "FP": 0,
+            "FN": 11
+          },
+          {
+            "image_id": "United_States_000079.jpg",
+            "TP": 0,
+            "FP": 0,
+            "FN": 9
+          },
+          {
+            "image_id": "United_States_001904.jpg",
+            "TP": 0,
+            "FP": 0,
+            "FN": 9
+          },
+          {
+            "image_id": "United_States_002038.jpg",
+            "TP": 0,
+            "FP": 0,
+            "FN": 9
+          },
+          {
+            "image_id": "United_States_003316.jpg",
+            "TP": 0,
+            "FP": 2,
+            "FN": 7
+          },
+          {
+            "image_id": "United_States_004417.jpg",
+            "TP": 0,
+            "FP": 0,
+            "FN": 9
+          },
+          {
+            "image_id": "United_States_000004.jpg",
+            "TP": 0,
+            "FP": 0,
+            "FN": 8
+          },
+          {
+            "image_id": "United_States_000458.jpg",
+            "TP": 0,
+            "FP": 0,
+            "FN": 8
+          },
+          {
+            "image_id": "United_States_000547.jpg",
+            "TP": 0,
+            "FP": 0,
+            "FN": 8
+          },
+          {
+            "image_id": "United_States_000851.jpg",
+            "TP": 0,
+            "FP": 0,
+            "FN": 8
+          }
+        ],
+        "total_failure_images": 4734,
+        "failure_examples_are_partial": true
+      },
+      "at_val_selected_threshold": {
+        "threshold": 0.1,
+        "match_iou": 0.5,
+        "images": 4805,
+        "TP": 1784,
+        "FP": 6035,
+        "FN": 9230,
+        "support": 11014,
+        "precision": 0.22816216907532932,
+        "recall": 0.16197566733248592,
+        "f1": 0.18945468061381618,
+        "macro_f1": 0.11158865355711184,
+        "per_class": [
+          {
+            "class_name": "D00",
+            "TP": 1634,
+            "FP": 3487,
+            "FN": 5116,
+            "support": 6750,
+            "precision": 0.31907830501855106,
+            "recall": 0.24207407407407408,
+            "f1": 0.27529273018279843
+          },
+          {
+            "class_name": "D10",
+            "TP": 9,
+            "FP": 31,
+            "FN": 3286,
+            "support": 3295,
+            "precision": 0.225,
+            "recall": 0.002731411229135053,
+            "f1": 0.005397301349325337
+          },
+          {
+            "class_name": "D20",
+            "TP": 119,
+            "FP": 2184,
+            "FN": 715,
+            "support": 834,
+            "precision": 0.05167173252279635,
+            "recall": 0.14268585131894485,
+            "f1": 0.07586866432897672
+          },
+          {
+            "class_name": "D40",
+            "TP": 22,
+            "FP": 333,
+            "FN": 113,
+            "support": 135,
+            "precision": 0.061971830985915494,
+            "recall": 0.16296296296296298,
+            "f1": 0.08979591836734693
+          }
+        ],
+        "background_images": 0,
+        "background_images_with_predictions": 0,
+        "background_false_alarm_image_rate": null,
+        "failure_images": [
+          {
+            "image_id": "United_States_003200.jpg",
+            "TP": 1,
+            "FP": 10,
+            "FN": 6
+          },
+          {
+            "image_id": "United_States_001323.jpg",
+            "TP": 1,
+            "FP": 12,
+            "FN": 3
+          },
+          {
+            "image_id": "United_States_001529.jpg",
+            "TP": 0,
+            "FP": 11,
+            "FN": 4
+          },
+          {
+            "image_id": "United_States_000425.jpg",
+            "TP": 0,
+            "FP": 10,
+            "FN": 4
+          },
+          {
+            "image_id": "United_States_000468.jpg",
+            "TP": 2,
+            "FP": 9,
+            "FN": 4
+          },
+          {
+            "image_id": "United_States_000953.jpg",
+            "TP": 0,
+            "FP": 8,
+            "FN": 5
+          },
+          {
+            "image_id": "United_States_001436.jpg",
+            "TP": 2,
+            "FP": 8,
+            "FN": 5
+          },
+          {
+            "image_id": "United_States_003074.jpg",
+            "TP": 0,
+            "FP": 8,
+            "FN": 5
+          },
+          {
+            "image_id": "United_States_001508.jpg",
+            "TP": 0,
+            "FP": 1,
+            "FN": 11
+          },
+          {
+            "image_id": "United_States_002074.jpg",
+            "TP": 0,
+            "FP": 4,
+            "FN": 8
+          }
+        ],
+        "total_failure_images": 4697,
+        "failure_examples_are_partial": true
+      },
+      "exact_duplicate_sensitivity_fixed_threshold": {
+        "threshold": 0.1,
+        "match_iou": 0.5,
+        "images": 4804,
+        "TP": 1783,
+        "FP": 6033,
+        "FN": 9227,
+        "support": 11010,
+        "precision": 0.22812180143295804,
+        "recall": 0.16194368755676658,
+        "f1": 0.18941888877084884,
+        "macro_f1": 0.1115822230652248,
+        "per_class": [
+          {
+            "class_name": "D00",
+            "TP": 1633,
+            "FP": 3487,
+            "FN": 5114,
+            "support": 6747,
+            "precision": 0.3189453125,
+            "recall": 0.24203349636875648,
+            "f1": 0.2752169882868459
+          },
+          {
+            "class_name": "D10",
+            "TP": 9,
+            "FP": 31,
+            "FN": 3285,
+            "support": 3294,
+            "precision": 0.225,
+            "recall": 0.00273224043715847,
+            "f1": 0.005398920215956809
+          },
+          {
+            "class_name": "D20",
+            "TP": 119,
+            "FP": 2182,
+            "FN": 715,
+            "support": 834,
+            "precision": 0.05171664493698392,
+            "recall": 0.14268585131894485,
+            "f1": 0.0759170653907496
+          },
+          {
+            "class_name": "D40",
+            "TP": 22,
+            "FP": 333,
+            "FN": 113,
+            "support": 135,
+            "precision": 0.061971830985915494,
+            "recall": 0.16296296296296298,
+            "f1": 0.08979591836734693
+          }
+        ],
+        "background_images": 0,
+        "background_images_with_predictions": 0,
+        "background_false_alarm_image_rate": null,
+        "failure_images": [
+          {
+            "image_id": "United_States_003200.jpg",
+            "TP": 1,
+            "FP": 10,
+            "FN": 6
+          },
+          {
+            "image_id": "United_States_001323.jpg",
+            "TP": 1,
+            "FP": 12,
+            "FN": 3
+          },
+          {
+            "image_id": "United_States_001529.jpg",
+            "TP": 0,
+            "FP": 11,
+            "FN": 4
+          },
+          {
+            "image_id": "United_States_000425.jpg",
+            "TP": 0,
+            "FP": 10,
+            "FN": 4
+          },
+          {
+            "image_id": "United_States_000468.jpg",
+            "TP": 2,
+            "FP": 9,
+            "FN": 4
+          },
+          {
+            "image_id": "United_States_000953.jpg",
+            "TP": 0,
+            "FP": 8,
+            "FN": 5
+          },
+          {
+            "image_id": "United_States_001436.jpg",
+            "TP": 2,
+            "FP": 8,
+            "FN": 5
+          },
+          {
+            "image_id": "United_States_003074.jpg",
+            "TP": 0,
+            "FP": 8,
+            "FN": 5
+          },
+          {
+            "image_id": "United_States_001508.jpg",
+            "TP": 0,
+            "FP": 1,
+            "FN": 11
+          },
+          {
+            "image_id": "United_States_002074.jpg",
+            "TP": 0,
+            "FP": 4,
+            "FN": 8
+          }
+        ],
+        "total_failure_images": 4696,
+        "failure_examples_are_partial": true
+      }
+    },
+    {
+      "model": "compare_yolo11s_best.pt",
+      "model_sha256": "cd6954c0d0e8f37fdc9f9dce91a1ec247632112ff8745bd5194f6ba9987c89a5",
+      "metrics_path": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\s_country_test\\metrics.json",
+      "metrics_sha256": "bae1dd54953559c756b9885335fc2418729b0f8161efe8802e9b44ddd884ca32",
+      "dataset_fingerprint": "652c6640e8f301879590185e30138a87405bdba0c14c807d1aa6031ce683f193",
+      "ap_result": {
+        "precision": 0.18361298045028032,
+        "recall": 0.1622406259364985,
+        "map50": 0.09050951469016678,
+        "map50_95": 0.033578991321539596,
+        "support": 11014
+      },
+      "at_default_025": {
+        "threshold": 0.25,
+        "match_iou": 0.5,
+        "images": 4805,
+        "TP": 293,
+        "FP": 266,
+        "FN": 10721,
+        "support": 11014,
+        "precision": 0.5241502683363148,
+        "recall": 0.026602505901579806,
+        "f1": 0.05063509893718137,
+        "macro_f1": 0.04601634621873829,
+        "per_class": [
+          {
+            "class_name": "D00",
+            "TP": 261,
+            "FP": 187,
+            "FN": 6489,
+            "support": 6750,
+            "precision": 0.5825892857142857,
+            "recall": 0.03866666666666667,
+            "f1": 0.07252014448457905
+          },
+          {
+            "class_name": "D10",
+            "TP": 0,
+            "FP": 0,
+            "FN": 3295,
+            "support": 3295,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "class_name": "D20",
+            "TP": 27,
+            "FP": 20,
+            "FN": 807,
+            "support": 834,
+            "precision": 0.574468085106383,
+            "recall": 0.03237410071942446,
+            "f1": 0.06129398410896708
+          },
+          {
+            "class_name": "D40",
+            "TP": 5,
+            "FP": 59,
+            "FN": 130,
+            "support": 135,
+            "precision": 0.078125,
+            "recall": 0.037037037037037035,
+            "f1": 0.05025125628140704
+          }
+        ],
+        "background_images": 0,
+        "background_images_with_predictions": 0,
+        "background_false_alarm_image_rate": null,
+        "failure_images": [
+          {
+            "image_id": "United_States_001508.jpg",
+            "TP": 0,
+            "FP": 0,
+            "FN": 11
+          },
+          {
+            "image_id": "United_States_000079.jpg",
+            "TP": 0,
+            "FP": 0,
+            "FN": 9
+          },
+          {
+            "image_id": "United_States_001409.jpg",
+            "TP": 0,
+            "FP": 0,
+            "FN": 9
+          },
+          {
+            "image_id": "United_States_001877.jpg",
+            "TP": 0,
+            "FP": 1,
+            "FN": 8
+          },
+          {
+            "image_id": "United_States_001904.jpg",
+            "TP": 0,
+            "FP": 0,
+            "FN": 9
+          },
+          {
+            "image_id": "United_States_004417.jpg",
+            "TP": 0,
+            "FP": 0,
+            "FN": 9
+          },
+          {
+            "image_id": "United_States_000004.jpg",
+            "TP": 0,
+            "FP": 0,
+            "FN": 8
+          },
+          {
+            "image_id": "United_States_000458.jpg",
+            "TP": 0,
+            "FP": 0,
+            "FN": 8
+          },
+          {
+            "image_id": "United_States_000468.jpg",
+            "TP": 0,
+            "FP": 2,
+            "FN": 6
+          },
+          {
+            "image_id": "United_States_001436.jpg",
+            "TP": 0,
+            "FP": 1,
+            "FN": 7
+          }
+        ],
+        "total_failure_images": 4725,
+        "failure_examples_are_partial": true
+      },
+      "at_val_selected_threshold": {
+        "threshold": 0.1,
+        "match_iou": 0.5,
+        "images": 4805,
+        "TP": 1500,
+        "FP": 3949,
+        "FN": 9514,
+        "support": 11014,
+        "precision": 0.27527986786566344,
+        "recall": 0.13619030325040857,
+        "f1": 0.18222681163821905,
+        "macro_f1": 0.11937757547212055,
+        "per_class": [
+          {
+            "class_name": "D00",
+            "TP": 1390,
+            "FP": 3347,
+            "FN": 5360,
+            "support": 6750,
+            "precision": 0.2934346632890015,
+            "recall": 0.20592592592592593,
+            "f1": 0.24201271002002264
+          },
+          {
+            "class_name": "D10",
+            "TP": 0,
+            "FP": 3,
+            "FN": 3295,
+            "support": 3295,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "class_name": "D20",
+            "TP": 89,
+            "FP": 264,
+            "FN": 745,
+            "support": 834,
+            "precision": 0.2521246458923513,
+            "recall": 0.10671462829736211,
+            "f1": 0.14995787700084245
+          },
+          {
+            "class_name": "D40",
+            "TP": 21,
+            "FP": 335,
+            "FN": 114,
+            "support": 135,
+            "precision": 0.05898876404494382,
+            "recall": 0.15555555555555556,
+            "f1": 0.0855397148676171
+          }
+        ],
+        "background_images": 0,
+        "background_images_with_predictions": 0,
+        "background_false_alarm_image_rate": null,
+        "failure_images": [
+          {
+            "image_id": "United_States_001409.jpg",
+            "TP": 1,
+            "FP": 6,
+            "FN": 8
+          },
+          {
+            "image_id": "United_States_001608.jpg",
+            "TP": 1,
+            "FP": 9,
+            "FN": 5
+          },
+          {
+            "image_id": "United_States_002264.jpg",
+            "TP": 1,
+            "FP": 11,
+            "FN": 3
+          },
+          {
+            "image_id": "United_States_001508.jpg",
+            "TP": 1,
+            "FP": 3,
+            "FN": 10
+          },
+          {
+            "image_id": "United_States_000186.jpg",
+            "TP": 3,
+            "FP": 10,
+            "FN": 2
+          },
+          {
+            "image_id": "United_States_000711.jpg",
+            "TP": 5,
+            "FP": 12,
+            "FN": 0
+          },
+          {
+            "image_id": "United_States_001413.jpg",
+            "TP": 1,
+            "FP": 10,
+            "FN": 2
+          },
+          {
+            "image_id": "United_States_001877.jpg",
+            "TP": 1,
+            "FP": 5,
+            "FN": 7
+          },
+          {
+            "image_id": "United_States_002079.jpg",
+            "TP": 0,
+            "FP": 5,
+            "FN": 7
+          },
+          {
+            "image_id": "United_States_003530.jpg",
+            "TP": 2,
+            "FP": 11,
+            "FN": 1
+          }
+        ],
+        "total_failure_images": 4673,
+        "failure_examples_are_partial": true
+      },
+      "exact_duplicate_sensitivity_fixed_threshold": {
+        "threshold": 0.1,
+        "match_iou": 0.5,
+        "images": 4804,
+        "TP": 1500,
+        "FP": 3949,
+        "FN": 9510,
+        "support": 11010,
+        "precision": 0.27527986786566344,
+        "recall": 0.1362397820163488,
+        "f1": 0.18227109787957957,
+        "macro_f1": 0.11939338089989093,
+        "per_class": [
+          {
+            "class_name": "D00",
+            "TP": 1390,
+            "FP": 3347,
+            "FN": 5357,
+            "support": 6747,
+            "precision": 0.2934346632890015,
+            "recall": 0.2060174892544835,
+            "f1": 0.24207593173110414
+          },
+          {
+            "class_name": "D10",
+            "TP": 0,
+            "FP": 3,
+            "FN": 3294,
+            "support": 3294,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "class_name": "D20",
+            "TP": 89,
+            "FP": 264,
+            "FN": 745,
+            "support": 834,
+            "precision": 0.2521246458923513,
+            "recall": 0.10671462829736211,
+            "f1": 0.14995787700084245
+          },
+          {
+            "class_name": "D40",
+            "TP": 21,
+            "FP": 335,
+            "FN": 114,
+            "support": 135,
+            "precision": 0.05898876404494382,
+            "recall": 0.15555555555555556,
+            "f1": 0.0855397148676171
+          }
+        ],
+        "background_images": 0,
+        "background_images_with_predictions": 0,
+        "background_false_alarm_image_rate": null,
+        "failure_images": [
+          {
+            "image_id": "United_States_001409.jpg",
+            "TP": 1,
+            "FP": 6,
+            "FN": 8
+          },
+          {
+            "image_id": "United_States_001608.jpg",
+            "TP": 1,
+            "FP": 9,
+            "FN": 5
+          },
+          {
+            "image_id": "United_States_002264.jpg",
+            "TP": 1,
+            "FP": 11,
+            "FN": 3
+          },
+          {
+            "image_id": "United_States_001508.jpg",
+            "TP": 1,
+            "FP": 3,
+            "FN": 10
+          },
+          {
+            "image_id": "United_States_000186.jpg",
+            "TP": 3,
+            "FP": 10,
+            "FN": 2
+          },
+          {
+            "image_id": "United_States_000711.jpg",
+            "TP": 5,
+            "FP": 12,
+            "FN": 0
+          },
+          {
+            "image_id": "United_States_001413.jpg",
+            "TP": 1,
+            "FP": 10,
+            "FN": 2
+          },
+          {
+            "image_id": "United_States_001877.jpg",
+            "TP": 1,
+            "FP": 5,
+            "FN": 7
+          },
+          {
+            "image_id": "United_States_002079.jpg",
+            "TP": 0,
+            "FP": 5,
+            "FN": 7
+          },
+          {
+            "image_id": "United_States_003530.jpg",
+            "TP": 2,
+            "FP": 11,
+            "FN": 1
+          }
+        ],
+        "total_failure_images": 4672,
+        "failure_examples_are_partial": true
+      }
+    }
+  ]
+}

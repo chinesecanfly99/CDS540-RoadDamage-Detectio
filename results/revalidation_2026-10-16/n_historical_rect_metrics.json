@@ -1,0 +1,85 @@
+{
+  "purpose": "evaluation",
+  "model": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\models\\baseline_best.pt",
+  "model_sha256": "b11873df6fe5d69e62612e6261d65598f3e5140a91f8c6a874941eca21e0c1ba",
+  "data_yaml": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\datasets\\original-split-v1\\source.yaml",
+  "data_yaml_sha256": "597099346c6ff4cefc6ae0527950a0772fa85191a477351f61317ecca9e382e3",
+  "resolved_data_yaml_sha256": "48f59df30a28f74f36f94a243ba796777c42b9422469039b269afd67f86e44d9",
+  "split": "test",
+  "parameters": {
+    "device": "cpu",
+    "batch": 8,
+    "imgsz": 640,
+    "candidate_conf": 0.001,
+    "nms_iou": 0.7,
+    "rect": true,
+    "max_det": 300,
+    "augment": false,
+    "half": false,
+    "agnostic_nms": false
+  },
+  "python": "3.11.1 (tags/v3.11.1:a7a450f, Dec  6 2022, 19:58:39) [MSC v.1934 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.22631-SP0",
+  "versions": {
+    "torch": "2.14.0",
+    "torchvision": "0.29.0",
+    "ultralytics": "8.4.177"
+  },
+  "overall": {
+    "precision": 0.3885315439364186,
+    "recall": 0.2774407132854643,
+    "map50": 0.21690244283847038,
+    "map50_95": 0.08332315222306512,
+    "support": 1309
+  },
+  "per_class": [
+    {
+      "class_id": 0,
+      "class_name": "D00",
+      "support": 377,
+      "precision": 0.3454060970311091,
+      "recall": 0.23342175066312998,
+      "ap50": 0.20923612392496874,
+      "ap50_95": 0.08063074384260902
+    },
+    {
+      "class_id": 1,
+      "class_name": "D10",
+      "support": 68,
+      "precision": 0.6114608204168307,
+      "recall": 0.014705882352941176,
+      "ap50": 0.053262190259616204,
+      "ap50_95": 0.018692810272439637
+    },
+    {
+      "class_id": 2,
+      "class_name": "D20",
+      "support": 318,
+      "precision": 0.30528791062321503,
+      "recall": 0.5283018867924528,
+      "ap50": 0.39591679198375246,
+      "ap50_95": 0.15780018866095044
+    },
+    {
+      "class_id": 3,
+      "class_name": "D40",
+      "support": 546,
+      "precision": 0.29197134767451943,
+      "recall": 0.3333333333333333,
+      "ap50": 0.20919466518554414,
+      "ap50_95": 0.07616886611626136
+    }
+  ],
+  "pr_definition": "Ultralytics max-F1 summary; not fixed deployment-threshold TP/FP/FN",
+  "independence": "Not established by this command; verify split membership and model provenance",
+  "artifact_directory": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\n_historical_rect\\validation",
+  "images_expected": 1579,
+  "dataset_fingerprint": "652c6640e8f301879590185e30138a87405bdba0c14c807d1aa6031ce683f193",
+  "prediction_cache": {
+    "enabled": false,
+    "directory": null,
+    "format": "Ultralytics TXT: class xc yc width height confidence; normalized original coordinates",
+    "candidate_conf": 0.001,
+    "missing_txt_means": "zero post-NMS predictions only after this metrics.json confirms evaluation completion"
+  }
+}

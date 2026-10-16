@@ -50,12 +50,14 @@ data/
 
 ---
 
-## 3. 快速生成 YOLO 格式数据
+## 3. 从原始 ZIP 直接准备数据
 
-**当前清单路径仍为 `DGS2022数据/国家/国家/train/...`，与上方推荐的 `data/raw/` 目录不同；转换脚本尚无 raw-root 参数。必须先核对/适配路径，不能直接照推荐目录解压后运行。** 本轮修复了缺失标注静默当背景的问题，未执行全量转换。
+推荐新入口，读取三国 ZIP 和已有 manifests，不依赖旧电脑相对路径，不改原划分。输出必须是新目录：
 
-配置好原始数据路径后，运行转换脚本即可利用本目录下的 `manifests/*.csv` 快速生成对齐的 YOLO 格式：
 ```bash
-python scripts/voc_to_yolo.py
+python scripts/prepare_dataset.py --archives-root "path/to/country-zips" --output .local/datasets/original-split-v1
 ```
-生成的 `data/yolo/images/` 与 `data/yolo/labels/` 会自动与 `configs/data.yaml` 对应。
+
+输出包括 images/labels 四个集合、source.yaml、country.yaml、preparation.json、完整 inventory.jsonl 和回投影检查图。全部图片会解码、校验实际尺寸；标签由四类 XML 生成并核对回投影。评估时显式 --data 指向生成的 YAML；不要把仓库 configs/data.yaml 的旧默认位置与新数据目录混用。
+
+旧无参数 voc_to_yolo.py 仍依赖清单里的 DGS2022数据/国家/国家/train 路径，保留给旧环境使用。新入口已在本机完成全量转换，但已发现同场景跨集合，不能把原 v1 称为完全独立划分。详情见 planning/11_全量复核与继续实施.md。

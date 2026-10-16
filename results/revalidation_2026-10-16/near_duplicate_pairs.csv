@@ -1,0 +1,11 @@
+﻿image_a,split_a,country_a,image_b,split_b,country_b,phash_distance,dhash_distance,ssim_256,color_mae_256,cross_split,strong_similarity_flag
+Czech_000618.jpg,train,Czech,Czech_001050.jpg,test,Czech,0,1,0.9650554562660225,0.011081231809129902,True,True
+Czech_002595.jpg,train,Czech,Czech_002075.jpg,val,Czech,4,3,0.9508416389274456,0.014982235977073122,True,True
+Czech_003093.jpg,train,Czech,Czech_001050.jpg,test,Czech,4,4,0.8788434686385599,0.026196907392514297,True,False
+Czech_001604.jpg,train,Czech,Czech_001553.jpg,val,Czech,4,8,0.8726258975125005,0.04516426036560457,True,False
+United_States_001623.jpg,domain_test,United_States,United_States_003917.jpg,domain_test,United_States,0,0,1.0,0.0,False,True
+Czech_002509.jpg,train,Czech,Czech_003572.jpg,train,Czech,6,1,0.9413435224999689,0.020682760001787176,False,True
+Czech_001279.jpg,train,Czech,Czech_002857.jpg,train,Czech,0,5,0.887005027979326,0.01832845849928513,False,False
+Czech_000618.jpg,train,Czech,Czech_003093.jpg,train,Czech,4,5,0.8637216530920826,0.02837662042356005,False,False
+Czech_003572.jpg,train,Czech,Czech_003423.jpg,train,Czech,8,9,0.8623243064930389,0.06192357680376838,False,False
+Czech_002030.jpg,train,Czech,Czech_002124.jpg,train,Czech,0,1,0.8516905168073337,0.021734878440308414,False,False

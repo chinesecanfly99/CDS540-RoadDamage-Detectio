@@ -349,4 +349,9 @@ def verify_conversion_samples(sample_count=24, output_dir="results/eda/yolo_veri
 
 
 if __name__ == "__main__":
-    convert_voc_to_yolo()
+    import sys
+    if "--archives-root" in sys.argv:
+        from prepare_dataset import main
+        main()
+    else:
+        convert_voc_to_yolo()

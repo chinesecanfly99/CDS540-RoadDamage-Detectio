@@ -42,7 +42,7 @@ def main():
     if model.names != expected:
         raise ValueError(f'Unexpected road-damage class mapping: {model.names}')
     started = time.perf_counter()
-    result = model.predict(image, device=args.device, conf=args.conf, iou=args.iou, imgsz=args.imgsz, verbose=False)[0]
+    result = model.predict(image, device=args.device, conf=args.conf, iou=args.iou, rect=False, max_det=300, imgsz=args.imgsz, verbose=False)[0]
     elapsed = (time.perf_counter() - started) * 1000
     detections = []
     for box in result.boxes:
@@ -56,7 +56,7 @@ def main():
     encoded.tofile(output / 'prediction.jpg')
     report = {'source': str(source), 'model': str(model_path),
               'model_sha256': hashlib.sha256(model_path.read_bytes()).hexdigest(),
-              'device': str(result.boxes.data.device), 'imgsz': args.imgsz, 'conf': args.conf, 'nms_iou': args.iou,
+              'device': str(result.boxes.data.device), 'imgsz': args.imgsz, 'conf': args.conf, 'nms_iou': args.iou, 'rect': False, 'max_det': 300,
               'class_mapping': model.names,
               'image_size': {'width': image.shape[1], 'height': image.shape[0]},
               'predict_call_ms_including_first_call': round(elapsed, 2),

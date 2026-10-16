@@ -17,6 +17,8 @@ def main():
     parser.add_argument('--candidate-conf', type=float, default=0.001)
     parser.add_argument('--nms-iou', type=float, default=0.7)
     parser.add_argument('--purpose', choices=['smoke', 'evaluation'], default='evaluation')
+    parser.add_argument('--save-predictions', action='store_true')
+    parser.add_argument('--rect', action='store_true', help='Historical rectangular validation padding; default is square-padding deployment protocol')
     args = parser.parse_args()
     if args.output.exists():
         parser.error('Choose a new output directory')
@@ -28,7 +30,7 @@ def main():
         pair = {}
         for domain, data in [('source', args.source_data), ('country_test', args.target_data)]:
             record = evaluate_checkpoint(model, data, args.output / model.stem / domain, 'test', args.device,
-                                         args.batch, args.imgsz, args.candidate_conf, args.nms_iou, args.purpose)
+                                         args.batch, args.imgsz, args.candidate_conf, args.nms_iou, args.purpose, args.save_predictions, args.rect)
             pair[domain] = record
         if pair['source']['model_sha256'] != pair['country_test']['model_sha256']:
             raise ValueError('Checkpoint changed between evaluations')

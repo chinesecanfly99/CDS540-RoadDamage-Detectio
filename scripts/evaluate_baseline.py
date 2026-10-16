@@ -17,10 +17,12 @@ def main():
     parser.add_argument('--candidate-conf', type=float, default=0.001)
     parser.add_argument('--nms-iou', type=float, default=0.7)
     parser.add_argument('--purpose', choices=['smoke', 'evaluation'], default='evaluation')
+    parser.add_argument('--save-predictions', action='store_true', help='Cache post-NMS detections for validation-only threshold selection and fixed-threshold diagnostics')
+    parser.add_argument('--rect', action='store_true', help='Historical rectangular validation padding; default is square-padding deployment protocol')
     args = parser.parse_args()
     try:
         result = evaluate_checkpoint(args.model, args.data, args.output, args.split, args.device, args.batch,
-                                     args.imgsz, args.candidate_conf, args.nms_iou, args.purpose)
+                                     args.imgsz, args.candidate_conf, args.nms_iou, args.purpose, args.save_predictions, args.rect)
     except (ValueError, FileNotFoundError, FileExistsError) as exc:
         parser.error(str(exc))
     print(json.dumps({'purpose': result['purpose'], 'output': str(args.output), 'overall': result['overall']}))

@@ -94,7 +94,7 @@ def run_video_demo(model_path, input_source, output_video_path, max_frames=120, 
                 resized += 1
 
             tick = time.perf_counter()
-            result = model.predict(frame, conf=conf, iou=nms_iou, imgsz=640, device=device, verbose=False)[0]
+            result = model.predict(frame, conf=conf, iou=nms_iou, imgsz=640, rect=False, max_det=300, device=device, verbose=False)[0]
             predict_ms = (time.perf_counter() - tick) * 1000
             predictions.append(predict_ms)
             boxes = result.boxes
@@ -116,7 +116,7 @@ def run_video_demo(model_path, input_source, output_video_path, max_frames=120, 
         if count == 0:
             raise RuntimeError('No frames processed')
         summary = {'input': str(source), 'input_kind': input_kind, 'model': str(model_path),
-                   'device': backend, 'candidate_conf': conf, 'nms_iou': nms_iou, 'rule_version': 'human-review-v1', 'frames_written': count, 'max_frames': max_frames,
+                   'device': backend, 'candidate_conf': conf, 'nms_iou': nms_iou, 'imgsz': 640, 'rect': False, 'max_det': 300, 'rule_version': 'human-review-v1', 'frames_written': count, 'max_frames': max_frames,
                    'source_fps': source_fps, 'output_fps': output_fps,
                    'output_duration_s': count / output_fps, 'frames_resized_to_first_frame': resized,
                    'processing_seconds': round(elapsed, 3), 'processing_frames_per_second': round(count / elapsed, 2),

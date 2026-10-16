@@ -59,7 +59,7 @@ def main():
         model = YOLO(str(path.resolve()))
         load_ms = (time.perf_counter() - loaded_at) * 1000
         review = RoadDamagePrioritizer(conf_threshold=args.conf)
-        params = dict(device=args.device, conf=args.conf, iou=args.iou, imgsz=args.imgsz, verbose=False)
+        params = dict(device=args.device, conf=args.conf, iou=args.iou, imgsz=args.imgsz, rect=False, max_det=300, verbose=False)
         first = cv2.imdecode(np.fromfile(paths[0], dtype=np.uint8), cv2.IMREAD_COLOR)
         if first is None:
             raise ValueError(f'Cannot decode: {paths[0]}')
@@ -95,7 +95,7 @@ def main():
             per_run.append({'source': str(source), 'predict_call_ms': prediction_ms, 'local_task_ms': task_ms})
         records.append({'model': str(path.resolve()), 'model_sha256': hashlib.sha256(path.read_bytes()).hexdigest(),
                         'checkpoint_bytes': path.stat().st_size, 'backend': str(boxes.data.device),
-                        'parameters': {'imgsz': args.imgsz, 'conf': args.conf, 'nms_iou': args.iou, 'runs': args.runs, 'warmup': args.warmup},
+                        'parameters': {'imgsz': args.imgsz, 'conf': args.conf, 'nms_iou': args.iou, 'rect': False, 'max_det': 300, 'runs': args.runs, 'warmup': args.warmup},
                         'python': sys.version, 'torch': torch.__version__, 'model_load_ms': load_ms,
                         'first_predict_ms': cold_ms, 'predict_call': summarize(prediction_times),
                         'local_decode_predict_review_overlay_jpeg_export': summarize(task_times),

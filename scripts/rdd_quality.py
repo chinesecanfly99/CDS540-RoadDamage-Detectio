@@ -15,6 +15,8 @@ def read_target_annotation(xml_bytes):
     for obj in root.findall('object'):
         raw_count += 1
         raw = (obj.findtext('name') or '').strip()
+        if not raw:
+            raise ValueError('Annotation object is missing its class name')
         name = 'D00' if raw == 'D0w0' else raw
         if name not in CLASS_NAMES.values():
             skipped[raw] = skipped.get(raw, 0) + 1

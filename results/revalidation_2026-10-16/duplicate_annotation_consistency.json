@@ -1,0 +1,81 @@
+{
+  "groups": [
+    {
+      "members": [
+        {
+          "image_id": "United_States_001623.jpg",
+          "split": "domain_test",
+          "label_sha256": "d8efc661a82815934bcdea7af51aaafdf344d7d42f3ef7148a7a83900d187690",
+          "normalized_yolo_labels": [
+            [
+              0.0,
+              0.242969,
+              0.815625,
+              0.317188,
+              0.3375
+            ],
+            [
+              0.0,
+              0.421094,
+              0.81875,
+              0.092188,
+              0.08125
+            ],
+            [
+              0.0,
+              0.716406,
+              0.791406,
+              0.092188,
+              0.157812
+            ],
+            [
+              1.0,
+              0.655469,
+              0.725,
+              0.573438,
+              0.046875
+            ]
+          ]
+        },
+        {
+          "image_id": "United_States_003917.jpg",
+          "split": "domain_test",
+          "label_sha256": "5910d4c5a01ce5138d74d70db4ac620fd816ac3158999a9ca2953729b8492baa",
+          "normalized_yolo_labels": [
+            [
+              0.0,
+              0.242969,
+              0.815625,
+              0.317188,
+              0.3375
+            ],
+            [
+              0.0,
+              0.421094,
+              0.81875,
+              0.092188,
+              0.08125
+            ],
+            [
+              0.0,
+              0.713281,
+              0.798438,
+              0.079687,
+              0.14375
+            ],
+            [
+              1.0,
+              0.686719,
+              0.727344,
+              0.582812,
+              0.035937
+            ]
+          ]
+        }
+      ],
+      "labels_identical_ignoring_order": false
+    }
+  ],
+  "conflicting_groups": 1,
+  "action": "Preserve v1 annotations; review and freeze canonical annotations in a new data version. Excluding one duplicate is sensitivity only."
+}
