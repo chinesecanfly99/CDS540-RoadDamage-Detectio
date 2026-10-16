@@ -97,8 +97,8 @@ pip install -r requirements.txt
 ```
 
 > **跨平台加速说明**：
-> - **Windows (NVIDIA GPU)**：若需使用 CUDA，请确保按 [PyTorch 官网](https://pytorch.org/) 安装与本机驱动匹配的 CUDA 版 PyTorch。若无 GPU，代码会自动回退至 CPU。
-> - **macOS (Apple Silicon)**：支持 MPS 加速后端，代码包含设备自适应逻辑，无需安装 CUDA。
+> - **Windows (NVIDIA GPU)**：若需使用 CUDA，请确保按 [PyTorch 官网](https://pytorch.org/) 安装与本机驱动匹配的 CUDA 版 PyTorch。若无 GPU，本地演示入口默认使用 CPU；确认 CUDA 可用后可显式传入 `--device 0`。
+> - **macOS (Apple Silicon)**：支持 MPS 加速后端，可在兼容环境中显式传入 `--device mps`；先用 `--device cpu` 验证基本运行，无需安装 CUDA。
 
 ---
 
@@ -114,20 +114,24 @@ pip install -r requirements.txt
 在目标电脑上验证环境是否跑通：
 
 ```bash
-python -c "
-from ultralytics import YOLO
-model = YOLO('models/baseline_best.pt')
-print('模型加载成功:', type(model))
-"
+python scripts/predict_image.py --source "path/to/road.jpg" --output ".local/single-image" --device cpu
 ```
+
+将 `path/to/road.jpg` 替换为一张实际道路图片。命令会保存叠框图片和 JSON；输出目录应为新目录。默认加载已有 `models/baseline_best.pt`，可通过 `--model` 指定对照模型。
+
+2026-10-16 的本机 CPU 运行记录见 [docs/LOCAL_RUNTIME.md](docs/LOCAL_RUNTIME.md)。
 
 ---
 
 ### 4. 运行人工复核 Demo
 
 ```bash
-python demo/demo.py
+python demo/demo.py --source "path/to/images-or-video" --output ".local/demo.mp4" --device cpu --max-frames 120
 ```
+
+将 `path/to/images-or-video` 替换为实际图片目录或短视频路径。图片目录生成的是图片序列演示；真实视频默认沿用源 FPS。不同尺寸图片会统一到首帧尺寸，并在 JSON 中记录。可用 `--fps` 修改输出播放速度，输出文件已存在时会提示更换名称。
+
+当前入口是离线脚本，不包含上传网页。完整数据训练与指标复现仍按 `planning/` 的阶段文档推进。
 
 ---
 
