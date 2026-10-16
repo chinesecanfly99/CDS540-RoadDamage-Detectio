@@ -1,0 +1,7 @@
+Image_ID,Ground_Truth_Classes,Detected_Distress_Count,D40_Potholes,D20_Alligator,D10_Transverse,D00_Longitudinal,Triage_Score,Priority_Level,Action_Recommendation,Visual_Output_Card
+India_000061.jpg,D40,1,1,0,0,0,4.49,HIGH,Urgent repair crew dispatch (24-48h). Cold-patch / safety warning.,results/priority_tests/priority_1162_HIGH_India_000061.jpg
+India_000209.jpg,"D20,D40",5,4,1,0,0,34.13,HIGH,Urgent repair crew dispatch (24-48h). Cold-patch / safety warning.,results/priority_tests/priority_1455_HIGH_India_000209.jpg
+India_000302.jpg,D20,1,0,1,0,0,7.33,MEDIUM,Scheduled maintenance queue (30 days). Mill-and-overlay program.,results/priority_tests/priority_1395_MEDIUM_India_000302.jpg
+Czech_003338.jpg,D20,1,0,1,0,0,2.31,LOW,Preventive maintenance. Crack sealing to inhibit water ingress.,results/priority_tests/priority_281_LOW_Czech_003338.jpg
+Czech_003025.jpg,D40,0,0,0,0,0,0.0,NONE,Pavement sound. Maintain standard biennial inspection schedule.,results/priority_tests/priority_269_NONE_Czech_003025.jpg
+India_000168.jpg,D40,2,2,0,0,0,12.68,HIGH,Urgent repair crew dispatch (24-48h). Cold-patch / safety warning.,results/priority_tests/priority_1086_HIGH_India_000168.jpg

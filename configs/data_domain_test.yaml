@@ -1,0 +1,13 @@
+# Ultralytics YOLO Domain Shift Test Configuration (Step 10)
+# Evaluates zero-shot transfer performance on unseen United States highway dashcams
+
+path: data/yolo
+train: images/domain_test
+val: images/domain_test
+test: images/domain_test
+
+names:
+  0: D00 # Longitudinal Crack
+  1: D10 # Transverse Crack
+  2: D20 # Alligator Crack
+  3: D40 # Pothole

@@ -1,0 +1,20 @@
+=== Python & System Info ===
+Python: 3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]
+Platform: Windows-11-10.0.26200-SP0
+Virtualenv Path: .venv\
+
+=== PyTorch & CUDA Info ===
+Torch Version: 2.14.1+cu130
+Torchvision Version: 0.29.1+cu130
+Torchaudio Version: 2.11.0+cu130
+CUDA Available: True
+Device [0]: NVIDIA GeForce RTX 5070 Laptop GPU
+Compute Capability: 12.0 (sm_120)
+Total VRAM: 7.96 GB (8151 MiB)
+
+=== Testing GPU Tensor Computation ===
+Matrix multiplication (2000x2000) on GPU succeeded!
+Tensor shape: torch.Size([2000, 2000])
+Allocated VRAM: 64.00 MB
+Status: PyTorch with GPU acceleration is fully functional and validated on RTX 5070!
+Verified Date: 2026-10-14

@@ -1,0 +1,4 @@
+﻿country,train_images,official_test_images,xml_files,raw_boxes,target_boxes,target_positive_images,no_target_annotation_images,missing_xml,invalid_boxes,out_of_bounds_boxes
+Czech,2829,709,2829,1745,1745,1072,1757,0,0,0
+India,7706,1959,7706,8203,6832,3224,4482,0,0,0
+United_States,4805,1200,4805,11014,11014,4805,0,0,0,0

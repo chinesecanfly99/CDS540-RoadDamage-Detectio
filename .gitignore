@@ -1,0 +1,58 @@
+# ==========================================
+# Git Ignore for CDS540 Road Damage Project
+# ==========================================
+
+# Python Virtual Environments & Bytecode
+.venv/
+venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+
+# Operating System & IDE Files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Large Datasets & Raw Images (Share via Cloud / External Drive)
+DGS2022数据/
+data/raw/
+data/yolo/images/
+data/robustness_test/
+*.cache
+*.zip
+*.tar
+*.tar.gz
+*.7z
+
+# Model Weights & Checkpoints (>10MB, Share via Releases/Drive)
+# Note: Keep README.md in models/
+models/*.pt
+models/*.onnx
+models/*.engine
+weights/*.pt
+weights/*.onnx
+
+# Ultralytics Training Runs & Intermediate Logs
+runs/
+*.log
+*.sqlite
+
+# Large Media / Video Output
+demo/*.mp4
+demo/*.avi
+*.mov
+
+# Large Final Submission Archives & Compiled PDFs
+submission/*.zip
+submission/*.pdf
+submission/*.pptx
+reports/*.pdf
+reports/*.pptx

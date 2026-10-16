@@ -1,0 +1,355 @@
+{
+  "audit_date": "2026-10-15",
+  "scope": "Read-only archive/XML audit and static source/checkpoint checks; no ML runtime evaluation",
+  "datasets": [
+    {
+      "archive": "F:\\CV_groupdata\\数据(1)\\Czech.zip",
+      "bytes": 257117218,
+      "official_test_images": 709,
+      "xml_files": 2829,
+      "train_images": 2829,
+      "raw_class_counts": {
+        "D00": 988,
+        "D40": 197,
+        "D10": 399,
+        "D20": 161
+      },
+      "xml_dimensions": {
+        "600x600": 2829
+      },
+      "raw_positive_images": 1072,
+      "canonical_positive_images": 1072,
+      "images_without_target_labels": 1757,
+      "missing_xml_count": 0,
+      "orphan_xml_count": 0,
+      "invalid_box_count": 0,
+      "out_of_bounds_box_count": 0,
+      "missing_box_count": 0,
+      "parse_errors": [],
+      "sample_entries": [
+        "Czech/test/",
+        "Czech/test/images/",
+        "Czech/test/images/Czech_000003.jpg"
+      ]
+    },
+    {
+      "archive": "F:\\CV_groupdata\\数据(1)\\India.zip",
+      "bytes": 526709145,
+      "official_test_images": 1959,
+      "xml_files": 7706,
+      "train_images": 7706,
+      "raw_class_counts": {
+        "D40": 3187,
+        "D44": 1062,
+        "D00": 1555,
+        "D20": 2021,
+        "D01": 179,
+        "D11": 45,
+        "D10": 68,
+        "D50": 28,
+        "D43": 57,
+        "D0w0": 1
+      },
+      "xml_dimensions": {
+        "720x720": 7706
+      },
+      "raw_positive_images": 3785,
+      "canonical_positive_images": 3224,
+      "images_without_target_labels": 4482,
+      "missing_xml_count": 0,
+      "orphan_xml_count": 0,
+      "invalid_box_count": 0,
+      "out_of_bounds_box_count": 0,
+      "missing_box_count": 0,
+      "parse_errors": [],
+      "sample_entries": [
+        "India/test/",
+        "India/test/images/",
+        "India/test/images/India_000004.jpg"
+      ]
+    },
+    {
+      "archive": "F:\\CV_groupdata\\数据(1)\\United_States.zip",
+      "bytes": 444335958,
+      "official_test_images": 1200,
+      "xml_files": 4805,
+      "train_images": 4805,
+      "raw_class_counts": {
+        "D10": 3295,
+        "D00": 6750,
+        "D20": 834,
+        "D40": 135
+      },
+      "xml_dimensions": {
+        "640x640": 4805
+      },
+      "raw_positive_images": 4805,
+      "canonical_positive_images": 4805,
+      "images_without_target_labels": 0,
+      "missing_xml_count": 0,
+      "orphan_xml_count": 0,
+      "invalid_box_count": 0,
+      "out_of_bounds_box_count": 0,
+      "missing_box_count": 0,
+      "parse_errors": [],
+      "sample_entries": [
+        "United_States/test/",
+        "United_States/test/images/",
+        "United_States/test/images/United_States_004805.jpg"
+      ]
+    }
+  ],
+  "checkpoints": [
+    {
+      "file": "baseline_best.pt",
+      "bytes": 21389027,
+      "sha256": "b11873df6fe5d69e62612e6261d65598f3e5140a91f8c6a874941eca21e0c1ba"
+    },
+    {
+      "file": "compare_yolo11s_best.pt",
+      "bytes": 19203601,
+      "sha256": "cd6954c0d0e8f37fdc9f9dce91a1ec247632112ff8745bd5194f6ba9987c89a5"
+    }
+  ],
+  "scripts": [
+    {
+      "file": "demo\\demo.py",
+      "syntax": "PASS",
+      "imports": [
+        "cv2",
+        "numpy",
+        "os",
+        "pathlib",
+        "scripts",
+        "sys",
+        "time",
+        "ultralytics"
+      ]
+    },
+    {
+      "file": "scripts\\annotation_qa_inspector.py",
+      "syntax": "PASS",
+      "imports": [
+        "PIL",
+        "argparse",
+        "os",
+        "pandas"
+      ]
+    },
+    {
+      "file": "scripts\\benchmark_runtime.py",
+      "syntax": "PASS",
+      "imports": [
+        "cv2",
+        "matplotlib",
+        "numpy",
+        "os",
+        "pandas",
+        "pathlib",
+        "scripts",
+        "sys",
+        "time",
+        "torch",
+        "ultralytics"
+      ]
+    },
+    {
+      "file": "scripts\\build_data_inventory.py",
+      "syntax": "PASS",
+      "imports": [
+        "PIL",
+        "csv",
+        "os",
+        "time"
+      ]
+    },
+    {
+      "file": "scripts\\evaluate_baseline.py",
+      "syntax": "PASS",
+      "imports": [
+        "PIL",
+        "numpy",
+        "os",
+        "pandas",
+        "shutil",
+        "torch",
+        "ultralytics"
+      ]
+    },
+    {
+      "file": "scripts\\evaluate_domain_shift.py",
+      "syntax": "PASS",
+      "imports": [
+        "matplotlib",
+        "numpy",
+        "os",
+        "pandas",
+        "pathlib",
+        "sys",
+        "ultralytics"
+      ]
+    },
+    {
+      "file": "scripts\\generate_failure_analysis.py",
+      "syntax": "PASS",
+      "imports": [
+        "cv2",
+        "matplotlib",
+        "numpy",
+        "os",
+        "pandas",
+        "pathlib",
+        "sys",
+        "ultralytics"
+      ]
+    },
+    {
+      "file": "scripts\\generate_final_report_pdf.py",
+      "syntax": "PASS",
+      "imports": [
+        "os",
+        "pathlib",
+        "pypdf",
+        "reportlab",
+        "sys"
+      ]
+    },
+    {
+      "file": "scripts\\generate_presentation_pptx.py",
+      "syntax": "PASS",
+      "imports": [
+        "os",
+        "pathlib",
+        "pptx",
+        "sys"
+      ]
+    },
+    {
+      "file": "scripts\\package_submission_zip.py",
+      "syntax": "PASS",
+      "imports": [
+        "os",
+        "pathlib",
+        "sys",
+        "zipfile"
+      ]
+    },
+    {
+      "file": "scripts\\parse_and_check_annotations.py",
+      "syntax": "PASS",
+      "imports": [
+        "PIL",
+        "csv",
+        "os",
+        "xml"
+      ]
+    },
+    {
+      "file": "scripts\\priority.py",
+      "syntax": "PASS",
+      "imports": [
+        "cv2",
+        "numpy",
+        "os",
+        "pandas",
+        "pathlib",
+        "sys",
+        "ultralytics"
+      ]
+    },
+    {
+      "file": "scripts\\run_baseline_pipeline.py",
+      "syntax": "PASS",
+      "imports": [
+        "PIL",
+        "numpy",
+        "os",
+        "pandas",
+        "shutil",
+        "torch",
+        "ultralytics"
+      ]
+    },
+    {
+      "file": "scripts\\run_eda.py",
+      "syntax": "PASS",
+      "imports": [
+        "matplotlib",
+        "numpy",
+        "os",
+        "pandas"
+      ]
+    },
+    {
+      "file": "scripts\\split_dataset.py",
+      "syntax": "PASS",
+      "imports": [
+        "numpy",
+        "os",
+        "pandas"
+      ]
+    },
+    {
+      "file": "scripts\\test_robustness.py",
+      "syntax": "PASS",
+      "imports": [
+        "cv2",
+        "matplotlib",
+        "numpy",
+        "os",
+        "pandas",
+        "pathlib",
+        "shutil",
+        "sys",
+        "ultralytics"
+      ]
+    },
+    {
+      "file": "scripts\\train_and_compare_models.py",
+      "syntax": "PASS",
+      "imports": [
+        "matplotlib",
+        "numpy",
+        "os",
+        "pandas",
+        "shutil",
+        "time",
+        "torch",
+        "ultralytics"
+      ]
+    },
+    {
+      "file": "scripts\\train_yolo.py",
+      "syntax": "PASS",
+      "imports": [
+        "argparse",
+        "os",
+        "torch",
+        "ultralytics"
+      ]
+    },
+    {
+      "file": "scripts\\voc_to_yolo.py",
+      "syntax": "PASS",
+      "imports": [
+        "PIL",
+        "os",
+        "pandas",
+        "shutil",
+        "xml"
+      ]
+    }
+  ],
+  "course_pdf_pages": 2,
+  "runtime_gpu_observed": {
+    "name": "NVIDIA GeForce RTX 3060 Laptop GPU",
+    "memory_MiB": 6144,
+    "driver": "551.23"
+  },
+  "training_gpu_user_reported": "RTX 3060 Laptop 6 GB; explicitly confirmed by user, matches observed device",
+  "limits": [
+    "Image count from ZIP entries, dimensions from XML; images not all decoded",
+    "No duplicate image scan",
+    "No model load/training/mAP/runtime/Mac execution"
+  ]
+}

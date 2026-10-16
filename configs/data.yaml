@@ -1,0 +1,15 @@
+# Ultralytics YOLO Dataset Configuration for RDD2022
+# Course: CDS540 Computer Vision
+# Project: Automated Road Damage Detection for Smart City Maintenance
+
+path: data/yolo
+train: images/train
+val: images/val
+test: images/test
+
+# 4 Canonical IEEE CRDDC 2022 Damage Classes
+names:
+  0: D00 # Longitudinal Crack (纵向裂缝)
+  1: D10 # Transverse Crack (横向裂缝)
+  2: D20 # Alligator Crack (龟裂 / 网状裂缝)
+  3: D40 # Pothole (坑洞 - 核心高危类别)

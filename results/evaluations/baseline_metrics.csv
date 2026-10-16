@@ -1,0 +1,6 @@
+Model,Category,Description,Precision,Recall,mAP@50,mAP@50-95
+YOLO11n Baseline,Overall (All Classes),Macro Average,0.3906,0.2774,0.2169,0.0833
+YOLO11n Baseline,D00,Longitudinal Crack,0.3459,0.2334,0.2092,0.0806
+YOLO11n Baseline,D10,Transverse Crack,0.619,0.0147,0.0533,0.0187
+YOLO11n Baseline,D20,Alligator Crack,0.3056,0.5283,0.3959,0.1578
+YOLO11n Baseline,D40,Pothole (Severe),0.2921,0.3333,0.2093,0.0762

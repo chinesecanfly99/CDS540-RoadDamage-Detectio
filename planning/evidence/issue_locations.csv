@@ -1,0 +1,66 @@
+﻿issue_id,original_pack_relative_path,line,text
+P01,requirements.txt,31,torch==2.14.1+cu130
+P01,requirements.txt,32,torchaudio==2.11.0+cu130
+P01,requirements.txt,33,torchvision==0.29.1+cu130
+P04,scripts/parse_and_check_annotations.py,7,"base_dir = ""DGS2022数据"""
+P04,scripts/parse_and_check_annotations.py,50,"xml_dir = os.path.join(base_dir, country, country, ""train"", ""annotations"", ""xmls"")"
+P05,scripts/split_dataset.py,36,"has_object = bool(first[""has_object""])"
+P05,scripts/split_dataset.py,86,"in_domain_df[""stratum""] = in_domain_df[""country""] + ""_"" + in_domain_df[""has_object""].astype(str)"
+P05,scripts/split_dataset.py,92,"for stratum, group in in_domain_df.groupby(""stratum""):"
+P05,scripts/split_dataset.py,106,"train_df = in_domain_df.loc[train_indices].copy().drop(columns=[""stratum""])"
+P05,scripts/split_dataset.py,107,"val_df = in_domain_df.loc[val_indices].copy().drop(columns=[""stratum""])"
+P05,scripts/split_dataset.py,108,"test_df = in_domain_df.loc[test_indices].copy().drop(columns=[""stratum""])"
+P05,scripts/split_dataset.py,116,"assert len(train_paths & val_paths) == 0, ""FATAL: Leakage detected between Train and Val!"""
+P05,scripts/split_dataset.py,117,"assert len(train_paths & test_paths) == 0, ""FATAL: Leakage detected between Train and Test!"""
+P06,scripts/run_baseline_pipeline.py,7,"- Task 8.1: Formal training of YOLO11n (epochs=50, batch=8, patience=12, seed=42)"
+P06,scripts/run_baseline_pipeline.py,28,"epochs=50,"
+P06,scripts/run_baseline_pipeline.py,31,"patience=12,"
+P06,scripts/run_baseline_pipeline.py,53,"print(f""    - Early Stop   : patience={patience}"")"
+P06,scripts/run_baseline_pipeline.py,62,"epochs=epochs,"
+P06,scripts/run_baseline_pipeline.py,68,"patience=patience,"
+P06,scripts/run_baseline_pipeline.py,276,"epochs=50,"
+P06,scripts/run_baseline_pipeline.py,278,"patience=12,"
+P06,scripts/train_and_compare_models.py,33,"epochs=25,"
+P06,scripts/train_and_compare_models.py,36,"patience=10,"
+P06,scripts/train_and_compare_models.py,66,"epochs=epochs,"
+P06,scripts/train_and_compare_models.py,72,"patience=patience,"
+P06,scripts/train_and_compare_models.py,350,"epochs=25,"
+P06,scripts/train_and_compare_models.py,352,"patience=10,"
+P07,scripts/evaluate_baseline.py,36,"src_best = r""runs\detect\runs\baseline_n\weights\best.pt"""
+P07,scripts/evaluate_baseline.py,43,"shutil.copy2(src_best, target_best)"
+P08,scripts/benchmark_runtime.py,9,- torch.cuda.Event synchronization for microsecond-precise model forward pass timing.
+P08,scripts/benchmark_runtime.py,53,loaded_imgs = [cv2.imread(str(p)) for p in test_img_paths[:num_runs]]
+P08,scripts/benchmark_runtime.py,55,loaded_imgs = (loaded_imgs * (num_runs // len(loaded_imgs) + 1))[:num_runs]
+P08,scripts/benchmark_runtime.py,61,torch.cuda.synchronize()
+P08,scripts/benchmark_runtime.py,70,start_event = torch.cuda.Event(enable_timing=True)
+P08,scripts/benchmark_runtime.py,71,end_event = torch.cuda.Event(enable_timing=True)
+P08,scripts/benchmark_runtime.py,85,torch.cuda.synchronize()
+P09,scripts/evaluate_domain_shift.py,38,"split='val',"
+P09,scripts/evaluate_domain_shift.py,92,'in_domain': {
+P09,scripts/evaluate_domain_shift.py,95,"'mAP@50': 0.2169,"
+P09,scripts/evaluate_domain_shift.py,109,'in_domain': {
+P09,scripts/evaluate_domain_shift.py,112,"'mAP@50': 0.2846,"
+P09,scripts/voc_to_yolo.py,211,path: data/yolo
+P09,scripts/voc_to_yolo.py,232,path: data/yolo
+P09,scripts/voc_to_yolo.py,233,test: images/domain_test
+P10,scripts/benchmark_runtime.py,60,"_ = model.predict(dummy_img, conf=0.25, verbose=False)"
+P10,scripts/benchmark_runtime.py,79,t_e2e_start = time.perf_counter()
+P10,scripts/benchmark_runtime.py,82,start_event.record()
+P10,scripts/benchmark_runtime.py,83,"res = model.predict(img_bgr, conf=0.25, verbose=False)[0]"
+P10,scripts/benchmark_runtime.py,96,"_ = prioritizer.render_overlay(img_bgr, triage)"
+P10,scripts/benchmark_runtime.py,103,e2e_ms = (t_e2e_end - t_e2e_start) * 1000.0
+P13,demo/demo.py,33,"def run_video_demo(model_path, input_source, output_video_path, max_frames=120, fps=15):"
+P13,demo/demo.py,56,frame_paths = all_imgs[:max_frames]
+P13,demo/demo.py,112,"perf_text = f""RTX 5070 GPU | Latency: {inference_ms:.1f}ms | FPS: {current_fps:.1f} | Frame: {frame_count+1}/{max_frames if frame_paths else 'EOS'}"""
+P13,demo/demo.py,147,"max_frames=120, # ~8 seconds at 15 FPS"
+P13,demo/demo.py,148,fps=15
+P14,scripts/generate_failure_analysis.py,100,fp_img_path = us_candidates[2] if len(us_candidates) > 2 else us_candidates[0]
+P14,scripts/generate_failure_analysis.py,109,"axes[0, 0].set_title(""Failure Case 1: Cross-Domain False Positive (US Highway)\nMisclassification of Road Stripe / Pavement Joint"","
+P14,scripts/generate_failure_analysis.py,127,"axes[0, 1].set_title(""Failure Case 2: Motion Blur Degradation (High-Speed Dashcam)\nLoss of High-Frequency Edge Information in Fine Cracks"","
+P14,scripts/generate_failure_analysis.py,143,"axes[1, 0].set_title(""Failure Case 3: Low-Light Attenuation (Nighttime Survey)\nDeep Shadows Mask Pothole Depth and Longitudinal Distress"","
+P14,scripts/generate_failure_analysis.py,158,"axes[1, 1].set_title(""Failure Case 4: Adverse Weather Haze & Fog (Atmospheric Scattering)\nLow Local Contrast Suppresses Weak Texture Features"","
+P15,scripts/priority.py,51,"'action': 'Urgent repair crew dispatch (24-48h). Cold-patch / safety warning.',"
+P15,scripts/priority.py,69,"'action': 'Pavement sound. Maintain standard biennial inspection schedule.',"
+P15,scripts/priority.py,105,"cls_code = CLASS_MAP.get(cls_id, 'D00')"
+P03,scripts/package_submission_zip.py,28,include_paths = [
+P03,scripts/package_submission_zip.py,52,"""data/yolo/images"","

@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "markdown_files": 20,
+  "stage_files": 8,
+  "internal_links": "PASS",
+  "stage_sections": "PASS",
+  "dataset_totals": "PASS",
+  "runtime_validation": "NOT_PERFORMED",
+  "handoff_example_syntax": "PASS",
+  "handoff_examples_executed": false
+}

@@ -1,0 +1,6 @@
+Condition,Description,Precision,Recall,mAP@50,mAP@50-95,D00_AP50,D10_AP50,D20_AP50,D40_AP50,D40_Recall,mAP@50_Decay (%),D40_Recall_Decay (%)
+Clean (Reference),Unaltered validation test images,0.5386,0.3325,0.2978,0.1212,0.2162,0.1041,0.5661,0.3046,0.4375,+0.00%,+0.00%
+Low-Light / Night,"Gamma darkening (g=2.0, scale=0.45) simulating unlit nighttime",0.2819,0.2159,0.206,0.0829,0.1542,0.0431,0.4073,0.2195,0.304,-30.81%,-30.51%
+Motion Blur,Horizontal 1D kernel (k=15) simulating vehicle vibration,0.063,0.0953,0.039,0.0143,0.015,0.0,0.0075,0.1334,0.3558,-86.91%,-18.68%
+Adverse Weather (Haze/Fog),"Atmospheric scattering (t=0.50, A=225) simulating heavy mist/fog",0.4584,0.1604,0.1372,0.0543,0.0898,0.0314,0.2801,0.1475,0.1442,-53.92%,-67.03%
+Sensor Noise,Zero-mean Gaussian noise (sigma=25) simulating high-ISO dashcam CMOS,0.0134,0.0481,0.0065,0.0026,0.0058,0.0006,0.015,0.0047,0.0625,-97.81%,-85.71%
