@@ -35,6 +35,8 @@ data/robustness_test/
 # Model Weights & Checkpoints (>10MB, Share via Releases/Drive)
 # Note: Keep README.md in models/
 models/*.pt
+!models/baseline_best.pt
+!models/compare_yolo11s_best.pt
 models/*.onnx
 models/*.engine
 weights/*.pt
