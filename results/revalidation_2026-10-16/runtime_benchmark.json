@@ -1,0 +1,668 @@
+[
+  {
+    "model": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\models\\baseline_best.pt",
+    "model_sha256": "b11873df6fe5d69e62612e6261d65598f3e5140a91f8c6a874941eca21e0c1ba",
+    "checkpoint_bytes": 21389027,
+    "backend": "cpu",
+    "parameters": {
+      "imgsz": 640,
+      "conf": 0.25,
+      "nms_iou": 0.7,
+      "rect": false,
+      "max_det": 300,
+      "runs": 60,
+      "warmup": 5
+    },
+    "python": "3.11.1 (tags/v3.11.1:a7a450f, Dec  6 2022, 19:58:39) [MSC v.1934 64 bit (AMD64)]",
+    "torch": "2.14.0+cpu",
+    "model_load_ms": 77.76770001510158,
+    "first_predict_ms": 2194.521799974609,
+    "predict_call": {
+      "mean_ms": 46.95216000157719,
+      "p50_ms": 46.903249982278794,
+      "p95_ms": 52.40702498413157
+    },
+    "local_decode_predict_review_overlay_jpeg_export": {
+      "mean_ms": 60.69769000071877,
+      "p50_ms": 60.49289999646135,
+      "p95_ms": 69.76576001034118
+    },
+    "local_task_frames_per_second": 16.475091556007456,
+    "runs": [
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_000101.jpg",
+        "predict_call_ms": 48.69259998667985,
+        "local_task_ms": 84.42760002799332
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_000147.jpg",
+        "predict_call_ms": 50.50820001633838,
+        "local_task_ms": 68.06889997096732
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_000179.jpg",
+        "predict_call_ms": 47.3828999674879,
+        "local_task_ms": 64.609199995175
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_000453.jpg",
+        "predict_call_ms": 43.74320001807064,
+        "local_task_ms": 59.330200019758195
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_000499.jpg",
+        "predict_call_ms": 42.47440001927316,
+        "local_task_ms": 56.04709999170154
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_000521.jpg",
+        "predict_call_ms": 48.57450001873076,
+        "local_task_ms": 61.299199995119125
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_000546.jpg",
+        "predict_call_ms": 46.251699968706816,
+        "local_task_ms": 60.484500019811094
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_000694.jpg",
+        "predict_call_ms": 46.10259999753907,
+        "local_task_ms": 58.21500002639368
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_001034.jpg",
+        "predict_call_ms": 47.87660000147298,
+        "local_task_ms": 62.903899990487844
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_001051.jpg",
+        "predict_call_ms": 42.805799981579185,
+        "local_task_ms": 56.45550001645461
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_001111.jpg",
+        "predict_call_ms": 44.61270000319928,
+        "local_task_ms": 56.84049997944385
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_001168.jpg",
+        "predict_call_ms": 44.614800019189715,
+        "local_task_ms": 59.90880000172183
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_001307.jpg",
+        "predict_call_ms": 50.08109996560961,
+        "local_task_ms": 69.76360001135617
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_002029.jpg",
+        "predict_call_ms": 49.26290002185851,
+        "local_task_ms": 61.645900015719235
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_002467.jpg",
+        "predict_call_ms": 47.7804999682121,
+        "local_task_ms": 59.88970003090799
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_002707.jpg",
+        "predict_call_ms": 43.5120000038296,
+        "local_task_ms": 59.37560001621023
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_002933.jpg",
+        "predict_call_ms": 48.28659998020157,
+        "local_task_ms": 63.877000007778406
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_003041.jpg",
+        "predict_call_ms": 46.641800028737634,
+        "local_task_ms": 62.65410000924021
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_003243.jpg",
+        "predict_call_ms": 48.81940002087504,
+        "local_task_ms": 61.73549999948591
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_003258.jpg",
+        "predict_call_ms": 45.54630001075566,
+        "local_task_ms": 58.7453999905847
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_000111.jpg",
+        "predict_call_ms": 48.52949996711686,
+        "local_task_ms": 66.2653999752365
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_000335.jpg",
+        "predict_call_ms": 40.125600004103035,
+        "local_task_ms": 59.970100002828985
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_001419.jpg",
+        "predict_call_ms": 44.32500002440065,
+        "local_task_ms": 60.5012999731116
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_001583.jpg",
+        "predict_call_ms": 42.94000001391396,
+        "local_task_ms": 59.51610003830865
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_001679.jpg",
+        "predict_call_ms": 50.44269998325035,
+        "local_task_ms": 69.80679999105632
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_002655.jpg",
+        "predict_call_ms": 40.758199989795685,
+        "local_task_ms": 59.863600006792694
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_002708.jpg",
+        "predict_call_ms": 47.14769998099655,
+        "local_task_ms": 62.392399995587766
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_003405.jpg",
+        "predict_call_ms": 51.06770002748817,
+        "local_task_ms": 66.32100004935637
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_003740.jpg",
+        "predict_call_ms": 51.81199999060482,
+        "local_task_ms": 69.38320002518594
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_003838.jpg",
+        "predict_call_ms": 45.93010002281517,
+        "local_task_ms": 60.93879998661578
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_004881.jpg",
+        "predict_call_ms": 52.93479998363182,
+        "local_task_ms": 70.67249994724989
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_005773.jpg",
+        "predict_call_ms": 45.56220001541078,
+        "local_task_ms": 60.29850000049919
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_005855.jpg",
+        "predict_call_ms": 52.39199998322874,
+        "local_task_ms": 68.80130001809448
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_006697.jpg",
+        "predict_call_ms": 42.09820000687614,
+        "local_task_ms": 60.19920000107959
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_007322.jpg",
+        "predict_call_ms": 50.6914000143297,
+        "local_task_ms": 66.30240002414212
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_007368.jpg",
+        "predict_call_ms": 49.79280004044995,
+        "local_task_ms": 67.99439998576418
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_007710.jpg",
+        "predict_call_ms": 43.06330002145842,
+        "local_task_ms": 60.64829998649657
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_008582.jpg",
+        "predict_call_ms": 47.921899997163564,
+        "local_task_ms": 64.49529994279146
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_009402.jpg",
+        "predict_call_ms": 47.985300014261156,
+        "local_task_ms": 68.0150999687612
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_009837.jpg",
+        "predict_call_ms": 46.27079999772832,
+        "local_task_ms": 58.5649999557063
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_000355.jpg",
+        "predict_call_ms": 48.60440001357347,
+        "local_task_ms": 63.868299999739975
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_000375.jpg",
+        "predict_call_ms": 44.474400056060404,
+        "local_task_ms": 60.50399999367073
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_000569.jpg",
+        "predict_call_ms": 48.38150000432506,
+        "local_task_ms": 63.16069996682927
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_000645.jpg",
+        "predict_call_ms": 47.943999990820885,
+        "local_task_ms": 64.89229999715462
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_000653.jpg",
+        "predict_call_ms": 50.422500004060566,
+        "local_task_ms": 64.57449996378273
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_001022.jpg",
+        "predict_call_ms": 48.86949999490753,
+        "local_task_ms": 55.60899997362867
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_001575.jpg",
+        "predict_call_ms": 44.266699987929314,
+        "local_task_ms": 50.2386000007391
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_001866.jpg",
+        "predict_call_ms": 47.4474000511691,
+        "local_task_ms": 53.04560001241043
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_001907.jpg",
+        "predict_call_ms": 52.692500001285225,
+        "local_task_ms": 58.18310001632199
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_002166.jpg",
+        "predict_call_ms": 44.62180001428351,
+        "local_task_ms": 51.07260000659153
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_002370.jpg",
+        "predict_call_ms": 44.807499973103404,
+        "local_task_ms": 50.94520002603531
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_002401.jpg",
+        "predict_call_ms": 45.007499982602894,
+        "local_task_ms": 52.507499989587814
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_002817.jpg",
+        "predict_call_ms": 46.22730001574382,
+        "local_task_ms": 52.19450005097315
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_002940.jpg",
+        "predict_call_ms": 45.118600013665855,
+        "local_task_ms": 50.72709999512881
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_002962.jpg",
+        "predict_call_ms": 43.1512999930419,
+        "local_task_ms": 50.50250003114343
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_003100.jpg",
+        "predict_call_ms": 47.3659000126645,
+        "local_task_ms": 53.83059999439865
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_003763.jpg",
+        "predict_call_ms": 55.033199954777956,
+        "local_task_ms": 61.063400004059076
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_004392.jpg",
+        "predict_call_ms": 46.31790000712499,
+        "local_task_ms": 52.066000003833324
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_004522.jpg",
+        "predict_call_ms": 46.65879998356104,
+        "local_task_ms": 55.64490001415834
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_004729.jpg",
+        "predict_call_ms": 44.3550999625586,
+        "local_task_ms": 50.0031000119634
+      }
+    ],
+    "limits": "Local still-image task; excludes model load, network, webpage, streaming and video encoding. Not pure tensor forward. Repeated inputs and small run counts are not deployment guarantees."
+  },
+  {
+    "model": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\models\\compare_yolo11s_best.pt",
+    "model_sha256": "cd6954c0d0e8f37fdc9f9dce91a1ec247632112ff8745bd5194f6ba9987c89a5",
+    "checkpoint_bytes": 19203601,
+    "backend": "cpu",
+    "parameters": {
+      "imgsz": 640,
+      "conf": 0.25,
+      "nms_iou": 0.7,
+      "rect": false,
+      "max_det": 300,
+      "runs": 60,
+      "warmup": 5
+    },
+    "python": "3.11.1 (tags/v3.11.1:a7a450f, Dec  6 2022, 19:58:39) [MSC v.1934 64 bit (AMD64)]",
+    "torch": "2.14.0+cpu",
+    "model_load_ms": 37.37899998668581,
+    "first_predict_ms": 192.0988999772817,
+    "predict_call": {
+      "mean_ms": 114.52397666483496,
+      "p50_ms": 113.80794996512122,
+      "p95_ms": 128.61825003928968
+    },
+    "local_decode_predict_review_overlay_jpeg_export": {
+      "mean_ms": 121.1304750002455,
+      "p50_ms": 119.9699499993585,
+      "p95_ms": 136.0306999646127
+    },
+    "local_task_frames_per_second": 8.255560790940292,
+    "runs": [
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_000101.jpg",
+        "predict_call_ms": 112.32409998774529,
+        "local_task_ms": 117.97709995880723
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_000147.jpg",
+        "predict_call_ms": 106.23039997881278,
+        "local_task_ms": 111.46360001293942
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_000179.jpg",
+        "predict_call_ms": 116.344400041271,
+        "local_task_ms": 122.53699998836964
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_000453.jpg",
+        "predict_call_ms": 106.14410002017394,
+        "local_task_ms": 111.99370003305376
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_000499.jpg",
+        "predict_call_ms": 113.67569997673854,
+        "local_task_ms": 120.02610001945868
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_000521.jpg",
+        "predict_call_ms": 110.0581000209786,
+        "local_task_ms": 114.75680000148714
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_000546.jpg",
+        "predict_call_ms": 114.27940003341064,
+        "local_task_ms": 124.31560002733022
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_000694.jpg",
+        "predict_call_ms": 113.59269998501986,
+        "local_task_ms": 119.13190002087504
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_001034.jpg",
+        "predict_call_ms": 102.70110005512834,
+        "local_task_ms": 107.97150002326816
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_001051.jpg",
+        "predict_call_ms": 102.97579999314621,
+        "local_task_ms": 107.77350002899766
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_001111.jpg",
+        "predict_call_ms": 112.81750001944602,
+        "local_task_ms": 118.9050999819301
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_001168.jpg",
+        "predict_call_ms": 112.52690001856536,
+        "local_task_ms": 119.91379997925833
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_001307.jpg",
+        "predict_call_ms": 118.96390002220869,
+        "local_task_ms": 125.40750001790002
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_002029.jpg",
+        "predict_call_ms": 109.62830000789836,
+        "local_task_ms": 115.24939996888861
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_002467.jpg",
+        "predict_call_ms": 121.90819997340441,
+        "local_task_ms": 127.68420000793412
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_002707.jpg",
+        "predict_call_ms": 128.3384000416845,
+        "local_task_ms": 135.57599997147918
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_002933.jpg",
+        "predict_call_ms": 119.13930001901463,
+        "local_task_ms": 125.98239997169003
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_003041.jpg",
+        "predict_call_ms": 117.29649995686486,
+        "local_task_ms": 124.89139998797327
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_003243.jpg",
+        "predict_call_ms": 110.52019998896867,
+        "local_task_ms": 116.79220001678914
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\Czech_003258.jpg",
+        "predict_call_ms": 111.50069994619116,
+        "local_task_ms": 116.4798000245355
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_000111.jpg",
+        "predict_call_ms": 120.23230001796037,
+        "local_task_ms": 125.38119999226183
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_000335.jpg",
+        "predict_call_ms": 116.7089999653399,
+        "local_task_ms": 122.76240001665428
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_001419.jpg",
+        "predict_call_ms": 141.4191999938339,
+        "local_task_ms": 149.59480002289638
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_001583.jpg",
+        "predict_call_ms": 106.41850001411512,
+        "local_task_ms": 113.07640001177788
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_001679.jpg",
+        "predict_call_ms": 113.9401999535039,
+        "local_task_ms": 119.79510000674054
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_002655.jpg",
+        "predict_call_ms": 103.27969997888431,
+        "local_task_ms": 111.81880004005507
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_002708.jpg",
+        "predict_call_ms": 112.70479997619987,
+        "local_task_ms": 120.21969998022541
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_003405.jpg",
+        "predict_call_ms": 104.99279998475686,
+        "local_task_ms": 111.37779999990016
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_003740.jpg",
+        "predict_call_ms": 122.78480001259595,
+        "local_task_ms": 128.69189999764785
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_003838.jpg",
+        "predict_call_ms": 102.691899985075,
+        "local_task_ms": 109.54600002150983
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_004881.jpg",
+        "predict_call_ms": 110.50789995351806,
+        "local_task_ms": 115.88719999417663
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_005773.jpg",
+        "predict_call_ms": 113.27769997296855,
+        "local_task_ms": 119.12220000522211
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_005855.jpg",
+        "predict_call_ms": 114.56219997489825,
+        "local_task_ms": 121.51590001303703
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_006697.jpg",
+        "predict_call_ms": 108.62050001742318,
+        "local_task_ms": 116.6611000080593
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_007322.jpg",
+        "predict_call_ms": 116.32149998331442,
+        "local_task_ms": 123.47120000049472
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_007368.jpg",
+        "predict_call_ms": 103.23120001703501,
+        "local_task_ms": 109.79890002636239
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_007710.jpg",
+        "predict_call_ms": 118.13859996618703,
+        "local_task_ms": 124.9385999981314
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_008582.jpg",
+        "predict_call_ms": 147.9717000038363,
+        "local_task_ms": 156.52690001297742
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_009402.jpg",
+        "predict_call_ms": 108.91469998750836,
+        "local_task_ms": 118.56250005075708
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\India_009837.jpg",
+        "predict_call_ms": 104.67540001263842,
+        "local_task_ms": 112.85619996488094
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_000355.jpg",
+        "predict_call_ms": 115.64229999203235,
+        "local_task_ms": 122.54559999564663
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_000375.jpg",
+        "predict_call_ms": 119.50930004240945,
+        "local_task_ms": 126.01399997947738
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_000569.jpg",
+        "predict_call_ms": 114.43189997226,
+        "local_task_ms": 120.83650002023205
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_000645.jpg",
+        "predict_call_ms": 111.76150001119822,
+        "local_task_ms": 117.72559996461496
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_000653.jpg",
+        "predict_call_ms": 112.8012000117451,
+        "local_task_ms": 120.0605999911204
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_001022.jpg",
+        "predict_call_ms": 112.298300024122,
+        "local_task_ms": 117.9988999501802
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_001575.jpg",
+        "predict_call_ms": 114.2528000054881,
+        "local_task_ms": 119.64140000054613
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_001866.jpg",
+        "predict_call_ms": 114.88670000107959,
+        "local_task_ms": 120.40760001400486
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_001907.jpg",
+        "predict_call_ms": 99.75569997914135,
+        "local_task_ms": 107.0418999879621
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_002166.jpg",
+        "predict_call_ms": 122.13340000016615,
+        "local_task_ms": 129.62369999149814
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_002370.jpg",
+        "predict_call_ms": 114.586399984546,
+        "local_task_ms": 119.70809998456389
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_002401.jpg",
+        "predict_call_ms": 104.78260001400486,
+        "local_task_ms": 111.57349997665733
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_002817.jpg",
+        "predict_call_ms": 100.49619997153059,
+        "local_task_ms": 106.11409996636212
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_002940.jpg",
+        "predict_call_ms": 119.24540001200512,
+        "local_task_ms": 125.7744999602437
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_002962.jpg",
+        "predict_call_ms": 125.10649999603629,
+        "local_task_ms": 132.88759998977184
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_003100.jpg",
+        "predict_call_ms": 133.93539999378845,
+        "local_task_ms": 142.51350000267848
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_003763.jpg",
+        "predict_call_ms": 127.67819996224716,
+        "local_task_ms": 135.68949996260926
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_004392.jpg",
+        "predict_call_ms": 120.18260004697368,
+        "local_task_ms": 126.60390004748479
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_004522.jpg",
+        "predict_call_ms": 117.83589998958632,
+        "local_task_ms": 124.60969999665394
+      },
+      {
+        "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\full-evaluation\\benchmark-inputs\\United_States_004729.jpg",
+        "predict_call_ms": 117.75600002147257,
+        "local_task_ms": 124.02490002568811
+      }
+    ],
+    "limits": "Local still-image task; excludes model load, network, webpage, streaming and video encoding. Not pure tensor forward. Repeated inputs and small run counts are not deployment guarantees."
+  }
+]

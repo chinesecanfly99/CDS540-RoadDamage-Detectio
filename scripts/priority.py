@@ -1,17 +1,5 @@
-"""
-Municipal Road Maintenance Prioritization Heuristic Module
-Course: CDS540 Computer Vision
-Project: Automated Road Damage Detection for Smart City Maintenance
-
-Step 11: Task 11.1 & Task 11.2
-Translates bounding-box object detections into actionable municipal repair priorities:
-  - Class Asymmetry: High hazard weighting for D40 (potholes) and structural fatigue D20 (alligator).
-  - Spatial Extent: Relative bounding box area ratio (penalty for large distress patches).
-  - Distress Multiplicity: Compounding penalty for multiple co-occurring defects on a roadway frame.
-  - Priority Categorization: HIGH (Urgent Dispatch), MEDIUM (Scheduled Resurfacing), LOW (Preventive Sealing).
-
-DISCLAIMER: This heuristic prioritization formula is designed as an automated triage proxy
-for municipal road survey workflows and does not replace certified geotechnical pavement inspections.
+"""Heuristic review queue for road detections; weights are unvalidated project choices.
+No physical severity, repair deadline or road-condition diagnosis is inferred.
 """
 
 import os
@@ -22,7 +10,7 @@ import pandas as pd
 from pathlib import Path
 from ultralytics import YOLO
 
-# Distress Class Weights reflecting municipal safety and structural degradation risk
+# Project review weights; not calibrated municipal hazard or severity measurements
 CLASS_WEIGHTS = {
     'D40': 10.0,  # Potholes: Acute danger of tire rupture, vehicle loss of control, cyclist accidents
     'D20': 6.5,   # Alligator Cracking: Subgrade structural failure, high moisture vulnerability
@@ -48,25 +36,25 @@ PRIORITY_LEVELS = {
     'HIGH': {
         'color_bgr': (0, 0, 220),       # Bright Red
         'color_rgb': (220, 0, 0),
-        'action': 'Urgent repair crew dispatch (24-48h). Cold-patch / safety warning.',
+        'action': 'Prioritize human review; confirm the detected road damage on site.',
         'min_score': 12.0
     },
     'MEDIUM': {
         'color_bgr': (0, 165, 255),     # Orange / Amber
         'color_rgb': (255, 165, 0),
-        'action': 'Scheduled maintenance queue (30 days). Mill-and-overlay program.',
+        'action': 'Queue detections for human review and field confirmation.',
         'min_score': 6.0
     },
     'LOW': {
         'color_bgr': (0, 200, 0),       # Green
         'color_rgb': (0, 200, 0),
-        'action': 'Preventive maintenance. Crack sealing to inhibit water ingress.',
+        'action': 'Review the detected cracks and confirm the road condition.',
         'min_score': 0.1
     },
     'NONE': {
         'color_bgr': (180, 180, 180),   # Gray
         'color_rgb': (180, 180, 180),
-        'action': 'Pavement sound. Maintain standard biennial inspection schedule.',
+        'action': 'No target detected at this threshold; road condition is unconfirmed.',
         'min_score': 0.0
     }
 }
@@ -90,6 +78,20 @@ class RoadDamagePrioritizer:
         Returns:
             dict containing triage score, priority level, defect breakdown, and action recommendation.
         """
+        if img_width <= 0 or img_height <= 0:
+            raise ValueError("Image dimensions must be positive")
+        if not (len(boxes) == len(classes) == len(confidences)):
+            raise ValueError("Box, class and confidence counts must match")
+        for box, cls, conf in zip(boxes, classes, confidences):
+            if not np.isfinite(float(cls)) or float(cls) != int(cls) or int(cls) not in CLASS_MAP:
+                raise ValueError(f"Unexpected road-damage class: {cls}")
+            if not np.isfinite(float(conf)) or not 0 <= float(conf) <= 1:
+                raise ValueError("Confidence must be finite and in [0, 1]")
+            if len(box) != 4 or not np.isfinite(np.asarray(box, dtype=float)).all():
+                raise ValueError("Invalid detection box")
+            x1, y1, x2, y2 = [float(x) for x in box]
+            if not (0 <= x1 < x2 <= img_width and 0 <= y1 < y2 <= img_height):
+                raise ValueError("Detection box must lie inside the image")
         img_area = float(img_width * img_height)
         total_score = 0.0
         defect_summary = {'D00': 0, 'D10': 0, 'D20': 0, 'D40': 0}
@@ -102,14 +104,14 @@ class RoadDamagePrioritizer:
                 continue
                 
             cls_id = int(classes[idx])
-            cls_code = CLASS_MAP.get(cls_id, 'D00')
+            cls_code = CLASS_MAP[cls_id]
             defect_summary[cls_code] += 1
             
             x1, y1, x2, y2 = boxes[idx]
             box_area = max(0.0, float((x2 - x1) * (y2 - y1)))
             area_ratio = box_area / img_area
             
-            # Severity calculation:
+            # Heuristic review score:
             # Base weight * Confidence * Size Scaling Multiplier
             base_wt = CLASS_WEIGHTS.get(cls_code, 2.0)
             
@@ -126,7 +128,7 @@ class RoadDamagePrioritizer:
             item_score = base_wt * conf * size_factor
             total_score += item_score
             
-            # Special emergency trigger: High-confidence pothole with substantial area
+            # Project-specific priority trigger; requires human confirmation
             if cls_code == 'D40' and conf >= 0.35 and area_ratio >= 0.005:
                 has_severe_pothole = True
                 
@@ -162,6 +164,9 @@ class RoadDamagePrioritizer:
             
         return {
             'total_score': final_score,
+            'detection_status': 'TARGETS_DETECTED' if detected_items else 'NO_TARGET_DETECTED',
+            'rule_version': 'human-review-v1',
+            'interpretation': 'Heuristic review priority; not measured physical severity or a repair deadline.',
             'priority_level': level,
             'action_recommendation': PRIORITY_LEVELS[level]['action'],
             'total_distress_count': num_distress,
@@ -211,11 +216,11 @@ class RoadDamagePrioritizer:
         # Priority Badge (Left)
         badge_w = 160
         cv2.rectangle(img, (10, 10), (badge_w, banner_h - 10), level_color, -1)
-        cv2.putText(img, f"PRIORITY", (20, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.45, (255, 255, 255), 1, cv2.LINE_AA)
+        cv2.putText(img, f"REVIEW", (20, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.45, (255, 255, 255), 1, cv2.LINE_AA)
         cv2.putText(img, level, (20, 56), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (255, 255, 255), 2, cv2.LINE_AA)
         
         # Telemetry Details (Center / Right)
-        score_text = f"Triage Score: {triage_result['total_score']:.1f}  |  Distress Count: {triage_result['total_distress_count']}"
+        score_text = f"Rule Score: {triage_result['total_score']:.1f}  |  Boxes: {triage_result['total_distress_count']}"
         cv2.putText(img, score_text, (badge_w + 20, 28), cv2.FONT_HERSHEY_SIMPLEX, 0.55, (255, 255, 255), 1, cv2.LINE_AA)
         
         summary_str = f"D40(Pothole): {triage_result['defect_summary']['D40']} | D20(Allig): {triage_result['defect_summary']['D20']} | D10(Trans): {triage_result['defect_summary']['D10']} | D00(Long): {triage_result['defect_summary']['D00']}"
@@ -285,7 +290,7 @@ def test_sample_images(model_path, test_csv, num_samples=6, out_dir="results/pri
         
         records.append({
             'Image_ID': img_name,
-            'Ground_Truth_Classes': row['raw_classes'] if row['has_object'] else 'None (Sound Pavement)',
+            'Ground_Truth_Classes': row['raw_classes'] if row['has_object'] else 'No target annotation',
             'Detected_Distress_Count': triage['total_distress_count'],
             'D40_Potholes': triage['defect_summary']['D40'],
             'D20_Alligator': triage['defect_summary']['D20'],

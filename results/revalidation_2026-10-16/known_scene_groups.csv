@@ -1,0 +1,17 @@
+﻿image_id,known_scene_group,original_split,cross_split_group,target_count,review
+Czech_000618.jpg,scene_e209c65d6c,train,True,0,Agent visually reviewed all candidate pairs: same static road scene; acquisition sequence unknown
+Czech_001050.jpg,scene_e209c65d6c,test,True,0,Agent visually reviewed all candidate pairs: same static road scene; acquisition sequence unknown
+Czech_003093.jpg,scene_e209c65d6c,train,True,0,Agent visually reviewed all candidate pairs: same static road scene; acquisition sequence unknown
+Czech_001279.jpg,scene_c784f6f4df,train,False,2,Agent visually reviewed all candidate pairs: same static road scene; acquisition sequence unknown
+Czech_002857.jpg,scene_c784f6f4df,train,False,2,Agent visually reviewed all candidate pairs: same static road scene; acquisition sequence unknown
+Czech_001553.jpg,scene_52cb80b477,val,True,0,Agent visually reviewed all candidate pairs: same static road scene; acquisition sequence unknown
+Czech_001604.jpg,scene_52cb80b477,train,True,0,Agent visually reviewed all candidate pairs: same static road scene; acquisition sequence unknown
+Czech_002030.jpg,scene_6ec91eb7ca,train,False,0,Agent visually reviewed all candidate pairs: same static road scene; acquisition sequence unknown
+Czech_002124.jpg,scene_6ec91eb7ca,train,False,0,Agent visually reviewed all candidate pairs: same static road scene; acquisition sequence unknown
+Czech_002075.jpg,scene_caebfa58c6,val,True,0,Agent visually reviewed all candidate pairs: same static road scene; acquisition sequence unknown
+Czech_002595.jpg,scene_caebfa58c6,train,True,0,Agent visually reviewed all candidate pairs: same static road scene; acquisition sequence unknown
+Czech_002509.jpg,scene_cdc10ff8c5,train,False,0,Agent visually reviewed all candidate pairs: same static road scene; acquisition sequence unknown
+Czech_003423.jpg,scene_cdc10ff8c5,train,False,0,Agent visually reviewed all candidate pairs: same static road scene; acquisition sequence unknown
+Czech_003572.jpg,scene_cdc10ff8c5,train,False,0,Agent visually reviewed all candidate pairs: same static road scene; acquisition sequence unknown
+United_States_001623.jpg,scene_cdc5a1504f,domain_test,False,4,Agent visually reviewed all candidate pairs: same static road scene; acquisition sequence unknown
+United_States_003917.jpg,scene_cdc5a1504f,domain_test,False,4,Agent visually reviewed all candidate pairs: same static road scene; acquisition sequence unknown

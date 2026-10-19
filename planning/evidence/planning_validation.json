@@ -1,11 +1,13 @@
 {
-  "status": "PASS",
-  "markdown_files": 20,
+  "date": "2026-10-16",
+  "markdown_files": 22,
   "stage_files": 8,
   "internal_links": "PASS",
-  "stage_sections": "PASS",
-  "dataset_totals": "PASS",
-  "runtime_validation": "NOT_PERFORMED",
-  "handoff_example_syntax": "PASS",
-  "handoff_examples_executed": false
+  "python_syntax": "PASS",
+  "automated_tests": 22,
+  "all_data_conversion": "PASS",
+  "full_existing_model_evaluations": 6,
+  "historical_padding_checks": 2,
+  "cross_computer": "DEFERRED_BY_USER",
+  "new_training": "NOT_PERFORMED"
 }

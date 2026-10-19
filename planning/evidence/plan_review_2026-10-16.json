@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-16",
+  "scope": "plan comparison and bounded correctness fixes",
+  "source_plan_sha256": "bcf2cdfade332ed4d994354be8064253c484af494cb3f482d176508f8eeb4461",
+  "images_scanned": 15340,
+  "split_stats": {
+    "train": {
+      "images": 7375,
+      "raw_boxes": 6952,
+      "target_boxes": 6007,
+      "no_target_annotation_images": 4370,
+      "target_positive_images": 3005,
+      "D00": 1815,
+      "D10": 335,
+      "D20": 1537,
+      "D40": 2320
+    },
+    "val": {
+      "images": 1581,
+      "raw_boxes": 1498,
+      "target_boxes": 1261,
+      "no_target_annotation_images": 945,
+      "target_positive_images": 636,
+      "D40": 518,
+      "D10": 64,
+      "D00": 352,
+      "D20": 327
+    },
+    "test": {
+      "images": 1579,
+      "raw_boxes": 1498,
+      "target_boxes": 1309,
+      "no_target_annotation_images": 924,
+      "target_positive_images": 655,
+      "D00": 377,
+      "D40": 546,
+      "D10": 68,
+      "D20": 318
+    },
+    "domain_test": {
+      "images": 4805,
+      "raw_boxes": 11014,
+      "target_boxes": 11014,
+      "target_positive_images": 4805,
+      "D10": 3295,
+      "D00": 6750,
+      "D20": 834,
+      "D40": 135
+    }
+  },
+  "target_presence_definition_differences": 561,
+  "differences_by_split": {
+    "test": 73,
+    "train": 395,
+    "val": 93
+  },
+  "exact_duplicate_groups": [
+    [
+      {
+        "image_id": "United_States_001623.jpg",
+        "split": "domain_test"
+      },
+      {
+        "image_id": "United_States_003917.jpg",
+        "split": "domain_test"
+      }
+    ]
+  ],
+  "cross_split_exact_duplicate_groups": [],
+  "near_duplicate_or_sequence_leakage": "NOT_AUDITED",
+  "full_image_decode_quality": "NOT_AUDITED",
+  "single_image_diagnostic": [
+    {
+      "model": "baseline_best.pt",
+      "TP": 1,
+      "FP": 2,
+      "FN": 6,
+      "match_iou": 0.5
+    },
+    {
+      "model": "compare_yolo11s_best.pt",
+      "TP": 1,
+      "FP": 4,
+      "FN": 6,
+      "match_iou": 0.5
+    }
+  ],
+  "automated_tests_passed": 13,
+  "runtime": {
+    "existing_weights": 2,
+    "evaluation_source_images": 8,
+    "evaluation_country_images": 4,
+    "evaluation_purpose": "smoke",
+    "benchmark_warmup": 1,
+    "benchmark_runs_per_model": 3,
+    "rule_demo_frames": 12,
+    "device": "cpu"
+  },
+  "not_performed": [
+    "new training",
+    "full dataset AP re-evaluation",
+    "augmentation experiment",
+    "other computer acceptance",
+    "real continuous video benchmark",
+    "web app deployment"
+  ],
+  "historical_metrics_are_not_new_results": true
+}

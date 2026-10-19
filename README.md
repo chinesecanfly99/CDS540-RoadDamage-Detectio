@@ -9,10 +9,10 @@
 本项目基于国际公路病害评测基准 **RDD2022**（包含捷克、印度与美国真实道路行车记录图像），构建了一套面向道路巡检场景的轻量化目标检测与人工复核辅助系统。
 
 针对巡检人员在多变自然光照、跨国家路面材质以及低对比度条件下的排查需求，项目重点探讨：
-1. **模型轻量化与规模权衡**：基于 YOLO11n 与 YOLO11s 在同训练协议下的精度（mAP50, mAP50-95）、推理延迟与资源开销对比。
+1. **模型轻量化与规模权衡**：计划统一协议比较 YOLO11n 与 YOLO11s 的精度（mAP50、mAP50-95）、推理延迟与资源开销；旧实际训练协议尚待核对。
 2. **跨域泛化性（Domain Shift）**：以捷克和印度为源域训练，评估模型在美国公路留出数据上的泛化表现与性能衰减边界。
-3. **可解释的人工复核决策规则**：结合病害类别危险度（如 D40 坑洞重点监控）、检测置信度与几何特征，输出透明、可追踪的复核优先级建议。
-4. **跨平台轻量交互演示 (Demo)**：支持单张图像与车载短视频上传分析，提供结构化数据导出与界面交互。
+3. **可解释的人工复核决策规则**：结合预设的类别复核权重（如 D40 坑洞重点监控）、检测置信度与几何特征，输出透明、可追踪的复核优先级建议。
+4. **跨平台轻量交互演示 (Demo)**：已支持离线单图与媒体处理和 JSON 导出；上传网页和真实车载视频验收仍待实现。
 
 ---
 
@@ -62,7 +62,7 @@
 │   └── *.csv             # 模型对比、跨域及鲁棒性指标汇总
 ├── scripts/              # 全流程核心 Python 脚本
 │   ├── voc_to_yolo.py    # XML 标注清洗与 YOLO 格式构建
-│   ├── train_and_compare_models.py # 同协议模型训练
+│   ├── train_and_compare_models.py # 旧对比训练入口（需统一预算）
 │   ├── evaluate_baseline.py        # 基线评估
 │   ├── evaluate_domain_shift.py    # 跨域泛化评估
 │   ├── test_robustness.py          # 扰动鲁棒性评测
@@ -97,8 +97,8 @@ pip install -r requirements.txt
 ```
 
 > **跨平台加速说明**：
-> - **Windows (NVIDIA GPU)**：若需使用 CUDA，请确保按 [PyTorch 官网](https://pytorch.org/) 安装与本机驱动匹配的 CUDA 版 PyTorch。若无 GPU，代码会自动回退至 CPU。
-> - **macOS (Apple Silicon)**：支持 MPS 加速后端，代码包含设备自适应逻辑，无需安装 CUDA。
+> - **Windows (NVIDIA GPU)**：若需使用 CUDA，请确保按 [PyTorch 官网](https://pytorch.org/) 安装与本机驱动匹配的 CUDA 版 PyTorch。若无 GPU，本地演示入口默认使用 CPU；确认 CUDA 可用后可显式传入 `--device 0`。
+> - **macOS (Apple Silicon)**：支持 MPS 加速后端，可在兼容环境中显式传入 `--device mps`；先用 `--device cpu` 验证基本运行，无需安装 CUDA。
 
 ---
 
@@ -114,20 +114,26 @@ pip install -r requirements.txt
 在目标电脑上验证环境是否跑通：
 
 ```bash
-python -c "
-from ultralytics import YOLO
-model = YOLO('models/baseline_best.pt')
-print('模型加载成功:', type(model))
-"
+python scripts/predict_image.py --source "path/to/road.jpg" --output ".local/single-image" --device cpu
 ```
+
+将 `path/to/road.jpg` 替换为一张实际道路图片。命令会保存叠框图片和 JSON；输出目录应为新目录。默认加载已有 `models/baseline_best.pt`，可通过 `--model` 指定对照模型。
+
+最新问题核查、已修复项和后续工作见 [planning/11_全量复核与继续实施.md](planning/11_全量复核与继续实施.md)。
+
+2026-10-16 的本机 CPU 运行记录见 [docs/LOCAL_RUNTIME.md](docs/LOCAL_RUNTIME.md)。
 
 ---
 
 ### 4. 运行人工复核 Demo
 
 ```bash
-python demo/demo.py
+python demo/demo.py --source "path/to/images-or-video" --output ".local/demo.mp4" --device cpu --max-frames 120
 ```
+
+将 `path/to/images-or-video` 替换为实际图片目录或短视频路径。图片目录生成的是图片序列演示；真实视频默认沿用源 FPS。不同尺寸图片会统一到首帧尺寸，并在 JSON 中记录。可用 `--fps` 修改输出播放速度，输出文件已存在时会提示更换名称。
+
+当前入口是离线脚本，不包含上传网页。完整数据训练与指标复现仍按 `planning/` 的阶段文档推进。
 
 ---
 
@@ -159,3 +165,6 @@ python demo/demo.py
 👉 **[planning/09_跨电脑运行问题与AI交接.md](planning/09_跨电脑运行问题与AI交接.md)**
 
 该文档包含直接复制给 AI 的精准 Prompt 和阶梯式排错步骤，能大幅减少因环境差异导致的反复重跑。
+
+
+本轮已经完成原划分的全量转换、两模型完整评估及阈值试验，发现同场景跨集合和训练预算差异；最新状态见仓库 planning/11_全量复核与继续实施.md。跨电脑验收按用户要求暂缓；本目录此前记录为历史快照。

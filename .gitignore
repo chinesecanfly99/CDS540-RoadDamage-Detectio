@@ -58,3 +58,6 @@ submission/*.pdf
 submission/*.pptx
 reports/*.pdf
 reports/*.pptx
+
+# Local machine settings, samples and runtime outputs
+/.local/

@@ -1,0 +1,657 @@
+{
+  "date": "2026-10-16",
+  "cross_computer_validation": "DEFERRED_BY_USER",
+  "dataset": {
+    "state": "COMPLETE",
+    "unchanged_split_membership": true,
+    "images": 15340,
+    "manifest_sha256": {
+      "train": "8561a1228a55da0033d897ee50da4f3d7f675a8bd4c29c953256da3bab1e8535",
+      "val": "222c2fe07d84b7ff1eb07be322a3953189df21f9ddc419cb951b44f6c240df2f",
+      "test": "ac50a40d5b3c39b562208ecaad62eac075dc14f5e1812d3025eb3aa8d0cb21a7",
+      "domain_test": "e5216c3734ec6aa0fb4f60a6bfd71f9db3e084ad7bdfc6cb0f14a14105a921d1"
+    },
+    "dataset_fingerprint": "652c6640e8f301879590185e30138a87405bdba0c14c807d1aa6031ce683f193",
+    "split_stats": {
+      "train": {
+        "images": 7375,
+        "target_boxes": 6007,
+        "no_target_annotation": 4370,
+        "positive": 3005
+      },
+      "val": {
+        "images": 1581,
+        "target_boxes": 1261,
+        "no_target_annotation": 945,
+        "positive": 636
+      },
+      "test": {
+        "images": 1579,
+        "target_boxes": 1309,
+        "no_target_annotation": 924,
+        "positive": 655
+      },
+      "domain_test": {
+        "images": 4805,
+        "target_boxes": 11014,
+        "positive": 4805
+      }
+    },
+    "skipped_classes": {
+      "D44": 1062,
+      "D01": 179,
+      "D43": 57,
+      "D11": 45,
+      "D50": 28
+    },
+    "all_images_decoded_and_dimensions_verified": true,
+    "all_target_boxes_roundtrip_verified": true,
+    "maximum_roundtrip_error_pixels": 0.00048000000009551513,
+    "sample_cards": 26,
+    "decoded_pixel_duplicate_groups": [
+      [
+        {
+          "image_id": "United_States_001623.jpg",
+          "split": "domain_test"
+        },
+        {
+          "image_id": "United_States_003917.jpg",
+          "split": "domain_test"
+        }
+      ]
+    ],
+    "configs": {
+      "source": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\datasets\\original-split-v1\\source.yaml",
+      "country": "F:\\Codex_file\\repos\\CDS540-RoadDamage-Detectio\\.local\\datasets\\original-split-v1\\country.yaml"
+    },
+    "limits": "Successful decode and coordinate checks do not prove annotation completeness or split independence."
+  },
+  "near_duplicate_screening": {
+    "dataset_fingerprint": "652c6640e8f301879590185e30138a87405bdba0c14c807d1aa6031ce683f193",
+    "images": 15340,
+    "image_pairs_screened": 117650130,
+    "method": {
+      "phash_bits": 63,
+      "phash_distance_max": 8,
+      "dhash_distance_max": 10,
+      "ssim_resolution": 256,
+      "ssim_min": 0.85,
+      "coarse_ssim64_min": 0.75,
+      "strong_flag_ssim_min": 0.93,
+      "strong_flag_color_mae_max": 0.08
+    },
+    "hash_candidates": 1175,
+    "candidate_pairs": 10,
+    "cross_split_candidate_pairs": 4,
+    "strong_cross_split_pairs": 2,
+    "status": "SCREENING_COMPLETE_MANUAL_REVIEW_REQUIRED",
+    "limits": "Perceptual similarity is a candidate signal. Different viewpoints, crops, exposure changes and sequences may be missed. Filename adjacency does not prove a sequence. Do not infer a leakage-free split, automatically deduplicate or change membership from this report."
+  },
+  "visually_reviewed_candidate_pairs": 10,
+  "known_scene_groups": 7,
+  "known_group_images": 16,
+  "exact_duplicate_annotation_conflicts": 1,
+  "training_history_recovered": [
+    {
+      "model": "baseline_best.pt",
+      "sha256": "b11873df6fe5d69e62612e6261d65598f3e5140a91f8c6a874941eca21e0c1ba",
+      "epoch_field": 21,
+      "saved_history_rows": 22
+    },
+    {
+      "model": "compare_yolo11s_best.pt",
+      "sha256": "cd6954c0d0e8f37fdc9f9dce91a1ec247632112ff8745bd5194f6ba9987c89a5",
+      "epoch_field": -1,
+      "saved_history_rows": 25
+    }
+  ],
+  "full_evaluations": {
+    "n_val": {
+      "images": 1581,
+      "overall": {
+        "precision": 0.46729185792907685,
+        "recall": 0.280606468879473,
+        "map50": 0.22311671644642972,
+        "map50_95": 0.08307415987626691,
+        "support": 1261
+      },
+      "per_class": [
+        {
+          "class_id": 0,
+          "class_name": "D00",
+          "support": 352,
+          "precision": 0.3074408559035878,
+          "recall": 0.22448246602948302,
+          "ap50": 0.17847409437225709,
+          "ap50_95": 0.06913978909619893
+        },
+        {
+          "class_id": 1,
+          "class_name": "D10",
+          "support": 64,
+          "precision": 0.9814749192811331,
+          "recall": 0.03125,
+          "ap50": 0.1140241688534747,
+          "ap50_95": 0.03138534240936465
+        },
+        {
+          "class_id": 2,
+          "class_name": "D20",
+          "support": 327,
+          "precision": 0.30209978390822856,
+          "recall": 0.5535168195718655,
+          "ap50": 0.3774922074989704,
+          "ap50_95": 0.1490496244622604
+        },
+        {
+          "class_id": 3,
+          "class_name": "D40",
+          "support": 518,
+          "precision": 0.2781518726233581,
+          "recall": 0.3131765899165435,
+          "ap50": 0.22247639506101663,
+          "ap50_95": 0.0827218835372437
+        }
+      ],
+      "model_sha256": "b11873df6fe5d69e62612e6261d65598f3e5140a91f8c6a874941eca21e0c1ba",
+      "parameters": {
+        "device": "cpu",
+        "batch": 8,
+        "imgsz": 640,
+        "candidate_conf": 0.001,
+        "nms_iou": 0.7,
+        "rect": false,
+        "max_det": 300,
+        "augment": false,
+        "half": false,
+        "agnostic_nms": false
+      }
+    },
+    "n_source_test": {
+      "images": 1579,
+      "overall": {
+        "precision": 0.2880921660787368,
+        "recall": 0.27083771424590053,
+        "map50": 0.20872710842583128,
+        "map50_95": 0.07911952333915062,
+        "support": 1309
+      },
+      "per_class": [
+        {
+          "class_id": 0,
+          "class_name": "D00",
+          "support": 377,
+          "precision": 0.32339846116168136,
+          "recall": 0.21485411140583555,
+          "ap50": 0.20526658704844197,
+          "ap50_95": 0.07773305995778898
+        },
+        {
+          "class_id": 1,
+          "class_name": "D10",
+          "support": 68,
+          "precision": 0.2659367002682082,
+          "recall": 0.014705882352941176,
+          "ap50": 0.046049722580264484,
+          "ap50_95": 0.015063022987945393
+        },
+        {
+          "class_id": 2,
+          "class_name": "D20",
+          "support": 318,
+          "precision": 0.2677396331037077,
+          "recall": 0.5314465408805031,
+          "ap50": 0.3790010891265991,
+          "ap50_95": 0.14733894321798585
+        },
+        {
+          "class_id": 3,
+          "class_name": "D40",
+          "support": 546,
+          "precision": 0.29529386978134986,
+          "recall": 0.32234432234432236,
+          "ap50": 0.20459103494801967,
+          "ap50_95": 0.07634306719288227
+        }
+      ],
+      "model_sha256": "b11873df6fe5d69e62612e6261d65598f3e5140a91f8c6a874941eca21e0c1ba",
+      "parameters": {
+        "device": "cpu",
+        "batch": 8,
+        "imgsz": 640,
+        "candidate_conf": 0.001,
+        "nms_iou": 0.7,
+        "rect": false,
+        "max_det": 300,
+        "augment": false,
+        "half": false,
+        "agnostic_nms": false
+      }
+    },
+    "n_country_test": {
+      "images": 4805,
+      "overall": {
+        "precision": 0.1529444083640214,
+        "recall": 0.15030129098542108,
+        "map50": 0.08113252343312218,
+        "map50_95": 0.029814446719674426,
+        "support": 11014
+      },
+      "per_class": [
+        {
+          "class_id": 0,
+          "class_name": "D00",
+          "support": 6750,
+          "precision": 0.2921275451786029,
+          "recall": 0.272,
+          "ap50": 0.19759436033899724,
+          "ap50_95": 0.07375936370211131
+        },
+        {
+          "class_id": 1,
+          "class_name": "D10",
+          "support": 3295,
+          "precision": 0.21754675264363274,
+          "recall": 0.0039453717754172985,
+          "ap50": 0.06204399021071859,
+          "ap50_95": 0.016698557073269702
+        },
+        {
+          "class_id": 2,
+          "class_name": "D20",
+          "support": 834,
+          "precision": 0.04639021675933,
+          "recall": 0.1474820143884892,
+          "ap50": 0.029760797024961344,
+          "ap50_95": 0.010603961560477122
+        },
+        {
+          "class_id": 3,
+          "class_name": "D40",
+          "support": 135,
+          "precision": 0.055713118874520046,
+          "recall": 0.17777777777777778,
+          "ap50": 0.0351309461578115,
+          "ap50_95": 0.018195904542839602
+        }
+      ],
+      "model_sha256": "b11873df6fe5d69e62612e6261d65598f3e5140a91f8c6a874941eca21e0c1ba",
+      "parameters": {
+        "device": "cpu",
+        "batch": 8,
+        "imgsz": 640,
+        "candidate_conf": 0.001,
+        "nms_iou": 0.7,
+        "rect": false,
+        "max_det": 300,
+        "augment": false,
+        "half": false,
+        "agnostic_nms": false
+      }
+    },
+    "s_val": {
+      "images": 1581,
+      "overall": {
+        "precision": 0.4737939580515787,
+        "recall": 0.32213890771803616,
+        "map50": 0.29363853506783566,
+        "map50_95": 0.11494748124479823,
+        "support": 1261
+      },
+      "per_class": [
+        {
+          "class_id": 0,
+          "class_name": "D00",
+          "support": 352,
+          "precision": 0.36026319162856557,
+          "recall": 0.26988636363636365,
+          "ap50": 0.24137220701763015,
+          "ap50_95": 0.09621047576275137
+        },
+        {
+          "class_id": 1,
+          "class_name": "D10",
+          "support": 64,
+          "precision": 0.8166671604304898,
+          "recall": 0.03125,
+          "ap50": 0.14505253491189077,
+          "ap50_95": 0.04361043650212131
+        },
+        {
+          "class_id": 2,
+          "class_name": "D20",
+          "support": 327,
+          "precision": 0.39511255485912966,
+          "recall": 0.599388379204893,
+          "ap50": 0.486786867127849,
+          "ap50_95": 0.21043971964947658
+        },
+        {
+          "class_id": 3,
+          "class_name": "D40",
+          "support": 518,
+          "precision": 0.32313292528812987,
+          "recall": 0.38803088803088803,
+          "ap50": 0.3013425312139728,
+          "ap50_95": 0.10952929306484364
+        }
+      ],
+      "model_sha256": "cd6954c0d0e8f37fdc9f9dce91a1ec247632112ff8745bd5194f6ba9987c89a5",
+      "parameters": {
+        "device": "cpu",
+        "batch": 8,
+        "imgsz": 640,
+        "candidate_conf": 0.001,
+        "nms_iou": 0.7,
+        "rect": false,
+        "max_det": 300,
+        "augment": false,
+        "half": false,
+        "agnostic_nms": false
+      }
+    },
+    "s_source_test": {
+      "images": 1579,
+      "overall": {
+        "precision": 0.43244334496245274,
+        "recall": 0.33514452557776997,
+        "map50": 0.2855235256534844,
+        "map50_95": 0.11166037388625352,
+        "support": 1309
+      },
+      "per_class": [
+        {
+          "class_id": 0,
+          "class_name": "D00",
+          "support": 377,
+          "precision": 0.34865229036157164,
+          "recall": 0.3076923076923077,
+          "ap50": 0.24162254373170078,
+          "ap50_95": 0.09647421531130898
+        },
+        {
+          "class_id": 1,
+          "class_name": "D10",
+          "support": 68,
+          "precision": 0.6988853770074692,
+          "recall": 0.03509741947190633,
+          "ap50": 0.12436977907733078,
+          "ap50_95": 0.03496139958213053
+        },
+        {
+          "class_id": 2,
+          "class_name": "D20",
+          "support": 318,
+          "precision": 0.35459179855421485,
+          "recall": 0.5911949685534591,
+          "ap50": 0.4852343175171046,
+          "ap50_95": 0.1999236665344286
+        },
+        {
+          "class_id": 3,
+          "class_name": "D40",
+          "support": 546,
+          "precision": 0.32764391392655534,
+          "recall": 0.4065934065934066,
+          "ap50": 0.29086746228780125,
+          "ap50_95": 0.1152822141171459
+        }
+      ],
+      "model_sha256": "cd6954c0d0e8f37fdc9f9dce91a1ec247632112ff8745bd5194f6ba9987c89a5",
+      "parameters": {
+        "device": "cpu",
+        "batch": 8,
+        "imgsz": 640,
+        "candidate_conf": 0.001,
+        "nms_iou": 0.7,
+        "rect": false,
+        "max_det": 300,
+        "augment": false,
+        "half": false,
+        "agnostic_nms": false
+      }
+    },
+    "s_country_test": {
+      "images": 4805,
+      "overall": {
+        "precision": 0.18361298045028032,
+        "recall": 0.1622406259364985,
+        "map50": 0.09050951469016678,
+        "map50_95": 0.033578991321539596,
+        "support": 11014
+      },
+      "per_class": [
+        {
+          "class_id": 0,
+          "class_name": "D00",
+          "support": 6750,
+          "precision": 0.223301890171904,
+          "recall": 0.294962962962963,
+          "ap50": 0.17499408464796645,
+          "ap50_95": 0.06304105018560298
+        },
+        {
+          "class_id": 1,
+          "class_name": "D10",
+          "support": 3295,
+          "precision": 0.28055535238307294,
+          "recall": 0.003906282056678724,
+          "ap50": 0.06291263617019337,
+          "ap50_95": 0.01714201845595247
+        },
+        {
+          "class_id": 2,
+          "class_name": "D20",
+          "support": 834,
+          "precision": 0.18294905096781947,
+          "recall": 0.14268585131894485,
+          "ap50": 0.10182978242828303,
+          "ap50_95": 0.044917770267593166
+        },
+        {
+          "class_id": 3,
+          "class_name": "D40",
+          "support": 135,
+          "precision": 0.04764562827832489,
+          "recall": 0.2074074074074074,
+          "ap50": 0.022301555514224233,
+          "ap50_95": 0.009215126377009757
+        }
+      ],
+      "model_sha256": "cd6954c0d0e8f37fdc9f9dce91a1ec247632112ff8745bd5194f6ba9987c89a5",
+      "parameters": {
+        "device": "cpu",
+        "batch": 8,
+        "imgsz": 640,
+        "candidate_conf": 0.001,
+        "nms_iou": 0.7,
+        "rect": false,
+        "max_det": 300,
+        "augment": false,
+        "half": false,
+        "agnostic_nms": false
+      }
+    }
+  },
+  "historical_padding_comparison": [
+    {
+      "model": "n",
+      "old_report_map50": 0.2169,
+      "current_square_map50": 0.20872710842583128,
+      "historical_rect_map50": 0.21690244283847038,
+      "historical_rounded_match": true
+    },
+    {
+      "model": "s",
+      "old_report_map50": 0.2846,
+      "current_square_map50": 0.2855235256534844,
+      "historical_rect_map50": 0.28463901422819715,
+      "historical_rounded_match": true
+    }
+  ],
+  "thresholds": {
+    "baseline_best.pt": 0.1,
+    "compare_yolo11s_best.pt": 0.1
+  },
+  "fixed_threshold_summary": [
+    {
+      "domain": "source",
+      "model": "n",
+      "setting": "default_025",
+      "confidence": 0.25,
+      "images": 1579,
+      "TP": 209,
+      "FP": 210,
+      "FN": 1100,
+      "precision": 0.4988066825775656,
+      "recall": 0.15966386554621848,
+      "f1": 0.24189814814814814,
+      "macro_f1": 0.1849448058717204,
+      "background_false_alarm_image_rate": 0.03463203463203463,
+      "map50": 0.20872710842583128,
+      "map50_95": 0.07911952333915062
+    },
+    {
+      "domain": "source",
+      "model": "n",
+      "setting": "validation_selected",
+      "confidence": 0.1,
+      "images": 1579,
+      "TP": 484,
+      "FP": 1420,
+      "FN": 825,
+      "precision": 0.2542016806722689,
+      "recall": 0.3697478991596639,
+      "f1": 0.30127606598194834,
+      "macro_f1": 0.2369225664996226,
+      "background_false_alarm_image_rate": 0.18722943722943722,
+      "map50": 0.20872710842583128,
+      "map50_95": 0.07911952333915062
+    },
+    {
+      "domain": "source",
+      "model": "s",
+      "setting": "default_025",
+      "confidence": 0.25,
+      "images": 1579,
+      "TP": 296,
+      "FP": 250,
+      "FN": 1013,
+      "precision": 0.5421245421245421,
+      "recall": 0.2261268143621085,
+      "f1": 0.31913746630727763,
+      "macro_f1": 0.2449715195688124,
+      "background_false_alarm_image_rate": 0.04004329004329004,
+      "map50": 0.2855235256534844,
+      "map50_95": 0.11166037388625352
+    },
+    {
+      "domain": "source",
+      "model": "s",
+      "setting": "validation_selected",
+      "confidence": 0.1,
+      "images": 1579,
+      "TP": 585,
+      "FP": 1389,
+      "FN": 724,
+      "precision": 0.29635258358662614,
+      "recall": 0.44690603514132926,
+      "f1": 0.3563813585135547,
+      "macro_f1": 0.29309356085233346,
+      "background_false_alarm_image_rate": 0.1341991341991342,
+      "map50": 0.2855235256534844,
+      "map50_95": 0.11166037388625352
+    },
+    {
+      "domain": "US",
+      "model": "n",
+      "setting": "default_025",
+      "confidence": 0.25,
+      "images": 4805,
+      "TP": 291,
+      "FP": 377,
+      "FN": 10723,
+      "precision": 0.4356287425149701,
+      "recall": 0.026420918830579263,
+      "f1": 0.049820236260914225,
+      "macro_f1": 0.04927378227932335,
+      "background_false_alarm_image_rate": null,
+      "map50": 0.08113252343312218,
+      "map50_95": 0.029814446719674426
+    },
+    {
+      "domain": "US",
+      "model": "n",
+      "setting": "validation_selected",
+      "confidence": 0.1,
+      "images": 4805,
+      "TP": 1784,
+      "FP": 6035,
+      "FN": 9230,
+      "precision": 0.22816216907532932,
+      "recall": 0.16197566733248592,
+      "f1": 0.18945468061381618,
+      "macro_f1": 0.11158865355711184,
+      "background_false_alarm_image_rate": null,
+      "map50": 0.08113252343312218,
+      "map50_95": 0.029814446719674426
+    },
+    {
+      "domain": "US",
+      "model": "s",
+      "setting": "default_025",
+      "confidence": 0.25,
+      "images": 4805,
+      "TP": 293,
+      "FP": 266,
+      "FN": 10721,
+      "precision": 0.5241502683363148,
+      "recall": 0.026602505901579806,
+      "f1": 0.05063509893718137,
+      "macro_f1": 0.04601634621873829,
+      "background_false_alarm_image_rate": null,
+      "map50": 0.09050951469016678,
+      "map50_95": 0.033578991321539596
+    },
+    {
+      "domain": "US",
+      "model": "s",
+      "setting": "validation_selected",
+      "confidence": 0.1,
+      "images": 4805,
+      "TP": 1500,
+      "FP": 3949,
+      "FN": 9514,
+      "precision": 0.27527986786566344,
+      "recall": 0.13619030325040857,
+      "f1": 0.18222681163821905,
+      "macro_f1": 0.11937757547212055,
+      "background_false_alarm_image_rate": null,
+      "map50": 0.09050951469016678,
+      "map50_95": 0.033578991321539596
+    }
+  ],
+  "runtime_verification": {
+    "automated_tests_passed": 22,
+    "test_log_sha256": "ce9dee2bca6406a8c37e737f61d144a6823e9f0aa2fec2a0b2f17dad15c0e94f",
+    "video_frames": 12,
+    "video_fps": 3.0,
+    "prediction_and_demo_padding": "rect=False",
+    "benchmark_models": 2,
+    "benchmark_runs_per_model": 60,
+    "benchmark_warmup_per_model": 5,
+    "benchmark_input_images": 60,
+    "benchmark_concurrent_evaluations": false,
+    "cross_computer_validation": "DEFERRED_BY_USER",
+    "new_training": false
+  },
+  "training_performed": false,
+  "new_split_training_required": true,
+  "limits": [
+    "Observed original splits; similar static scenes cross sets.",
+    "Old training budgets differ.",
+    "Candidate threshold raises false alarms.",
+    "No model-training improvement claimed.",
+    "No actual dashcam video or web/cross-computer acceptance performed."
+  ]
+}
