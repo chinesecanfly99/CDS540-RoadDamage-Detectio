@@ -9,7 +9,7 @@
 本项目基于国际公路病害评测基准 **RDD2022**（包含捷克、印度与美国真实道路行车记录图像），构建了一套面向道路巡检场景的轻量化目标检测与人工复核辅助系统。
 
 针对巡检人员在多变自然光照、跨国家路面材质以及低对比度条件下的排查需求，项目重点探讨：
-1. **模型轻量化与规模权衡**：计划统一协议比较 YOLO11n 与 YOLO11s 的精度（mAP50、mAP50-95）、推理延迟与资源开销；旧实际训练协议尚待核对。
+1. **模型轻量化与规模权衡**：计划统一协议比较 YOLO11n 与 YOLO11s 的精度（mAP50、mAP50-95）、推理延迟与资源开销；已有权重的实际训练预算不同，正式比较需统一条件重训。
 2. **跨域泛化性（Domain Shift）**：以捷克和印度为源域训练，评估模型在美国公路留出数据上的泛化表现与性能衰减边界。
 3. **可解释的人工复核决策规则**：结合预设的类别复核权重（如 D40 坑洞重点监控）、检测置信度与几何特征，输出透明、可追踪的复核优先级建议。
 4. **跨平台轻量交互演示 (Demo)**：已支持离线单图与媒体处理和 JSON 导出；上传网页和真实车载视频验收仍待实现。
@@ -31,7 +31,7 @@
 ├── docs/                 # 项目文档与官方指引
 │   ├── course_info/      # 课程原始 PDF、评分标准、选题指南
 │   └── system_architecture.html # 端到端技术架构交互图
-├── models/               # 模型权重说明 (权重文件通过网盘共享)
+├── models/               # 两份已纳入 Git 的模型权重及校验说明
 │   └── README.md         # 权重哈希校验码 (SHA256) 与下载说明
 ├── planning/             # 【小组成员执行规划与审计】
 │   ├── README.md         # 审计规划总览
@@ -70,7 +70,7 @@
 │   └── generate_final_report_pdf.py# 报告与交付物编译脚本
 ├── env_check.txt         # 原始训练环境软硬件记录
 ├── requirements.txt      # 项目依赖列表 (已包含 ultralytics, gradio)
-└── .gitignore            # 忽略虚拟环境、大图像、权重及大视频
+└── .gitignore            # 忽略环境、数据和输出；保留两份指定权重
 ```
 
 ---
@@ -104,7 +104,7 @@ pip install -r requirements.txt
 
 ### 2. 准备模型权重
 
-从小组成员共享网盘或 Release 中获取 `baseline_best.pt` (YOLO11n) 和 `compare_yolo11s_best.pt` (YOLO11s)，放入 `models/` 目录。
+两份已有权重 `models/baseline_best.pt` (YOLO11n) 和 `models/compare_yolo11s_best.pt` (YOLO11s) 已直接纳入 `main`。新克隆或更新到包含 `76c155b` 的版本即可获得，无需另找网盘链接；如果使用历史代码压缩包，请重新获取当前仓库。
 校验 SHA256 确保完整性（详见 [models/README.md](models/README.md)）。
 
 ---
@@ -122,6 +122,15 @@ python scripts/predict_image.py --source "path/to/road.jpg" --output ".local/sin
 最新问题核查、已修复项和后续工作见 [planning/11_全量复核与继续实施.md](planning/11_全量复核与继续实施.md)。
 
 2026-10-16 的本机 CPU 运行记录见 [docs/LOCAL_RUNTIME.md](docs/LOCAL_RUNTIME.md)。
+
+两个模型可分别检测同一张图，无需二选一。示例命令（替换实际图片路径，使用未存在的输出目录）：
+
+```bash
+python scripts/predict_image.py --source "path/to/road.jpg" --model models/baseline_best.pt --output .local/compare-n-01 --device cpu
+python scripts/predict_image.py --source "path/to/road.jpg" --model models/compare_yolo11s_best.pt --output .local/compare-s-01 --device cpu
+```
+
+这是依次运行两个模型并保存各自结果；双模型网页对比与预测融合尚未实现。
 
 ---
 
@@ -155,7 +164,7 @@ python demo/demo.py --source "path/to/images-or-video" --output ".local/demo.mp4
    ```text
    [模块代号] 简要说明变更内容 (如: [B-Data] 修正 voc_to_yolo.py 路径解析并生成 data v1 清单)
    ```
-4. **禁止上传大文件**：大图、原始 ZIP、`.pt` 模型权重、`.mp4` 大视频严禁直接 commit 到仓库，请利用 `data/manifests/` 或网盘链接共享。
+4. **数据与产物管理**：两份指定已有权重已纳入仓库；其他训练 checkpoint、原始 ZIP、大批图片、运行环境和大视频继续通过共享存储分发，不随普通提交上传。不要覆盖已有权重来代替新实验版本。
 
 ---
 
