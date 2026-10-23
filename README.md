@@ -12,7 +12,7 @@
 1. **模型轻量化与规模权衡**：计划统一协议比较 YOLO11n 与 YOLO11s 的精度（mAP50、mAP50-95）、推理延迟与资源开销；已有权重的实际训练预算不同，正式比较需统一条件重训。
 2. **跨域泛化性（Domain Shift）**：以捷克和印度为源域训练，评估模型在美国公路留出数据上的泛化表现与性能衰减边界。
 3. **可解释的人工复核决策规则**：结合预设的类别复核权重（如 D40 坑洞重点监控）、检测置信度与几何特征，输出透明、可追踪的复核优先级建议。
-4. **跨平台轻量交互演示 (Demo)**：已支持离线单图与媒体处理和 JSON 导出；上传网页和真实车载视频验收仍待实现。
+4. **跨平台轻量交互演示 (Demo)**：已支持离线单图与媒体处理、图片上传网页及 JSON 导出；真实车载视频验收仍待实现。
 
 ---
 
@@ -136,13 +136,19 @@ python scripts/predict_image.py --source "path/to/road.jpg" --model models/compa
 
 ### 4. 运行人工复核 Demo
 
+图片上传网页现可在项目根目录下运行 `python demo/web_app.py`，在 `http://127.0.0.1:7860` 上传原始道路图片，选择 n/s 模型、阈值和 CPU/CUDA:0，查看叠框图、复核建议并导出 JSON。完整参数见 [demo/README.md](demo/README.md)。
+
 ```bash
+# 启动 Gradio 交互式网页
+python demo/web_app.py
+
+# 离线批量图片或短视频生成
 python demo/demo.py --source "path/to/images-or-video" --output ".local/demo.mp4" --device cpu --max-frames 120
 ```
 
 将 `path/to/images-or-video` 替换为实际图片目录或短视频路径。图片目录生成的是图片序列演示；真实视频默认沿用源 FPS。不同尺寸图片会统一到首帧尺寸，并在 JSON 中记录。可用 `--fps` 修改输出播放速度，输出文件已存在时会提示更换名称。
 
-当前入口是离线脚本，不包含上传网页。完整数据训练与指标复现仍按 `planning/` 的阶段文档推进。
+除 `demo/demo.py` 外，媒体演示、训练指标复现与真实视频验收仍按 `planning/` 的阶段文档推进。
 
 ---
 
