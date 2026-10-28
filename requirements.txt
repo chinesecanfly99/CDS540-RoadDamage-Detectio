@@ -1,26 +1,2 @@
-# CDS540 Road Damage Detection Dependencies
-
-# Core Deep Learning & Computer Vision
-torch>=2.1.0
-torchvision>=0.16.0
-ultralytics>=8.3.0
-opencv-python>=4.8.0
-
-# Scientific Computing & Data Processing
-numpy>=1.24.0
-pandas>=2.0.0
-scipy>=1.10.0
-scikit-learn>=1.3.0
-matplotlib>=3.7.0
-pillow>=9.5.0
-PyYAML>=6.0
-tqdm>=4.65.0
-lxml>=4.9.0
-
-# Web UI & Human Review Demo (Stage 06)
-gradio>=4.0.0
-
-# Document & Report Generation (Optional for Report Compilation)
-reportlab>=3.6.0
-python-pptx>=0.6.21
-pypdf>=3.0.0
+# Minimal runtime. Install optional analysis/report dependencies only when needed.
+-r requirements/runtime.txt

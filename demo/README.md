@@ -2,18 +2,17 @@
 
 ## 图片上传网页
 
-从项目根目录运行。先在 VS Code 中选择安装了 PyTorch、Ultralytics、OpenCV、Pandas 和 Gradio 的 Python 解释器；Windows 可用 `Python: Select Interpreter`。确认当前终端与所选解释器一致：
+首次执行 `python scripts/setup_runtime.py --backend cpu`，需要 NVIDIA GPU 时选 `--backend cuda118`。
+以后从根目录运行 `python run_demo.py` 或双击 `start_demo.cmd`。
+PyCharm 运行根目录 `run_demo.py`；直接运行 `demo/web_app.py` 也会使用已选项目环境。
 
-```powershell
-python -c "import sys, torch, ultralytics, gradio, cv2; print(sys.executable); print(torch.__version__, torch.cuda.is_available())"
-python demo/web_app.py
-```
+功能包括单模型检测、双模型并排对比、按国家/类别筛选的本机样例和原始标注参考。
+阈值、设备为两模型共用，结果可下载 JSON。两模型依次推理，不做融合；已有权重训练预算不同。
+无检出不表示道路完好，复核优先级不代表实际严重程度。首次调用耗时不能作为稳定速度排名。
 
-若 pip 报清华镜像 SSL 错误，可显式使用 `python -m pip install -i https://pypi.org/simple -r requirements.txt`。此电脑测试时需要绕过系统代理访问本机地址，网页入口已为 `127.0.0.1` 和 `localhost` 设置代理例外。
-
-浏览器打开 `http://127.0.0.1:7860`。上传一张**未经叠框的原始道路图片**，选 YOLO11n 或 YOLO11s、阈值和 CPU/CUDA:0，点击“开始检测”。页面返回叠框图、复核优先级、完整 JSON 和可下载的 JSON。程序只监听本机，不生成公开分享链接。可用 `--port 7861` 更改端口，按 `Ctrl+C` 停止。
-
-两份项目权重必须位于 `models/`。默认阈值 0.25；0.10 是偏向召回的实验候选，会增加误报。网页中的优先级来自项目启发式规则，不表示道路完好与否、实际损坏严重程度或维修时限。首次点击包括模型加载，耗时不能当作稳定运行帧率。
+本机端口、设备在 `.local/demo.json` 配置；端口占用默认自动顺延。
+网页仅监听本机。导出目录授权已经覆盖从 `demo/` 工作目录启动的情形，避免 JSON 下载路径错误。
+完整安装、60 张样例生成和操作步骤见 [演示指南](../docs/DEMO_GUIDE.md)。
 
 ## 命令行单图对照
 

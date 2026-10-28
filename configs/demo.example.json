@@ -1,0 +1,5 @@
+{
+  "port": 7860,
+  "auto_port": true,
+  "device": "auto"
+}

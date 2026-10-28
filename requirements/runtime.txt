@@ -1,0 +1,11 @@
+# Install a matching torch/torchvision pair first; setup_runtime.py selects the backend.
+torch==2.7.1
+torchvision==0.22.1
+ultralytics==8.4.177
+gradio==6.30.0
+numpy>=1.26,<3
+opencv-python>=4.8,<6
+pandas>=2.0,<3
+Pillow>=10,<13
+PyYAML>=6,<7
+psutil>=6,<8

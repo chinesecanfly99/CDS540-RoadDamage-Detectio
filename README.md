@@ -19,7 +19,10 @@
 ## 📂 仓库目录结构 (Directory Layout)
 
 ```text
-├── configs/              # YOLO 数据集与跨域评估配置文件
+├── run_demo.py           # 统一启动，使用安装器选定的项目环境
+├── start_demo.cmd / .sh  # 本机启动入口
+├── requirements/        # 演示、CPU/CUDA、分析与报告依赖
+├── configs/              # YOLO 数据集、跨域评估与本机配置示例
 │   ├── data.yaml         # 源域 (捷克+印度) 训练/验证/测试集配置
 │   └── data_domain_test.yaml # 美国跨域留出测试配置
 ├── data/                 # 数据集规范与划分依据
@@ -27,8 +30,12 @@
 │   └── README.md         # 原始数据获取与目录层级规范
 ├── demo/                 # 离线与交互演示程序
 │   ├── demo.py           # 视频/图像序列推理及 HUD 叠框导出
+│   ├── web_app.py        # 单图、双模型对比、样例交互页面
+│   ├── inference.py      # 推理与导出服务（按模型/设备隔离缓存）
+│   ├── cases.py          # 本机样例库与原标注参考
 │   └── README.md         # 演示使用说明
 ├── docs/                 # 项目文档与官方指引
+│   ├── DEMO_GUIDE.md     # 安装、使用与 AI 交接
 │   ├── course_info/      # 课程原始 PDF、评分标准、选题指南
 │   └── system_architecture.html # 端到端技术架构交互图
 ├── models/               # 两份已纳入 Git 的模型权重及校验说明
@@ -61,6 +68,9 @@
 │   ├── runtime/          # 运行时延迟测量日志
 │   └── *.csv             # 模型对比、跨域及鲁棒性指标汇总
 ├── scripts/              # 全流程核心 Python 脚本
+│   ├── setup_runtime.py / check_environment.py # 安装和原生算子检查
+│   ├── demo_runtime.py / runtime_bootstrap.py   # 端口、设备、解释器
+│   ├── prepare_demo_samples.py / evaluate_demo_cases.py # 样例与逐图回归
 │   ├── voc_to_yolo.py    # XML 标注清洗与 YOLO 格式构建
 │   ├── train_and_compare_models.py # 旧对比训练入口（需统一预算）
 │   ├── evaluate_baseline.py        # 基线评估
@@ -77,28 +87,28 @@
 
 ## 🚀 快速上手 (Quick Start)
 
-### 1. 环境安装
+### 1. 环境安装与网页启动
 
-推荐使用 Python 3.10 或 3.11 创建独立虚拟环境：
+推荐 Python 3.11，在项目根目录执行：
 
 ```bash
-# 1. 创建并激活虚拟环境
-python -m venv .venv
+# 通用安装（CPU；Apple Silicon 也使用此入口）
+python scripts/setup_runtime.py --backend cpu
 
-# Windows (PowerShell)
-.venv\Scripts\Activate.ps1
+# 有兼容 NVIDIA 显卡的 Windows / Linux 电脑可改用：
+# python scripts/setup_runtime.py --backend cuda118
 
-# macOS / Linux
-source .venv/bin/activate
-
-# 2. 安装项目依赖
-pip install --upgrade pip
-pip install -r requirements.txt
+python run_demo.py
 ```
 
-> **跨平台加速说明**：
-> - **Windows (NVIDIA GPU)**：若需使用 CUDA，请确保按 [PyTorch 官网](https://pytorch.org/) 安装与本机驱动匹配的 CUDA 版 PyTorch。若无 GPU，本地演示入口默认使用 CPU；确认 CUDA 可用后可显式传入 `--device 0`。
-> - **macOS (Apple Silicon)**：支持 MPS 加速后端，可在兼容环境中显式传入 `--device mps`；先用 `--device cpu` 验证基本运行，无需安装 CUDA。
+以后 Windows 可双击 `start_demo.cmd`；PyCharm 右键根目录 `run_demo.py`。
+安装器会记录选定环境，页面自动选择可用设备。端口在本机 `.local/demo.json` 修改，
+默认占用时自动顺延，控制台显示实际地址。旧环境混入全局包时，用 `--env .local/runtime-cpu` 新建。
+
+网页现支持单模型检测、同图双模型并排对比、按国家/类别筛选样例、原始标注参考与 JSON 下载。
+从三个国家 ZIP 可生成 60 张分层演示样例；程序运行不要求先训练。
+完整的安装、样例准备、端口和 AI 交接见 [docs/DEMO_GUIDE.md](docs/DEMO_GUIDE.md)。
+最小依赖与分析、报告依赖已分开；后两项按需安装，见该指南。
 
 ---
 
