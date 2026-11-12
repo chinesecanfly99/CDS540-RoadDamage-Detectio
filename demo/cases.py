@@ -4,6 +4,7 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw
 import numpy as np
+from demo.i18n import text
 
 ROOT = Path(__file__).resolve().parents[1]
 CASE_DIR = ROOT / '.local/demo_samples'
@@ -29,11 +30,22 @@ def filter_cases(cases, country='全部', category='全部'):
                                       else category in item['classes']))]
 
 
-def case_choices(cases):
-    return [(f"{item['id']} · {','.join(item['classes']) or '无四类目标标注'}", item['id']) for item in cases]
+def case_choices(cases, language='zh'):
+    return [(f"{item['id']} · {','.join(item['classes']) or text('无四类目标标注', language)}", item['id']) for item in cases]
 
 
-def load_case(case_id):
+def case_note(case_id, language='zh'):
+    if case_id is None:
+        return text('自选图片 · 当前没有关联原始标注。', language)
+    item = next((case for case in read_cases() if case['id'] == case_id), None)
+    if item is None:
+        return text('选择样例后可查看原始标注。', language)
+    return text('**{id}** · {country} · 原划分 `{split}` · 四类目标标注 {count} 个。\n\n'
+                '标注仅供个例核对；已知原数据标注仍有待复核项。此样例库经过分层挑选，不能据此推断总体精度。',
+                language, id=item['id'], country=item['country'], split=item['split'], count=len(item['targets']))
+
+
+def load_case(case_id, language='zh'):
     item = next((case for case in read_cases() if case['id'] == case_id), None)
     if item is None:
         raise ValueError('请先选择一个有效样例。')
@@ -46,7 +58,4 @@ def load_case(case_id):
             draw.rectangle(box, outline='#00d9ff', width=3)
             draw.text((box[0], max(0, box[1] - 13)), target['class_name'], fill='#00d9ff', stroke_width=1)
         original = np.array(image)
-    note = (f"**{item['id']}** · {item['country']} · 原划分 `{item['split']}` · "
-            f"四类目标标注 {len(item['targets'])} 个。\n\n"
-            '标注仅供个例核对；已知原数据标注仍有待复核项。此样例库经过分层挑选，不能据此推断总体精度。')
-    return original, np.array(overlay), note
+    return original, np.array(overlay), case_note(case_id, language)

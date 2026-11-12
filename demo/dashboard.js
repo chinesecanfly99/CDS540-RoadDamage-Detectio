@@ -1,4 +1,11 @@
-() => {
+async () => {
+  const {changeLocale} = await import(new URL('__GRADIO_I18N_MODULE__', document.baseURI).href);
+  window.roadReviewLocale = language => {
+    changeLocale(language === 'zh' ? 'zh-CN' : 'en');
+    document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
+    document.title = language === 'zh' ? '道路损伤检测与人工复核' : 'Road Damage Detection & Review';
+  };
+  // The app.load handler sets English after all lazy components have mounted.
   let drag = null;
   let pan = {x: 0, y: 0};
   function images() { return document.querySelectorAll('#comparison-n img, #comparison-s img'); }

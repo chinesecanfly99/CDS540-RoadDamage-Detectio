@@ -5,26 +5,32 @@ import cv2
 import numpy as np
 
 from demo.cases import CLASS_LABELS
+from demo.i18n import text
 from scripts.rdd_quality import box_iou
 
 CLASS_COLORS = {'D00': '#3b82f6', 'D10': '#06b6d4', 'D20': '#a855f7', 'D40': '#f97316'}
 PRIORITIES = {'HIGH': '优先复核', 'MEDIUM': '常规复核', 'LOW': '低优先级', 'NONE': '当前阈值无检出'}
 
 
-def empty_summary():
-    return '<div class="welcome"><span class="eyebrow">ROAD REVIEW / 道路巡检</span><h2>从一张道路图片开始</h2><p>上传图片或从案例库选择，运行后在这里查看检测统计与复核建议。</p><div class="steps"><span>01　选择图片</span><span>02　运行检测</span><span>03　对照复核</span></div></div>'
+def empty_summary(language='zh'):
+    t = lambda message: text(message, language)
+    steps = ''.join(f'<span>{t(step)}</span>' for step in ('01　选择图片', '02　运行检测', '03　对照复核'))
+    return (f'<div class="welcome"><span class="eyebrow">{t("ROAD REVIEW / 道路巡检")}</span>'
+            f'<h2>{t("从一张道路图片开始")}</h2><p>{t("上传图片或从案例库选择，运行后在这里查看检测统计与复核建议。")}</p>'
+            f'<div class="steps">{steps}</div></div>')
 
 
-def summary_cards(record):
+def summary_cards(record, language='zh'):
+    t = lambda message, **values: text(message, language, **values)
     if 'reports' in record:
         first, second = record['reports']
         cards = ''.join(
             f'<div class="metric" style="--accent:{CLASS_COLORS[code]}"><span>{code} · {label}</span>'
             f'<strong>{first["review"]["defect_summary"][code]} <em>/</em> {second["review"]["defect_summary"][code]}</strong><small>YOLO11n / YOLO11s</small></div>'
-            for code, label in CLASS_LABELS.items())
-        levels = ''.join(f'<span class="priority {report["review"]["priority_level"].lower()}">{name} · {PRIORITIES[report["review"]["priority_level"]]}</span>'
+            for code, label in ((code, t(label)) for code, label in CLASS_LABELS.items()))
+        levels = ''.join(f'<span class="priority {report["review"]["priority_level"].lower()}">{name} · {t(PRIORITIES[report["review"]["priority_level"]])}</span>'
                          for name, report in zip(('11n', '11s'), (first, second)))
-        return (f'<section class="result-summary"><div class="result-heading"><b>同图双模型统计</b>{levels}'
+        return (f'<section class="result-summary"><div class="result-heading"><b>{t("同图双模型统计")}</b>{levels}'
                 f'<span class="result-device">{escape(first["device"])} / {escape(second["device"])}</span></div><div class="metrics">{cards}</div></section>')
     reports = record.get('reports', [record])
     groups = []
@@ -33,11 +39,11 @@ def summary_cards(record):
         level = review['priority_level']
         cards = ''.join(
             f'<div class="metric" style="--accent:{CLASS_COLORS[code]}"><span>{code} · {label}</span><strong>{review["defect_summary"][code]}</strong></div>'
-            for code, label in CLASS_LABELS.items())
+            for code, label in ((code, t(label)) for code, label in CLASS_LABELS.items()))
         groups.append(
             f'<section class="result-summary"><div class="result-heading"><b>{escape(report["model"])}</b>'
-            f'<span class="priority {level.lower()}">{PRIORITIES[level]}</span>'
-            f'<span class="result-device">{escape(report["device"])} · {review["total_distress_count"]} 个检测框</span></div>'
+            f'<span class="priority {level.lower()}">{t(PRIORITIES[level])}</span>'
+            f'<span class="result-device">{escape(report["device"])} · {t("{count} 个检测框", count=review["total_distress_count"])}</span></div>'
             f'<div class="metrics">{cards}</div></section>')
     return ''.join(groups)
 
@@ -61,7 +67,7 @@ def render_boxes(image_rgb, report, categories=None):
     return canvas
 
 
-def compare_detections(record):
+def compare_detections(record, language='zh'):
     """Confidence-ordered same-class matching between models, not ground-truth scoring."""
     first, second = [report['review']['items'] for report in record['reports']]
     used = set()
@@ -79,4 +85,4 @@ def compare_detections(record):
             rows.append([item['class_code'], '仅 YOLO11n 检出', round(item['confidence'], 3), None, None])
     rows.extend([[item['class_code'], '仅 YOLO11s 检出', None, round(item['confidence'], 3), None]
                  for index, item in enumerate(second) if index not in used])
-    return rows
+    return [[row[0], text(row[1], language), *row[2:]] for row in rows]
