@@ -6,7 +6,9 @@
 以后从根目录运行 `python run_demo.py` 或双击 `start_demo.cmd`。
 PyCharm 运行根目录 `run_demo.py`；直接运行 `demo/web_app.py` 也会使用已选项目环境。
 
-功能包括单模型检测、双模型并排对比、按国家/类别筛选的本机样例和原始标注参考。
+页面分为检测工作台、实验分析和案例库。工作台左侧设置图片和参数，右侧显示彩色统计卡片和检测框；案例库按国家/类别筛选缩略图，点击即可载入；实验页展示仓库已记录的 v2 图表与条件。
+
+双模型支持同步缩放、拖动和逐框差异核对，原始标注可展开查看。
 阈值、设备为两模型共用，结果可下载 JSON。两模型依次推理，不做融合；已有权重训练预算不同。
 无检出不表示道路完好，复核优先级不代表实际严重程度。首次调用耗时不能作为稳定速度排名。
 
@@ -22,7 +24,7 @@ PyCharm 运行根目录 `run_demo.py`；直接运行 `demo/web_app.py` 也会使
 python scripts/predict_image.py --source "C:\path\road.jpg" --model models/baseline_best.pt --output .local/single-image-01 --device cpu --conf 0.25
 ```
 
-应生成 `prediction.jpg` 和 `prediction.json`。网页叠框图使用人工复核 HUD，因此画面样式与命令行输出不同；模型、阈值、NMS IoU、输入尺寸和检测类别应一致。
+应生成 `prediction.jpg` 和 `prediction.json`。网页使用类别彩色检测框，复核建议集中显示在统计卡片中；模型、阈值、NMS IoU、输入尺寸和检测类别应一致。
 
 ## 离线图片序列或视频
 
