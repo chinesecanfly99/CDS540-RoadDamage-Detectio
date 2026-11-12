@@ -6,3 +6,9 @@
 *.pt binary
 *.onnx binary
 *.zip binary
+
+# Keep the presentation media and checksummed support files byte-identical.
+submission/RoadInsight_Demo_EN.mp4 binary
+submission/RoadInsight_Demo_EN.srt -text
+submission/presentation_support/* -text
+submission/presentation_support/*.png binary

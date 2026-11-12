@@ -1,0 +1,29 @@
+{
+  "captured_date": "2026-11-12",
+  "project_commit": "0ee409691a97c0a327399a04262e263a07cd3c49",
+  "case_id": "Czech_001639",
+  "confidence_threshold": 0.25,
+  "nms_iou": 0.7,
+  "imgsz": 640,
+  "rect": false,
+  "source": "Actual application outputs after browser completion",
+  "original_jpeg_sha256": "bad5128ac7f367bad64ea9c545c567497ccf3473e3b2cedaa92b1d9d24e5cc03",
+  "outputs": [
+    {
+      "model": "YOLO11n",
+      "file": "Workspace_YOLO11n.png",
+      "width": 600,
+      "height": 600,
+      "D00_boxes": 1,
+      "sha256": "7c74c3cf036d7c2f8529bfe47d13eafd4eb02cf6fe646def83a7cf30958d9fa2"
+    },
+    {
+      "model": "YOLO11s",
+      "file": "Workspace_YOLO11s.png",
+      "width": 600,
+      "height": 600,
+      "D00_boxes": 1,
+      "sha256": "3026f1e5447b1de21df1e381c829d213963d83a41611e0700d5b0504b202cb21"
+    }
+  ]
+}

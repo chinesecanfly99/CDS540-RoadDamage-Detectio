@@ -18,6 +18,16 @@
 
 ---
 
+## 英文答辩 PPT 与字幕演示（2026-11-12）
+
+原答辩 PPT 已在 [同一路径](submission/CDS540_Final_Presentation_Deck.pptx) 更新为 **21 页英文版**。结构按“选题原因 → 设计目标与原理 → 总流程 → 功能关联 → 各步骤的方法、数据与实际结果 → 验收与结论”组织，正文统一浅蓝紫背景，含 7 个可编辑图表；不再单列 Questions 过渡页或附录页组。
+
+[85 秒英文字幕演示](submission/RoadInsight_Demo_EN.mp4)、[SRT 字幕](submission/RoadInsight_Demo_EN.srt)、[讲稿与交接说明](submission/presentation_support/README.md) 已随 PPT 提供。PPT 和视频应下载到同一目录，第 19 页可打开视频。正式演示前仍需在答辩电脑上试播。
+
+演示界面对应 [工作台 PR #4](https://github.com/pico0v0/CDS540-RoadDamage-Detectio/pull/4)，运行该分支或包含其改动的 main 才会得到相同界面。本次演示材料更新没有修改应用代码、模型、数据划分或最终报告；Render 仍是待确认方案。
+
+---
+
 ## 🆕 最新进展：v2 技术升级（2026-11-12）
 
 提交 `4d2ccbf` 完成 C 档技术升级（C1–C5）并合并进正式交付物。**本次没有更换检测模型**，而是把原报告中列为 limitations 的四条 "future work" 变成有数据、有边界、也如实记录负结果的实证：
@@ -29,7 +39,7 @@
 | C3 | 美国域 few-shot 适应（`seed=42`，严格 holdout） | holdout mAP@50 `0.0863 → 0.1957`（100-shot）；但原域 `0.2845 → 0.1420`，出现灾难性遗忘与 D40 负迁移 |
 | C4 | ONNX / FP16 / INT8 导出与 CPU 数值一致性实测 | FP32 parity PASS（`0.0002 px`）；FP16 / INT8 FAIL（漏框、分数偏差）；Jetson / TensorRT 未实测 |
 
-**最终交付物（编译版已纳入本仓库）**：`submission/CDS540_Final_Project_Report.pdf`（7 页，课程上限 8 页）、`submission/CDS540_Final_Presentation_Deck.pptx`（20 页）、`submission/CDS540_Final_Project_Report.md`、`submission/defense_qa_guide.md`。
+**最终交付物（编译版已纳入本仓库）**：`submission/CDS540_Final_Project_Report.pdf`（7 页，课程上限 8 页）、`submission/CDS540_Final_Presentation_Deck.pptx`（21 页）、`submission/CDS540_Final_Project_Report.md`、`submission/defense_qa_guide.md`。
 
 新代码、配置、清单与结果统一放在 `v2` 命名空间：`scripts/*_v2.py`、`configs/v2/`、`data/manifests/v2/`、`results/v2/`（含 11–14 号 300 DPI 主图）。旧文件只增不改，旧权重与新实验指标不混排；训练权重与 ONNX 导出因体积限制仍走共享存储。完整变更见 [CHANGELOG_C.md](CHANGELOG_C.md)，口径修订见 [submission/v2_candidates/discrepancy_log.md](submission/v2_candidates/discrepancy_log.md)。
 
@@ -99,7 +109,9 @@
 │   └── generate_final_report_pdf.py# 报告与交付物编译脚本
 ├── submission/           # 【最终交付物，以本目录为准】
 │   ├── CDS540_Final_Project_Report.pdf / .md  # 7 页正式报告（编译版 + 源文）
-│   ├── CDS540_Final_Presentation_Deck.pptx    # 20 页答辩 PPT
+│   ├── CDS540_Final_Presentation_Deck.pptx    # 21 页英文答辩 PPT
+│   ├── RoadInsight_Demo_EN.mp4 / .srt        # 85 秒英文字幕演示
+│   ├── presentation_support/                # 讲稿、来源、预览与交接
 │   ├── defense_qa_guide.md                   # 答辩 Q&A 口径
 │   └── v2_candidates/    # 候选补充章节与口径差异登记
 ├── configs/v2/           # few-shot / holdout 评测配置

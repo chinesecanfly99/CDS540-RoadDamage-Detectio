@@ -1,0 +1,101 @@
+{
+  "date": "2026-11-12",
+  "presentation": {
+    "slides": 21,
+    "native_charts": 7,
+    "main_slides": "1-21",
+    "main_timing_seconds_including_video": 855,
+    "body_background": "#EEF0FA",
+    "video_slide": 19,
+    "video_link": "external relative file: RoadInsight_Demo_EN.mp4",
+    "validation": "Artifact-tool render, package/layout/font/chart-workbook validation; not native PowerPoint playback",
+    "repository_path": "submission/CDS540_Final_Presentation_Deck.pptx"
+  },
+  "video": {
+    "duration_seconds": 85,
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "codec": "H.264",
+    "captions": "English burned-in plus SRT",
+    "audio": false,
+    "source": "Edited key views from actual local runs, not an uncut continuous recording"
+  },
+  "files": [
+    {
+      "name": "../CDS540_Final_Presentation_Deck.pptx",
+      "bytes": 7522900,
+      "sha256": "bae595e8bf9fa2cf94111619dd8cc1896c4d0baa6e1167a5a006461e7e6f5621"
+    },
+    {
+      "name": "Cover_RoadInsight_Concept.png",
+      "bytes": 3035420,
+      "sha256": "d8ace4af13c74608cf44cb368c270e9c47dc03e90774e508817f0fd062cb9c4d"
+    },
+    {
+      "name": "PPT_完整对比预览.png",
+      "bytes": 415434,
+      "sha256": "be82bd440ecc923bf3abdd45f204adeb7b04bb258d9e1264a1b9be3958842b20"
+    },
+    {
+      "name": "PPT_封面预览.png",
+      "bytes": 1890168,
+      "sha256": "f52481e7336958c06367cbc3c510fa823421bcd152b14e6bd821e16ac86bdcaa"
+    },
+    {
+      "name": "PPT_流程预览.png",
+      "bytes": 67689,
+      "sha256": "6c2dc57a611a0fef0d467fe7f39554e67af84dcf5c1d6396608cd1e1a742b985"
+    },
+    {
+      "name": "README.md",
+      "bytes": 2618,
+      "sha256": "cddab01c79babb465799934cd5a34af2efb0d10438c66e849c29cec497986671"
+    },
+    {
+      "name": "Render_在线演示_待确认.md",
+      "bytes": 2762,
+      "sha256": "35d2a085ce0a0e2d57f540beca4c1052c50b7581be929a65fc4bffc5c6d9f643"
+    },
+    {
+      "name": "Workspace_Output_Provenance.json",
+      "bytes": 839,
+      "sha256": "e3de3711a18536c604bc5e6a1ec0de378500f21abd9affee168e1bdf9ae133bb"
+    },
+    {
+      "name": "Workspace_YOLO11n.png",
+      "bytes": 469935,
+      "sha256": "7c74c3cf036d7c2f8529bfe47d13eafd4eb02cf6fe646def83a7cf30958d9fa2"
+    },
+    {
+      "name": "Workspace_YOLO11s.png",
+      "bytes": 469914,
+      "sha256": "3026f1e5447b1de21df1e381c829d213963d83a41611e0700d5b0504b202cb21"
+    },
+    {
+      "name": "先看这里_演示交接.md",
+      "bytes": 5019,
+      "sha256": "55d1cda1b6a14c2193c1ffa83a0a841e4fd14a335a489589118b10e8519bc2d0"
+    },
+    {
+      "name": "素材来源与封面提示词.md",
+      "bytes": 4659,
+      "sha256": "4d552a22a2f5b8e3149cb2b076079f559626ba9b67fe3920f4bbb6209b704362"
+    },
+    {
+      "name": "英文讲稿与分段.md",
+      "bytes": 10290,
+      "sha256": "5dcd34ea854966b325da4a0efdc3d08daca8a84113be7bea517bfbc0673eb5e4"
+    },
+    {
+      "name": "../RoadInsight_Demo_EN.mp4",
+      "bytes": 3143950,
+      "sha256": "ec254dbe54b87762357b38881651091f7beb34cc165bf0d0d870bee0ddee55f2"
+    },
+    {
+      "name": "../RoadInsight_Demo_EN.srt",
+      "bytes": 1856,
+      "sha256": "667000d1989f93677a28f1d1eb36dfee988953338cbea3452789b91863945f39"
+    }
+  ]
+}

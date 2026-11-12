@@ -1,0 +1,71 @@
+1
+00:00:00,000 --> 00:00:04,000
+Road Insight: road damage detection with human review.
+
+2
+00:00:04,000 --> 00:00:08,000
+Choose a source case and keep the shared confidence threshold fixed.
+
+3
+00:00:08,000 --> 00:00:14,000
+Compare the two predictions. Counts are evidence for review, not an accuracy score.
+
+4
+00:00:14,000 --> 00:00:19,000
+Check the predictions against the supplied annotation reference.
+
+5
+00:00:19,000 --> 00:00:23,000
+Send the same source image into the analysis lab.
+
+6
+00:00:23,000 --> 00:00:29,000
+Estimate area on an assumed road plane. The result is not a physical measurement.
+
+7
+00:00:29,000 --> 00:00:32,000
+At 3.5 m assumed width, the estimated area is 1.3771 m².
+
+8
+00:00:32,000 --> 00:00:36,000
+At 4 m, it becomes 1.5738 m². The review priority remains LOW.
+
+9
+00:00:36,000 --> 00:00:41,000
+Inspect P3, P4 and P5 responses from the current network run.
+
+10
+00:00:41,000 --> 00:00:46,000
+The chart summarizes current regions. Activation energy is not a class probability.
+
+11
+00:00:46,000 --> 00:00:50,000
+Change brightness while keeping the source image and other settings fixed.
+
+12
+00:00:50,000 --> 00:00:55,000
+Recompute the responses after changing the input. Previous results are cleared.
+
+13
+00:00:55,000 --> 00:01:01,000
+Run the same settings on 18 reference images: six from each country.
+
+14
+00:01:01,000 --> 00:01:06,000
+Select a country result to investigate that specific image and its missed boxes.
+
+15
+00:01:06,000 --> 00:01:12,000
+Measure both checkpoints on this computer after warmup.
+
+16
+00:01:12,000 --> 00:01:16,000
+Keep the JSON record with its settings, timings and image identity.
+
+17
+00:01:16,000 --> 00:01:20,000
+Browse original examples by country and annotated damage class.
+
+18
+00:01:20,000 --> 00:01:25,000
+Road Insight supports human review. Field readiness still needs independent validation.
