@@ -225,6 +225,7 @@ def run_analysis(
     sensitivity_rows: dict[float, list[dict[str, Any]]] = {lw: [] for lw in lane_widths}
     vp_attempts = {"ok": 0, "failed": 0, "reasons": {}}
     saved_cards: list[str] = []
+    cards_per_country: dict[str, int] = {}
 
     for row_idx, row in sampled.iterrows():
         img_rel = Path(str(row["image_path"]))
@@ -327,10 +328,11 @@ def run_analysis(
         )
 
         # Save >= 8 sample comparison cards across Czech and India
-        if len(saved_cards) < 8 and (row_idx < 4 or str(row["country"]) == "India" or "D40" in str(row["canonical_classes"])):
+        if len(saved_cards) < 8 and cards_per_country.get(str(row["country"]), 0) < 4:
             card_path = cards_dir / f"{len(saved_cards)+1:02d}_{image_id}_ipm.jpg"
             render_comparison_card(img_bgr, ipm_default, targets, image_id, card_path)
             saved_cards.append(str(card_path.relative_to(ROOT)))
+            cards_per_country[str(row["country"])] = cards_per_country.get(str(row["country"]), 0) + 1
 
     df_area = pd.DataFrame(gt_rows)
     df_area.to_csv(out_dir / "area_comparison.csv", index=False)

@@ -1,0 +1,697 @@
+{
+  "version": "diagnostic-cases-v1",
+  "source": "group-provided RDD2022 country ZIPs",
+  "selection": "6 per country, target-class coverage where available; diagnostic, not representative evaluation",
+  "source_splits_unchanged": true,
+  "cases": [
+    {
+      "id": "Czech_001639",
+      "country": "Czech",
+      "split": "test",
+      "classes": [
+        "D00"
+      ],
+      "targets": [
+        {
+          "class_name": "D00",
+          "xyxy": [
+            197.0,
+            434.0,
+            229.0,
+            501.0
+          ]
+        }
+      ],
+      "image_member": "Czech/train/images/Czech_001639.jpg",
+      "xml_member": "Czech/train/annotations/xmls/Czech_001639.xml",
+      "width": 600,
+      "height": 600,
+      "sha256": "bad5128ac7f367bad64ea9c545c567497ccf3473e3b2cedaa92b1d9d24e5cc03",
+      "image": "Czech_001639.jpg",
+      "annotation_sha256": "9d2114fb3d1c8a81fae28625b2f3d1092b799fe6521caf6394c6c7051a5d40bb"
+    },
+    {
+      "id": "Czech_002912",
+      "country": "Czech",
+      "split": "test",
+      "classes": [
+        "D00"
+      ],
+      "targets": [
+        {
+          "class_name": "D00",
+          "xyxy": [
+            11.0,
+            433.0,
+            129.0,
+            524.0
+          ]
+        },
+        {
+          "class_name": "D00",
+          "xyxy": [
+            227.0,
+            371.0,
+            246.0,
+            464.0
+          ]
+        }
+      ],
+      "image_member": "Czech/train/images/Czech_002912.jpg",
+      "xml_member": "Czech/train/annotations/xmls/Czech_002912.xml",
+      "width": 600,
+      "height": 600,
+      "sha256": "04c6671ac96d3c4917ceda00aee9d08c350ca2b8c6622fdacf2e2b7a911278fd",
+      "image": "Czech_002912.jpg",
+      "annotation_sha256": "b7e429ba930a4ae4c62cd099d5c5c946e63b0a2ca013a20aad63713952173cc1"
+    },
+    {
+      "id": "Czech_003223",
+      "country": "Czech",
+      "split": "test",
+      "classes": [
+        "D00",
+        "D10"
+      ],
+      "targets": [
+        {
+          "class_name": "D00",
+          "xyxy": [
+            399.0,
+            442.0,
+            538.0,
+            545.0
+          ]
+        },
+        {
+          "class_name": "D00",
+          "xyxy": [
+            262.0,
+            389.0,
+            306.0,
+            516.0
+          ]
+        },
+        {
+          "class_name": "D10",
+          "xyxy": [
+            202.0,
+            409.0,
+            362.0,
+            435.0
+          ]
+        }
+      ],
+      "image_member": "Czech/train/images/Czech_003223.jpg",
+      "xml_member": "Czech/train/annotations/xmls/Czech_003223.xml",
+      "width": 600,
+      "height": 600,
+      "sha256": "8e43b493aeeeca2c8b20b8ca62cb24a80a0b06c657726586242b3cd33d078128",
+      "image": "Czech_003223.jpg",
+      "annotation_sha256": "dfcd8f30137748b526c2b2c4d7ebd41dc190ea3079d0bd498fbaef3968692696"
+    },
+    {
+      "id": "Czech_001754",
+      "country": "Czech",
+      "split": "test",
+      "classes": [
+        "D00",
+        "D20"
+      ],
+      "targets": [
+        {
+          "class_name": "D20",
+          "xyxy": [
+            267.0,
+            411.0,
+            393.0,
+            520.0
+          ]
+        },
+        {
+          "class_name": "D00",
+          "xyxy": [
+            192.0,
+            467.0,
+            214.0,
+            511.0
+          ]
+        },
+        {
+          "class_name": "D20",
+          "xyxy": [
+            7.0,
+            413.0,
+            173.0,
+            516.0
+          ]
+        }
+      ],
+      "image_member": "Czech/train/images/Czech_001754.jpg",
+      "xml_member": "Czech/train/annotations/xmls/Czech_001754.xml",
+      "width": 600,
+      "height": 600,
+      "sha256": "ec8a43bc0669dfbf4e18cadac863374a784ebc593cbb719f9167006bbf1536df",
+      "image": "Czech_001754.jpg",
+      "annotation_sha256": "de947a0b1a9cf8484ccff7acb1f7079d0e0bf9521fcc4f4ba04440f32504641a"
+    },
+    {
+      "id": "Czech_000064",
+      "country": "Czech",
+      "split": "test",
+      "classes": [
+        "D40"
+      ],
+      "targets": [
+        {
+          "class_name": "D40",
+          "xyxy": [
+            81.0,
+            409.0,
+            134.0,
+            425.0
+          ]
+        }
+      ],
+      "image_member": "Czech/train/images/Czech_000064.jpg",
+      "xml_member": "Czech/train/annotations/xmls/Czech_000064.xml",
+      "width": 600,
+      "height": 600,
+      "sha256": "f77709fd4bf5a9a196caed8d433c2b8755ba8a0b5428e39d6b1e44701d12e2ba",
+      "image": "Czech_000064.jpg",
+      "annotation_sha256": "4add03ab37f4cc0783d41e0b66c43641e57c1ea423f6d7a35be47ee87d005c43"
+    },
+    {
+      "id": "Czech_002159",
+      "country": "Czech",
+      "split": "test",
+      "classes": [],
+      "targets": [],
+      "image_member": "Czech/train/images/Czech_002159.jpg",
+      "xml_member": "Czech/train/annotations/xmls/Czech_002159.xml",
+      "width": 600,
+      "height": 600,
+      "sha256": "35248ca4d0d5b4cf9751d580b033f184d6e09d7f4a9bcd0b3256f553df0bdc19",
+      "image": "Czech_002159.jpg",
+      "annotation_sha256": "34a67b7a952e2b4171a996dea56e80de55847137893ed2e548689050b6c76ea1"
+    },
+    {
+      "id": "India_000125",
+      "country": "India",
+      "split": "test",
+      "classes": [
+        "D00"
+      ],
+      "targets": [
+        {
+          "class_name": "D00",
+          "xyxy": [
+            516.0,
+            478.0,
+            607.0,
+            576.0
+          ]
+        },
+        {
+          "class_name": "D00",
+          "xyxy": [
+            565.0,
+            606.0,
+            597.0,
+            673.0
+          ]
+        },
+        {
+          "class_name": "D00",
+          "xyxy": [
+            449.0,
+            474.0,
+            481.0,
+            541.0
+          ]
+        },
+        {
+          "class_name": "D00",
+          "xyxy": [
+            239.0,
+            504.0,
+            318.0,
+            656.0
+          ]
+        }
+      ],
+      "image_member": "India/train/images/India_000125.jpg",
+      "xml_member": "India/train/annotations/xmls/India_000125.xml",
+      "width": 720,
+      "height": 720,
+      "sha256": "d44de7fcc9bc51a4e6fc80752b03caeea7fc714641c502e62dfeab5a8e8e07e6",
+      "image": "India_000125.jpg",
+      "annotation_sha256": "522bc53673a2d89c83a3dbebd728aff9f27b7196c624199fa9bfe324121fde6d"
+    },
+    {
+      "id": "India_008801",
+      "country": "India",
+      "split": "test",
+      "classes": [
+        "D10",
+        "D40"
+      ],
+      "targets": [
+        {
+          "class_name": "D40",
+          "xyxy": [
+            499.0,
+            332.0,
+            718.0,
+            533.0
+          ]
+        },
+        {
+          "class_name": "D10",
+          "xyxy": [
+            110.0,
+            566.0,
+            656.0,
+            626.0
+          ]
+        }
+      ],
+      "image_member": "India/train/images/India_008801.jpg",
+      "xml_member": "India/train/annotations/xmls/India_008801.xml",
+      "width": 720,
+      "height": 720,
+      "sha256": "f3a305eae501045665ce0fcce9ce6d11b3f24b0d7329842f56b3cfa275c744fc",
+      "image": "India_008801.jpg",
+      "annotation_sha256": "963b9cbbf86f869b13a7ec60bc125eafe0ef07800c92a5181c8c21d7bcadc9b5"
+    },
+    {
+      "id": "India_002611",
+      "country": "India",
+      "split": "test",
+      "classes": [
+        "D00",
+        "D20"
+      ],
+      "targets": [
+        {
+          "class_name": "D20",
+          "xyxy": [
+            22.0,
+            527.0,
+            504.0,
+            699.0
+          ]
+        },
+        {
+          "class_name": "D00",
+          "xyxy": [
+            278.0,
+            556.0,
+            327.0,
+            687.0
+          ]
+        },
+        {
+          "class_name": "D00",
+          "xyxy": [
+            125.0,
+            557.0,
+            254.0,
+            716.0
+          ]
+        }
+      ],
+      "image_member": "India/train/images/India_002611.jpg",
+      "xml_member": "India/train/annotations/xmls/India_002611.xml",
+      "width": 720,
+      "height": 720,
+      "sha256": "a19814c81dc228a865d86458312194daf786eaddf9be87160dad117788a8e12e",
+      "image": "India_002611.jpg",
+      "annotation_sha256": "d2a48bb8bd577d7ca922b19eac90510489239018e4b9c861c5838a06070750a8"
+    },
+    {
+      "id": "India_001697",
+      "country": "India",
+      "split": "test",
+      "classes": [
+        "D20",
+        "D40"
+      ],
+      "targets": [
+        {
+          "class_name": "D20",
+          "xyxy": [
+            464.0,
+            600.0,
+            573.0,
+            698.0
+          ]
+        },
+        {
+          "class_name": "D40",
+          "xyxy": [
+            524.0,
+            587.0,
+            582.0,
+            613.0
+          ]
+        }
+      ],
+      "image_member": "India/train/images/India_001697.jpg",
+      "xml_member": "India/train/annotations/xmls/India_001697.xml",
+      "width": 720,
+      "height": 720,
+      "sha256": "e6af875c34f82b8e421b7ab8395de8ed8e4d9603cc8b490504d268dd8370edab",
+      "image": "India_001697.jpg",
+      "annotation_sha256": "ded05ba0dbb1df24b9436db2dd5efbe593c5e559a869b6ac5a7db572cddf0d6e"
+    },
+    {
+      "id": "India_006596",
+      "country": "India",
+      "split": "test",
+      "classes": [],
+      "targets": [],
+      "image_member": "India/train/images/India_006596.jpg",
+      "xml_member": "India/train/annotations/xmls/India_006596.xml",
+      "width": 720,
+      "height": 720,
+      "sha256": "9aa56eda9d0d70baa9efed012ec81bd879b98ea40393fbe750bdd7ddf72fd807",
+      "image": "India_006596.jpg",
+      "annotation_sha256": "350527b727f8f147d647311f6267fc23261560dbd96bc1c9203e51e92bd38a22"
+    },
+    {
+      "id": "India_008128",
+      "country": "India",
+      "split": "test",
+      "classes": [
+        "D00"
+      ],
+      "targets": [
+        {
+          "class_name": "D00",
+          "xyxy": [
+            545.0,
+            473.0,
+            629.0,
+            527.0
+          ]
+        },
+        {
+          "class_name": "D00",
+          "xyxy": [
+            632.0,
+            528.0,
+            716.0,
+            582.0
+          ]
+        },
+        {
+          "class_name": "D00",
+          "xyxy": [
+            173.0,
+            582.0,
+            275.0,
+            670.0
+          ]
+        },
+        {
+          "class_name": "D00",
+          "xyxy": [
+            277.0,
+            493.0,
+            379.0,
+            581.0
+          ]
+        }
+      ],
+      "image_member": "India/train/images/India_008128.jpg",
+      "xml_member": "India/train/annotations/xmls/India_008128.xml",
+      "width": 720,
+      "height": 720,
+      "sha256": "4fa2cb74c7a3ef4ad389e87da1b46f72b065b16e8076689d47e7f1e419fe61fb",
+      "image": "India_008128.jpg",
+      "annotation_sha256": "a5fb1bd4d5b026f69271ce59970689d24b74955d98a6af064c5fb081175c4471"
+    },
+    {
+      "id": "United_States_000494",
+      "country": "United_States",
+      "split": "domain_test",
+      "classes": [
+        "D00",
+        "D10"
+      ],
+      "targets": [
+        {
+          "class_name": "D00",
+          "xyxy": [
+            210.0,
+            417.0,
+            249.0,
+            552.0
+          ]
+        },
+        {
+          "class_name": "D10",
+          "xyxy": [
+            1.0,
+            471.0,
+            242.0,
+            492.0
+          ]
+        }
+      ],
+      "image_member": "United_States/train/images/United_States_000494.jpg",
+      "xml_member": "United_States/train/annotations/xmls/United_States_000494.xml",
+      "width": 640,
+      "height": 640,
+      "sha256": "e47b20e67b00c3e7a096f71f7c286eab9ac32e65cc85ba93533779cba22a1e91",
+      "image": "United_States_000494.jpg",
+      "annotation_sha256": "fc8281a095cfbe5936a7bdfdf2ffd233d7e7f60204e2f1dd4fc8e4a66bbecdb5"
+    },
+    {
+      "id": "United_States_002877",
+      "country": "United_States",
+      "split": "domain_test",
+      "classes": [
+        "D00",
+        "D10"
+      ],
+      "targets": [
+        {
+          "class_name": "D00",
+          "xyxy": [
+            17.0,
+            417.0,
+            168.0,
+            596.0
+          ]
+        },
+        {
+          "class_name": "D10",
+          "xyxy": [
+            1.0,
+            543.0,
+            78.0,
+            562.0
+          ]
+        },
+        {
+          "class_name": "D10",
+          "xyxy": [
+            1.0,
+            477.0,
+            133.0,
+            498.0
+          ]
+        }
+      ],
+      "image_member": "United_States/train/images/United_States_002877.jpg",
+      "xml_member": "United_States/train/annotations/xmls/United_States_002877.xml",
+      "width": 640,
+      "height": 640,
+      "sha256": "bd7f5734ca81f5ed01af6caae2b0050154dfdf7c8c0342788be64e9c9ce6136a",
+      "image": "United_States_002877.jpg",
+      "annotation_sha256": "ea38a4a562aacd096b41f80767739df7bf877276a0e0148ae5b50a1fa2de26df"
+    },
+    {
+      "id": "United_States_001889",
+      "country": "United_States",
+      "split": "domain_test",
+      "classes": [
+        "D10",
+        "D20",
+        "D40"
+      ],
+      "targets": [
+        {
+          "class_name": "D20",
+          "xyxy": [
+            461.0,
+            468.0,
+            639.0,
+            628.0
+          ]
+        },
+        {
+          "class_name": "D10",
+          "xyxy": [
+            200.0,
+            467.0,
+            259.0,
+            480.0
+          ]
+        },
+        {
+          "class_name": "D10",
+          "xyxy": [
+            1.0,
+            471.0,
+            132.0,
+            493.0
+          ]
+        },
+        {
+          "class_name": "D20",
+          "xyxy": [
+            265.0,
+            485.0,
+            347.0,
+            549.0
+          ]
+        },
+        {
+          "class_name": "D20",
+          "xyxy": [
+            104.0,
+            416.0,
+            198.0,
+            576.0
+          ]
+        },
+        {
+          "class_name": "D40",
+          "xyxy": [
+            20.0,
+            592.0,
+            110.0,
+            640.0
+          ]
+        }
+      ],
+      "image_member": "United_States/train/images/United_States_001889.jpg",
+      "xml_member": "United_States/train/annotations/xmls/United_States_001889.xml",
+      "width": 640,
+      "height": 640,
+      "sha256": "76db89c7115c134219828a8b08f5a74913e97b2ee4f770ff64ed3c3743298d6c",
+      "image": "United_States_001889.jpg",
+      "annotation_sha256": "47586ad39cd093ccbd0fb4e7e45b1c5aeaf30e1121c5588562a4ce77e6dbf60b"
+    },
+    {
+      "id": "United_States_002496",
+      "country": "United_States",
+      "split": "domain_test",
+      "classes": [
+        "D00",
+        "D10",
+        "D40"
+      ],
+      "targets": [
+        {
+          "class_name": "D10",
+          "xyxy": [
+            273.0,
+            420.0,
+            300.0,
+            548.0
+          ]
+        },
+        {
+          "class_name": "D00",
+          "xyxy": [
+            254.0,
+            445.0,
+            393.0,
+            463.0
+          ]
+        },
+        {
+          "class_name": "D40",
+          "xyxy": [
+            337.0,
+            548.0,
+            362.0,
+            561.0
+          ]
+        }
+      ],
+      "image_member": "United_States/train/images/United_States_002496.jpg",
+      "xml_member": "United_States/train/annotations/xmls/United_States_002496.xml",
+      "width": 640,
+      "height": 640,
+      "sha256": "6a48f2f3dac6456df2ecb242860659c809b70e8d31c5fe91862e48333ea8a4ed",
+      "image": "United_States_002496.jpg",
+      "annotation_sha256": "941790439f7aa53e4513c382f3144adaf6aa6250805d4aae1ec6a0934811cca4"
+    },
+    {
+      "id": "United_States_002301",
+      "country": "United_States",
+      "split": "domain_test",
+      "classes": [
+        "D00"
+      ],
+      "targets": [
+        {
+          "class_name": "D00",
+          "xyxy": [
+            254.0,
+            490.0,
+            309.0,
+            586.0
+          ]
+        },
+        {
+          "class_name": "D00",
+          "xyxy": [
+            362.0,
+            416.0,
+            621.0,
+            563.0
+          ]
+        }
+      ],
+      "image_member": "United_States/train/images/United_States_002301.jpg",
+      "xml_member": "United_States/train/annotations/xmls/United_States_002301.xml",
+      "width": 640,
+      "height": 640,
+      "sha256": "3371a729aa6de460ef404a15218d3a671399752533b4724062d891a09a8d8834",
+      "image": "United_States_002301.jpg",
+      "annotation_sha256": "75ec20427dabad60db347f3e6fca340e15a32b944d9c7834957463466dac61ab"
+    },
+    {
+      "id": "United_States_000890",
+      "country": "United_States",
+      "split": "domain_test",
+      "classes": [
+        "D00"
+      ],
+      "targets": [
+        {
+          "class_name": "D00",
+          "xyxy": [
+            452.0,
+            477.0,
+            640.0,
+            623.0
+          ]
+        }
+      ],
+      "image_member": "United_States/train/images/United_States_000890.jpg",
+      "xml_member": "United_States/train/annotations/xmls/United_States_000890.xml",
+      "width": 640,
+      "height": 640,
+      "sha256": "95ea836b32719c63450cdca32afc0b62dd0f245b0fadeb75178d7929190d9373",
+      "image": "United_States_000890.jpg",
+      "annotation_sha256": "7d44f522de7c73c66792912e65951e107987a6493b407de969821ce5a48b83b2"
+    }
+  ]
+}

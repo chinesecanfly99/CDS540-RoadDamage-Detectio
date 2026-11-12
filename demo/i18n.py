@@ -109,15 +109,20 @@ class Localizer:
     def html(self, renderer):
         return self.pair(renderer('en'), renderer('zh'))
 
+    def resolve(self, message, language='en'):
+        if isinstance(message, (tuple, list)):
+            return message[1] if language.startswith('zh') else message[0]
+        return text(message, language)
+
     def dataframe(self, *args, headers, **kwargs):
-        component = gr.Dataframe(*args, headers=[text(h) for h in headers], **kwargs)
+        component = gr.Dataframe(*args, headers=[self.resolve(h) for h in headers], **kwargs)
         self.tables.append((component, headers))
         return component
 
     def tab(self, message, **kwargs):
         # Gradio's lazy tab labels can retain the browser locale on first mount.
         # Use explicit defaults and updates so tab navigation always matches the switch.
-        component = gr.Tab(text(message), **kwargs)
+        component = gr.Tab(self.resolve(message), **kwargs)
         self.tabs.append((component, message))
         return component
 

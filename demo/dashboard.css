@@ -86,3 +86,19 @@ body { margin:0; background:#e9eef6; }
 @media (min-width:1100px) { #control-panel { position:sticky; top:18px; } }
 @media (max-width:1000px) { .gradio-container { padding:14px !important; } #control-panel { flex:0 0 240px !important; min-width:230px !important; } .metric { padding:9px; } .metric span { font-size:10px; } .app-banner { padding:22px; } }
 @media (max-width:760px) { .app-banner { flex-direction:column; align-items:flex-start; gap:16px; } .header-badges { justify-content:flex-start; } .app-banner h1 { font-size:23px; } #control-panel { flex:1 1 100% !important; } #result-panel { flex:1 1 100% !important; } #main-pages > .tab-wrapper [role=tab] { padding:9px 14px !important; font-size:13px; } .metrics { grid-template-columns:repeat(2,minmax(0,1fr)); } .export-status { flex-wrap:wrap; } .export-badge { flex-basis:180px; } .result-device { margin-left:0; } }
+
+/* Diagnostic questions share one image; live and archived evidence are distinct. */
+.lab-explanation { padding:12px 16px; background:#e3eef9; color:#31526f; border-left:3px solid #4683be; border-radius:8px; line-height:1.65; font-size:13px; }
+.lab-cards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-bottom:12px; }
+.lab-cards > div { padding:14px 16px; background:linear-gradient(120deg,#e1ecfe,#dff1ee); border:1px solid #bfd5e6; border-radius:10px; }
+.lab-cards span { display:block; color:#526e89; font-size:12px; }
+.lab-cards strong { display:block; color:#225c8c; font-size:22px; margin-top:6px; }
+#inspect-result { background:#dceef1; color:#176772; border:1px solid #acd2d8; }
+#experiment-tabs .experiment-lead { margin-bottom:8px; }
+@media (max-width:600px) { .lab-cards { grid-template-columns:1fr; } .lab-cards strong { font-size:19px; } }
+
+/* Charts contain their data and SVG in a single response, independent of tab refresh. */
+.lab-chart { padding:16px; background:#fff; border:1px solid #d5e1ef; border-radius:12px; }
+.lab-chart h4 { margin:0 0 8px; color:#214b78; font-size:16px; }
+.lab-chart svg { display:block; width:100%; height:auto; font-family:system-ui,"Microsoft YaHei",sans-serif; }
+.lab-chart p { margin:6px 0 0; color:#5a718a; font-size:12px; line-height:1.6; }

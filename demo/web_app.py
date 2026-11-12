@@ -23,6 +23,7 @@ from demo.cases import CASE_DIR, CLASS_LABELS, case_choices, case_note, filter_c
 from demo.experiments import build_experiments, experiment_files
 from demo.i18n import Localizer, localized_record, locale_module_url, text
 from demo.inference import EXPORT_DIR, MODELS, analyze_image, compare_images, export_json
+from demo.media import image_output
 from demo.presentation import CLASS_COLORS, compare_detections, empty_summary, render_boxes, summary_cards
 from scripts.demo_runtime import available_devices, load_config, resolve_device, select_port
 
@@ -66,7 +67,7 @@ def run_web_prediction(image_rgb, model_name, confidence, device, language='zh')
     _, report = user_error(analyze_image, image_rgb, model_name, confidence, device, language=language)
     report = localized_record(report, language)
     status = prediction_status(report, language)
-    return render_boxes(image_rgb, report), status, report, export_json(report)
+    return image_output(render_boxes(image_rgb, report)), status, report, export_json(report)
 
 
 def run_comparison(image_rgb, confidence, device, language='zh'):
@@ -75,7 +76,7 @@ def run_comparison(image_rgb, confidence, device, language='zh'):
         record = localized_record(record, language)
         path = export_json(record, 'road-comparison-')
     left, right = [render_boxes(image_rgb, report) for report in record['reports']]
-    return left, right, rows, record, path
+    return image_output(left), image_output(right), rows, record, path
 
 
 def prediction_status(report, language):
@@ -89,10 +90,10 @@ def run_analysis(image_rgb, mode, model, confidence, device, categories, languag
     if mode == MODES[0]:
         _, _, rows, record, path = run_comparison(image_rgb, confidence, device, language)
         left, right = [render_boxes(image_rgb, report, categories) for report in record['reports']]
-        return (left, right, None, summary_cards(record, language), compare_detections(record, language), rows,
+        return (image_output(left), image_output(right), None, summary_cards(record, language), compare_detections(record, language), rows,
                 record, gr.File(value=path, label=text('下载双模型 JSON', language), visible=True), record, text('对比完成 · 下方可查看模型分歧与完整记录。', language), 1)
     _, status, report, path = run_web_prediction(image_rgb, model, confidence, device, language)
-    return (None, None, render_boxes(image_rgb, report, categories), summary_cards(report, language), [], [],
+    return (None, None, image_output(render_boxes(image_rgb, report, categories)), summary_cards(report, language), [], [],
             report, gr.File(value=path, label=text('下载单模型 JSON', language), visible=True), report, status, 1)
 
 
@@ -105,8 +106,8 @@ def render_visible(image_rgb, record, categories):
         return None, None, None
     if 'reports' in record:
         left, right = [render_boxes(image_rgb, report, categories) for report in record['reports']]
-        return left, right, None
-    return None, None, render_boxes(image_rgb, record, categories)
+        return image_output(left), image_output(right), None
+    return None, None, image_output(render_boxes(image_rgb, record, categories))
 
 
 def update_cases(country, category, language='zh'):
@@ -115,7 +116,8 @@ def update_cases(country, category, language='zh'):
 
 
 def load_example(case_id, language='zh'):
-    return user_error(load_case, case_id, language, language=language)
+    image, reference, note = user_error(load_case, case_id, language, language=language)
+    return image_output(image), image_output(reference), note
 
 
 def load_example_view(case_id, language):
@@ -211,6 +213,7 @@ def build_app(default_device='auto'):
                             gr.Markdown(t('图层筛选只影响显示，统计保留完整检测结果。'), elem_classes='small-note')
                         run = gr.Button(t('开始分析'), variant='primary', elem_id='run-analysis')
                         status = gr.Markdown(t('等待运行'), elem_classes='small-note')
+                        inspect_result = gr.Button(t.pair('Investigate this image', '在分析区研究这张图'), elem_id='inspect-result')
                     with gr.Column(scale=3, min_width=560, elem_id='result-panel'):
                         summary = gr.HTML(empty_summary('en'))
                         gr.HTML(t.html(legend))
@@ -236,7 +239,7 @@ def build_app(default_device='auto'):
                         download = gr.File(label=t('下载本次分析 JSON'), visible=False)
                         gr.Markdown(t('复核优先级用于人工排序。请结合原图和标注检查检出与漏检情况。'), elem_classes='notice')
             with t.tab('实验分析', id='experiments'):
-                build_experiments(t, language)
+                experiments = build_experiments(t, language)
             with t.tab('案例库', id='library'):
                 gr.HTML(t.html(library_intro))
                 with gr.Row():
@@ -250,6 +253,10 @@ def build_app(default_device='auto'):
                                      preview=False, allow_preview=False, interactive=False, label=t('原始道路样例'), elem_id='case-gallery')
                 gr.Markdown(t('案例按原始标注筛选。该集合经过分层选样，总体指标请查看完整评估记录。'), elem_classes='notice')
         gr.HTML(t.html(lambda lang: '<div class="app-footnote">' + text('CDS540 · Road Damage Detection　/　当前页面用于检测、实验观察与人工复核。', lang) + '</div>'))
+
+        inspect_result.click(experiments['import'], [image, source_case, language],
+                             [experiments['image'], experiments['source'], experiments['state'], experiments['selection']], api_name=False).then(
+            lambda: gr.Tabs(selected='experiments'), outputs=pages, api_name=False)
 
         result_outputs = [left, right, overlay, summary, differences, table, details, download, record_state, status, zoom]
         analysis_event = run.click(run_analysis, [image, mode, model, confidence, device, categories, language], result_outputs,
@@ -274,13 +281,13 @@ def build_app(default_device='auto'):
             current_cases = filter_cases(read_cases(), current_country, current_category)
             choices = case_choices(current_cases, lang)
             note = case_note(loaded_case, lang) if source is not None else text('选择样例后可查看原始标注。', lang)
-            headers = [gr.update(headers=[text(header, lang) for header in titles]) for _, titles in t.tables]
+            headers = [gr.update(headers=[t.resolve(header, lang) for header in titles]) for _, titles in t.tables]
             # Updating only headers on the match table would preserve its old-language rows.
             headers[0]['value'] = matches
             return (cards, full_record, file, saved_record, message, note,
                     gr.update(choices=choices, value=selected_case), gallery_items(current_cases, lang),
                     text('当前筛选共 **{count} 张**，点击缩略图可载入检测工作台。', lang, count=len(current_cases)), *headers,
-                    *[gr.Tab(label=text(title, lang)) for _, title in t.tabs], gr.update(placeholder=text('拖入道路图片\n或点击上传', lang)))
+                    *[gr.Tab(label=t.resolve(title, lang)) for _, title in t.tabs], gr.update(placeholder=text('拖入道路图片\n或点击上传', lang)))
 
         language.change(switch_language, [language, record_state, source_case, image, quick_case, country, category],
                         [summary, details, download, record_state, status, sample_note, quick_case, gallery, gallery_note,
