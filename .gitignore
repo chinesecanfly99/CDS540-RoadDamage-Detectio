@@ -59,6 +59,10 @@ submission/*.pptx
 reports/*.pdf
 reports/*.pptx
 
+# Final compiled deliverables are tracked (2026-11-12, v2 merge)
+!submission/CDS540_Final_Project_Report.pdf
+!submission/CDS540_Final_Presentation_Deck.pptx
+
 # Local machine settings, samples and runtime outputs
 /.local/
 

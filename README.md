@@ -14,6 +14,25 @@
 3. **可解释的人工复核决策规则**：结合预设的类别复核权重（如 D40 坑洞重点监控）、检测置信度与几何特征，输出透明、可追踪的复核优先级建议。
 4. **跨平台轻量交互演示 (Demo)**：已支持离线单图与媒体处理、图片上传网页及 JSON 导出；真实车载视频验收仍待实现。
 
+> 以上为项目立项时的目标清单；**当前实际进展与最终交付物以下一节为准**。
+
+---
+
+## 🆕 最新进展：v2 技术升级（2026-11-12）
+
+提交 `4d2ccbf` 完成 C 档技术升级（C1–C5）并合并进正式交付物。**本次没有更换检测模型**，而是把原报告中列为 limitations 的四条 "future work" 变成有数据、有边界、也如实记录负结果的实证：
+
+| 编号 | 内容 | 结果（含负结果） |
+|---|---|---|
+| C1 | IPM 逆透视映射，把检测框面积换算为 `estimated_ground_area_m2` | 与 2D 面积排序 Spearman `0.8957`；优先级仅在 `2/40` 帧变化（有检测帧 `2/18`）；自动消失点标定仅 `9/40` 帧成功 |
+| C2 | P3/P4/P5 层级激活能量分析 | 属相关性定位证据，非因果证明；D40 的 P5 占比低于背景，各类检出率偏低 |
+| C3 | 美国域 few-shot 适应（`seed=42`，严格 holdout） | holdout mAP@50 `0.0863 → 0.1957`（100-shot）；但原域 `0.2845 → 0.1420`，出现灾难性遗忘与 D40 负迁移 |
+| C4 | ONNX / FP16 / INT8 导出与 CPU 数值一致性实测 | FP32 parity PASS（`0.0002 px`）；FP16 / INT8 FAIL（漏框、分数偏差）；Jetson / TensorRT 未实测 |
+
+**最终交付物（编译版已纳入本仓库）**：`submission/CDS540_Final_Project_Report.pdf`（7 页，课程上限 8 页）、`submission/CDS540_Final_Presentation_Deck.pptx`（20 页）、`submission/CDS540_Final_Project_Report.md`、`submission/defense_qa_guide.md`。
+
+新代码、配置、清单与结果统一放在 `v2` 命名空间：`scripts/*_v2.py`、`configs/v2/`、`data/manifests/v2/`、`results/v2/`（含 11–14 号 300 DPI 主图）。旧文件只增不改，旧权重与新实验指标不混排；训练权重与 ONNX 导出因体积限制仍走共享存储。完整变更见 [CHANGELOG_C.md](CHANGELOG_C.md)，口径修订见 [submission/v2_candidates/discrepancy_log.md](submission/v2_candidates/discrepancy_log.md)。
+
 ---
 
 ## 📂 仓库目录结构 (Directory Layout)
@@ -78,9 +97,18 @@
 │   ├── test_robustness.py          # 扰动鲁棒性评测
 │   ├── priority.py                 # 人工复核规则引擎
 │   └── generate_final_report_pdf.py# 报告与交付物编译脚本
+├── submission/           # 【最终交付物，以本目录为准】
+│   ├── CDS540_Final_Project_Report.pdf / .md  # 7 页正式报告（编译版 + 源文）
+│   ├── CDS540_Final_Presentation_Deck.pptx    # 20 页答辩 PPT
+│   ├── defense_qa_guide.md                   # 答辩 Q&A 口径
+│   └── v2_candidates/    # 候选补充章节与口径差异登记
+├── configs/v2/           # few-shot / holdout 评测配置
+├── data/manifests/v2/    # 新划分清单（三集合零交集）
+├── results/v2/           # C1-C4 数据表与 11-14 号主图
+├── CHANGELOG_C.md        # v2 升级变更记录
 ├── env_check.txt         # 原始训练环境软硬件记录
 ├── requirements.txt      # 项目依赖列表 (已包含 ultralytics, gradio)
-└── .gitignore            # 忽略环境、数据和输出；保留两份指定权重
+└── .gitignore            # 忽略环境、数据和输出；放行最终 PDF/PPTX 与两份权重
 ```
 
 ---
@@ -129,7 +157,7 @@ python scripts/predict_image.py --source "path/to/road.jpg" --output ".local/sin
 
 将 `path/to/road.jpg` 替换为一张实际道路图片。命令会保存叠框图片和 JSON；输出目录应为新目录。默认加载已有 `models/baseline_best.pt`，可通过 `--model` 指定对照模型。
 
-最新问题核查、已修复项和后续工作见 [planning/11_全量复核与继续实施.md](planning/11_全量复核与继续实施.md)。
+最新变更、已修复项与口径差异见 [CHANGELOG_C.md](CHANGELOG_C.md) 及 [submission/v2_candidates/discrepancy_log.md](submission/v2_candidates/discrepancy_log.md)。
 
 2026-10-16 的本机 CPU 运行记录见 [docs/LOCAL_RUNTIME.md](docs/LOCAL_RUNTIME.md)。
 
@@ -190,7 +218,7 @@ python demo/demo.py --source "path/to/images-or-video" --output ".local/demo.mp4
    ```text
    [模块代号] 简要说明变更内容 (如: [B-Data] 修正 voc_to_yolo.py 路径解析并生成 data v1 清单)
    ```
-4. **数据与产物管理**：两份指定已有权重已纳入仓库；其他训练 checkpoint、原始 ZIP、大批图片、运行环境和大视频继续通过共享存储分发，不随普通提交上传。不要覆盖已有权重来代替新实验版本。
+4. **数据与产物管理**：两份指定已有权重，以及最终报告 PDF 与答辩 PPTX（2026-11-12 起）已纳入仓库；其他训练 checkpoint、原始 ZIP、大批图片、运行环境和大视频继续通过共享存储分发，不随普通提交上传。不要覆盖已有权重来代替新实验版本。
 
 ---
 
@@ -202,4 +230,4 @@ python demo/demo.py --source "path/to/images-or-video" --output ".local/demo.mp4
 该文档包含直接复制给 AI 的精准 Prompt 和阶梯式排错步骤，能大幅减少因环境差异导致的反复重跑。
 
 
-本轮已经完成原划分的全量转换、两模型完整评估及阈值试验，发现同场景跨集合和训练预算差异；最新状态见仓库 planning/11_全量复核与继续实施.md。跨电脑验收按用户要求暂缓；本目录此前记录为历史快照。
+当前状态以本 README 的「最新进展」与 [CHANGELOG_C.md](CHANGELOG_C.md) 为准，提交物以 `submission/` 为准；`planning/` 与 `reports/` 下的阶段文档属早期规划与历史副本，其进度口径可能滞后。跨电脑验收按组内要求暂缓。
