@@ -1,0 +1,13 @@
+weights_version,eval_split,image_id,box_id,class_code,y_center_norm,area_ratio_2d,estimated_ground_area_m2,rank_2d,rank_ipm,rank_shift
+GT_XML_canonical,test_stratified_40,India_004759,1,D20,0.8187,0.240179,37.037332,1,1,0
+GT_XML_canonical,test_stratified_40,India_003883,1,D20,0.7535,0.155797,32.703451,7,2,5
+GT_XML_canonical,test_stratified_40,India_002256,0,D20,0.8104,0.205029,32.351184,2,3,-1
+GT_XML_canonical,test_stratified_40,India_000563,0,D20,0.8104,0.194437,31.252272,4,4,0
+GT_XML_canonical,test_stratified_40,India_007267,0,D20,0.7778,0.128981,23.596604,8,5,3
+GT_XML_canonical,test_stratified_40,India_001160,3,D20,0.8181,0.165008,23.546043,6,6,0
+GT_XML_canonical,test_stratified_40,India_008266,0,D20,0.8486,0.204414,23.20382,3,7,-4
+GT_XML_canonical,test_stratified_40,India_001566,1,D20,0.7049,0.075781,22.76586,15,8,7
+GT_XML_canonical,test_stratified_40,India_001984,1,D20,0.8576,0.194228,22.337775,5,9,-4
+GT_XML_canonical,test_stratified_40,India_004195,3,D00,0.7194,0.070324,20.807949,17,10,7
+GT_XML_canonical,test_stratified_40,India_006293,3,D20,0.8493,0.125527,15.096661,9,13,-4
+GT_XML_canonical,test_stratified_40,India_001566,4,D40,0.841,0.111979,14.765697,10,15,-5

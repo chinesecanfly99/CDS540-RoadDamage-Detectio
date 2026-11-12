@@ -61,3 +61,7 @@ reports/*.pptx
 
 # Local machine settings, samples and runtime outputs
 /.local/
+
+# v2 model checkpoints & ONNX exports
+models/v2/**/*.pt
+models/v2/**/*.onnx

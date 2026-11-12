@@ -1,0 +1,30 @@
+{
+  "seed": 42,
+  "source_manifest": "data/manifests/domain_test.csv",
+  "source_total": 4805,
+  "counts": {
+    "fewshot_train_50": 50,
+    "fewshot_train_100": 100,
+    "fewshot_train_200": 200,
+    "fewshot_val": 200,
+    "adapt_holdout": 4405
+  },
+  "d40_image_counts": {
+    "fewshot_train_50": 5,
+    "fewshot_train_100": 9,
+    "fewshot_train_200": 15,
+    "fewshot_val": 8,
+    "adapt_holdout": 93
+  },
+  "pairwise_path_intersections": {
+    "train50_vs_val": 0,
+    "train50_vs_adapt_holdout": 0,
+    "train100_vs_val": 0,
+    "train100_vs_adapt_holdout": 0,
+    "train200_vs_val": 0,
+    "train200_vs_adapt_holdout": 0,
+    "val_vs_adapt_holdout": 0
+  },
+  "nested_subset_verified": true,
+  "disjoint_sum_equals_source": true
+}

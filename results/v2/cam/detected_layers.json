@@ -1,0 +1,32 @@
+[
+  {
+    "layer_name": "model.16",
+    "module_index": 16,
+    "module_type": "C3k2",
+    "stride": 8,
+    "channels": 128,
+    "feature_h": 80,
+    "feature_w": 80,
+    "pyramid_level": "P3"
+  },
+  {
+    "layer_name": "model.19",
+    "module_index": 19,
+    "module_type": "C3k2",
+    "stride": 16,
+    "channels": 256,
+    "feature_h": 40,
+    "feature_w": 40,
+    "pyramid_level": "P4"
+  },
+  {
+    "layer_name": "model.22",
+    "module_index": 22,
+    "module_type": "C3k2",
+    "stride": 32,
+    "channels": 512,
+    "feature_h": 20,
+    "feature_w": 20,
+    "pyramid_level": "P5"
+  }
+]

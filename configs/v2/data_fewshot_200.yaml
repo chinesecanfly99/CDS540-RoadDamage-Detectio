@@ -1,0 +1,8 @@
+path: data/yolo
+train: images/v2_fewshot_200
+val: images/v2_fewshot_val
+names:
+  0: D00
+  1: D10
+  2: D20
+  3: D40

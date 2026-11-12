@@ -1,0 +1,88 @@
+{
+  "source_weights": "models\\compare_yolo11s_best.pt",
+  "export_params": {
+    "imgsz": 640,
+    "batch": 1,
+    "opset": 17,
+    "simplify": true,
+    "dynamic": false
+  },
+  "onnx_version": "1.23.2",
+  "onnxruntime_version": "1.31.1",
+  "available_execution_providers": [
+    "AzureExecutionProvider",
+    "CPUExecutionProvider"
+  ],
+  "active_ep_for_onnx": "CPUExecutionProvider",
+  "variants": {
+    "fp32": {
+      "onnx_file": "yolo11s_fp32.onnx",
+      "execution_provider": "CPUExecutionProvider",
+      "n_images": 32,
+      "total_pytorch_detections": 21,
+      "total_ort_detections": 21,
+      "detection_count_diff": 0,
+      "matched_pairs": 21,
+      "unmatched_pt": 0,
+      "unmatched_ort": 0,
+      "max_box_delta_px": 0.0002,
+      "mean_box_delta_px": 0.0001,
+      "max_score_delta": 0.0,
+      "mean_score_delta": 0.0,
+      "tolerances": {
+        "max_box_delta_px": 1.0,
+        "max_score_delta": 0.01
+      },
+      "status": "PASS",
+      "failure_reasons": []
+    },
+    "fp16": {
+      "onnx_file": "yolo11s_fp16.onnx",
+      "execution_provider": "CPUExecutionProvider",
+      "n_images": 32,
+      "total_pytorch_detections": 21,
+      "total_ort_detections": 20,
+      "detection_count_diff": 1,
+      "matched_pairs": 20,
+      "unmatched_pt": 1,
+      "unmatched_ort": 0,
+      "max_box_delta_px": 0.7688,
+      "mean_box_delta_px": 0.2071,
+      "max_score_delta": 0.001796,
+      "mean_score_delta": 0.000555,
+      "tolerances": {
+        "max_box_delta_px": 1.0,
+        "max_score_delta": 0.01
+      },
+      "status": "FAIL",
+      "failure_reasons": [
+        "unmatched detections (pt=1, ort=0)"
+      ]
+    },
+    "int8_dynamic": {
+      "onnx_file": "yolo11s_int8_dynamic.onnx",
+      "execution_provider": "CPUExecutionProvider",
+      "n_images": 32,
+      "total_pytorch_detections": 21,
+      "total_ort_detections": 21,
+      "detection_count_diff": 0,
+      "matched_pairs": 20,
+      "unmatched_pt": 1,
+      "unmatched_ort": 1,
+      "max_box_delta_px": 51.45,
+      "mean_box_delta_px": 9.7874,
+      "max_score_delta": 0.218635,
+      "mean_score_delta": 0.042285,
+      "tolerances": {
+        "max_box_delta_px": 1.0,
+        "max_score_delta": 0.01
+      },
+      "status": "FAIL",
+      "failure_reasons": [
+        "max_box_delta_px=51.4500 > 1.0",
+        "max_score_delta=0.218635 > 0.01",
+        "unmatched detections (pt=1, ort=1)"
+      ]
+    }
+  }
+}

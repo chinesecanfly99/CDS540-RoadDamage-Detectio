@@ -1,0 +1,9 @@
+weights_version,eval_split,n_images,Precision,Recall,mAP@50,mAP@50-95,D00_AP50,D10_AP50,D20_AP50,D40_AP50,D40_Recall,notes
+compare_yolo11s_best.pt,adapt_holdout (4405),4405,0.1849,0.1559,0.0863,0.0312,0.1732,0.0611,0.0938,0.0171,0.1835,re-measured on holdout (zero-shot baseline state; never copied from 4805 CSV)
+compare_yolo11s_best.pt,in_domain_test (1579),1579,0.3833,0.3305,0.2845,0.114,0.2387,0.0862,0.521,0.2923,0.3974,re-measured in-domain reference baseline before adaptation
+yolo11s_fewshot_50.pt,adapt_holdout (4405),4405,0.239,0.2121,0.1504,0.0605,0.2857,0.0911,0.1951,0.0296,0.1743,"few-shot adaptation on a labelled US subset (n=50, epochs=25, lr0=0.0001)"
+yolo11s_fewshot_50.pt,in_domain_test (1579),1579,0.3286,0.3036,0.2579,0.0964,0.2205,0.093,0.4556,0.2626,0.3425,catastrophic forgetting check vs baseline: delta_mAP50=-0.0266
+yolo11s_fewshot_100.pt,adapt_holdout (4405),4405,0.2476,0.2731,0.1957,0.0809,0.3349,0.1085,0.2794,0.0601,0.1193,"few-shot adaptation on a labelled US subset (n=100, epochs=25, lr0=0.0001)"
+yolo11s_fewshot_100.pt,in_domain_test (1579),1579,0.3116,0.2386,0.2198,0.0822,0.199,0.0878,0.4005,0.1918,0.185,catastrophic forgetting check vs baseline: delta_mAP50=-0.0647
+yolo11s_fewshot_200.pt,adapt_holdout (4405),4405,0.2974,0.2595,0.1843,0.0761,0.3312,0.1075,0.2517,0.0466,0.0766,"few-shot adaptation on a labelled US subset (n=200, epochs=25, lr0=0.0001)"
+yolo11s_fewshot_200.pt,in_domain_test (1579),1579,0.3167,0.1883,0.142,0.0534,0.1346,0.0952,0.2023,0.136,0.0861,catastrophic forgetting check vs baseline: delta_mAP50=-0.1425

@@ -1,0 +1,150 @@
+{
+  "integrity": {
+    "seed": 42,
+    "source_manifest": "data/manifests/domain_test.csv",
+    "source_total": 4805,
+    "counts": {
+      "fewshot_train_50": 50,
+      "fewshot_train_100": 100,
+      "fewshot_train_200": 200,
+      "fewshot_val": 200,
+      "adapt_holdout": 4405
+    },
+    "d40_image_counts": {
+      "fewshot_train_50": 5,
+      "fewshot_train_100": 9,
+      "fewshot_train_200": 15,
+      "fewshot_val": 8,
+      "adapt_holdout": 93
+    },
+    "pairwise_path_intersections": {
+      "train200_vs_val": 0,
+      "train200_vs_adapt_holdout": 0,
+      "val_vs_adapt_holdout": 0
+    },
+    "nested_subset_verified": true,
+    "disjoint_sum_equals_source": true
+  },
+  "records": [
+    {
+      "weights_version": "compare_yolo11s_best.pt",
+      "eval_split": "adapt_holdout (4405)",
+      "n_images": 4405,
+      "Precision": 0.1849,
+      "Recall": 0.1559,
+      "mAP@50": 0.0863,
+      "mAP@50-95": 0.0312,
+      "D00_AP50": 0.1732,
+      "D10_AP50": 0.0611,
+      "D20_AP50": 0.0938,
+      "D40_AP50": 0.0171,
+      "D40_Recall": 0.1835,
+      "notes": "re-measured on holdout (zero-shot baseline state; never copied from 4805 CSV)"
+    },
+    {
+      "weights_version": "compare_yolo11s_best.pt",
+      "eval_split": "in_domain_test (1579)",
+      "n_images": 1579,
+      "Precision": 0.3833,
+      "Recall": 0.3305,
+      "mAP@50": 0.2845,
+      "mAP@50-95": 0.114,
+      "D00_AP50": 0.2387,
+      "D10_AP50": 0.0862,
+      "D20_AP50": 0.521,
+      "D40_AP50": 0.2923,
+      "D40_Recall": 0.3974,
+      "notes": "re-measured in-domain reference baseline before adaptation"
+    },
+    {
+      "weights_version": "yolo11s_fewshot_50.pt",
+      "eval_split": "adapt_holdout (4405)",
+      "n_images": 4405,
+      "Precision": 0.239,
+      "Recall": 0.2121,
+      "mAP@50": 0.1504,
+      "mAP@50-95": 0.0605,
+      "D00_AP50": 0.2857,
+      "D10_AP50": 0.0911,
+      "D20_AP50": 0.1951,
+      "D40_AP50": 0.0296,
+      "D40_Recall": 0.1743,
+      "notes": "few-shot adaptation on a labelled US subset (n=50, epochs=25, lr0=0.0001)"
+    },
+    {
+      "weights_version": "yolo11s_fewshot_50.pt",
+      "eval_split": "in_domain_test (1579)",
+      "n_images": 1579,
+      "Precision": 0.3286,
+      "Recall": 0.3036,
+      "mAP@50": 0.2579,
+      "mAP@50-95": 0.0964,
+      "D00_AP50": 0.2205,
+      "D10_AP50": 0.093,
+      "D20_AP50": 0.4556,
+      "D40_AP50": 0.2626,
+      "D40_Recall": 0.3425,
+      "notes": "catastrophic forgetting check vs baseline: delta_mAP50=-0.0266"
+    },
+    {
+      "weights_version": "yolo11s_fewshot_100.pt",
+      "eval_split": "adapt_holdout (4405)",
+      "n_images": 4405,
+      "Precision": 0.2476,
+      "Recall": 0.2731,
+      "mAP@50": 0.1957,
+      "mAP@50-95": 0.0809,
+      "D00_AP50": 0.3349,
+      "D10_AP50": 0.1085,
+      "D20_AP50": 0.2794,
+      "D40_AP50": 0.0601,
+      "D40_Recall": 0.1193,
+      "notes": "few-shot adaptation on a labelled US subset (n=100, epochs=25, lr0=0.0001)"
+    },
+    {
+      "weights_version": "yolo11s_fewshot_100.pt",
+      "eval_split": "in_domain_test (1579)",
+      "n_images": 1579,
+      "Precision": 0.3116,
+      "Recall": 0.2386,
+      "mAP@50": 0.2198,
+      "mAP@50-95": 0.0822,
+      "D00_AP50": 0.199,
+      "D10_AP50": 0.0878,
+      "D20_AP50": 0.4005,
+      "D40_AP50": 0.1918,
+      "D40_Recall": 0.185,
+      "notes": "catastrophic forgetting check vs baseline: delta_mAP50=-0.0647"
+    },
+    {
+      "weights_version": "yolo11s_fewshot_200.pt",
+      "eval_split": "adapt_holdout (4405)",
+      "n_images": 4405,
+      "Precision": 0.2974,
+      "Recall": 0.2595,
+      "mAP@50": 0.1843,
+      "mAP@50-95": 0.0761,
+      "D00_AP50": 0.3312,
+      "D10_AP50": 0.1075,
+      "D20_AP50": 0.2517,
+      "D40_AP50": 0.0466,
+      "D40_Recall": 0.0766,
+      "notes": "few-shot adaptation on a labelled US subset (n=200, epochs=25, lr0=0.0001)"
+    },
+    {
+      "weights_version": "yolo11s_fewshot_200.pt",
+      "eval_split": "in_domain_test (1579)",
+      "n_images": 1579,
+      "Precision": 0.3167,
+      "Recall": 0.1883,
+      "mAP@50": 0.142,
+      "mAP@50-95": 0.0534,
+      "D00_AP50": 0.1346,
+      "D10_AP50": 0.0952,
+      "D20_AP50": 0.2023,
+      "D40_AP50": 0.136,
+      "D40_Recall": 0.0861,
+      "notes": "catastrophic forgetting check vs baseline: delta_mAP50=-0.1425"
+    }
+  ]
+}

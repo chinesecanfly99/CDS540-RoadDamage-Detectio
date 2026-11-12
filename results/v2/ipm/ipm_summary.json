@@ -1,0 +1,57 @@
+{
+  "n_sampled_images": 40,
+  "n_gt_boxes_total": 97,
+  "n_gt_boxes_in_calibrated_zone": 91,
+  "n_gt_boxes_outside_zone": 6,
+  "box_level_spearman_rho": 0.8957,
+  "box_level_kendall_tau": 0.737,
+  "top10_overlap_count": 8,
+  "top10_jaccard": 0.6667,
+  "image_priority_spearman_rho": 0.9946,
+  "image_priority_kendall_tau": 0.9672,
+  "priority_level_changes_v1_vs_v2": 2,
+  "priority_level_change_pct": 5.0,
+  "lane_width_sensitivity": {
+    "3.0": {
+      "mean_estimated_area_m2": 5.5006,
+      "mean_priority_score": 5.2778,
+      "spearman_vs_3.5m": 1.0,
+      "kendall_vs_3.5m": 1.0,
+      "priority_level_changes_vs_3.5m": 0
+    },
+    "3.5": {
+      "mean_estimated_area_m2": 6.4174,
+      "mean_priority_score": 5.2778,
+      "spearman_vs_3.5m": 1.0,
+      "kendall_vs_3.5m": 1.0,
+      "priority_level_changes_vs_3.5m": 0
+    },
+    "4.0": {
+      "mean_estimated_area_m2": 7.3342,
+      "mean_priority_score": 5.2778,
+      "spearman_vs_3.5m": 1.0,
+      "kendall_vs_3.5m": 1.0,
+      "priority_level_changes_vs_3.5m": 0
+    }
+  },
+  "vanishing_point_hough_attempts": {
+    "ok": 9,
+    "failed": 31,
+    "reasons": {
+      "reconstructed_quad_invalid_geometry": 9,
+      "missing_converging_lane_pair": 19,
+      "vanishing_point_out_of_plausible_horizon": 2,
+      "insufficient_hough_segments": 1
+    }
+  },
+  "saved_cards": [
+    "results\\v2\\ipm\\sample_cards\\01_India_004320_ipm.jpg",
+    "results\\v2\\ipm\\sample_cards\\02_India_003883_ipm.jpg",
+    "results\\v2\\ipm\\sample_cards\\03_India_000993_ipm.jpg",
+    "results\\v2\\ipm\\sample_cards\\04_India_000563_ipm.jpg",
+    "results\\v2\\ipm\\sample_cards\\05_India_003925_ipm.jpg",
+    "results\\v2\\ipm\\sample_cards\\06_India_006862_ipm.jpg",
+    "results\\v2\\ipm\\sample_cards\\07_India_001239_ipm.jpg",
+    "results\\v2\\ipm\\sample_cards\\08_India_003778_ipm.jpg"
+  ]
+}
