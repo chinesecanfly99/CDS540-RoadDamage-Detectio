@@ -1,0 +1,8 @@
+# Compiled deliverables and model artifacts are binary.
+# Without this, core.autocrlf=true on Windows can rewrite LF bytes
+# inside PDFs on checkout and corrupt them.
+*.pdf binary
+*.pptx binary
+*.pt binary
+*.onnx binary
+*.zip binary
